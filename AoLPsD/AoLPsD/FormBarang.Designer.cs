@@ -36,28 +36,35 @@ namespace AoLPsD
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtIDBarang = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDelete = new System.Windows.Forms.Button();
-            this.txtNamaBarang2 = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.txtViewNama = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtInsert = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNamaBarang = new System.Windows.Forms.TextBox();
-            this.txtUpdate = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtStok = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtViewStok = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBarang)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStok)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtViewStok)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Nama Barang"});
-            this.comboBox.Location = new System.Drawing.Point(66, 232);
+            "Nama Barang",
+            "Jumlah Stok "});
+            this.comboBox.Location = new System.Drawing.Point(66, 313);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(83, 21);
             this.comboBox.TabIndex = 46;
@@ -65,7 +72,7 @@ namespace AoLPsD
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(19, 235);
+            this.label13.Location = new System.Drawing.Point(19, 316);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 13);
             this.label13.TabIndex = 45;
@@ -73,10 +80,11 @@ namespace AoLPsD
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(173, 232);
+            this.txtSearch.Location = new System.Drawing.Point(173, 313);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(212, 20);
             this.txtSearch.TabIndex = 44;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // DataGridBarang
             // 
@@ -85,27 +93,32 @@ namespace AoLPsD
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridBarang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridBarang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridBarang.Location = new System.Drawing.Point(12, 276);
+            this.DataGridBarang.Location = new System.Drawing.Point(12, 362);
             this.DataGridBarang.Name = "DataGridBarang";
-            this.DataGridBarang.Size = new System.Drawing.Size(776, 146);
+            this.DataGridBarang.Size = new System.Drawing.Size(776, 60);
             this.DataGridBarang.TabIndex = 43;
+            this.DataGridBarang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBarang_CellClick);
+            this.DataGridBarang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBarang_CellContentClick);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtViewStok);
             this.groupBox2.Controls.Add(this.txtIDBarang);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtDelete);
-            this.groupBox2.Controls.Add(this.txtNamaBarang2);
+            this.groupBox2.Controls.Add(this.btnDelete);
+            this.groupBox2.Controls.Add(this.txtViewNama);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(398, 61);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(390, 154);
+            this.groupBox2.Size = new System.Drawing.Size(390, 216);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View";
             // 
             // txtIDBarang
             // 
+            this.txtIDBarang.Enabled = false;
             this.txtIDBarang.Location = new System.Drawing.Point(285, 37);
             this.txtIDBarang.Name = "txtIDBarang";
             this.txtIDBarang.Size = new System.Drawing.Size(99, 20);
@@ -120,21 +133,22 @@ namespace AoLPsD
             this.label3.TabIndex = 20;
             this.label3.Text = "ID Barang";
             // 
-            // txtDelete
+            // btnDelete
             // 
-            this.txtDelete.Location = new System.Drawing.Point(285, 77);
-            this.txtDelete.Name = "txtDelete";
-            this.txtDelete.Size = new System.Drawing.Size(100, 50);
-            this.txtDelete.TabIndex = 36;
-            this.txtDelete.Text = "Delete";
-            this.txtDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(285, 129);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(100, 50);
+            this.btnDelete.TabIndex = 36;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // txtNamaBarang2
+            // txtViewNama
             // 
-            this.txtNamaBarang2.Location = new System.Drawing.Point(84, 38);
-            this.txtNamaBarang2.Name = "txtNamaBarang2";
-            this.txtNamaBarang2.Size = new System.Drawing.Size(195, 20);
-            this.txtNamaBarang2.TabIndex = 19;
+            this.txtViewNama.Location = new System.Drawing.Point(84, 38);
+            this.txtViewNama.Name = "txtViewNama";
+            this.txtViewNama.Size = new System.Drawing.Size(195, 20);
+            this.txtViewNama.TabIndex = 19;
             // 
             // label2
             // 
@@ -145,34 +159,38 @@ namespace AoLPsD
             this.label2.TabIndex = 18;
             this.label2.Text = "Nama Barang";
             // 
-            // txtInsert
+            // btnInsert
             // 
-            this.txtInsert.Location = new System.Drawing.Point(263, 77);
-            this.txtInsert.Name = "txtInsert";
-            this.txtInsert.Size = new System.Drawing.Size(100, 50);
-            this.txtInsert.TabIndex = 34;
-            this.txtInsert.Text = "Insert";
-            this.txtInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Location = new System.Drawing.Point(263, 143);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(100, 50);
+            this.btnInsert.TabIndex = 34;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(51, 77);
+            this.btnClear.Location = new System.Drawing.Point(51, 143);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 50);
             this.btnClear.TabIndex = 37;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtStok);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.txtNamaBarang);
-            this.groupBox1.Controls.Add(this.txtUpdate);
+            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtInsert);
+            this.groupBox1.Controls.Add(this.btnInsert);
             this.groupBox1.Location = new System.Drawing.Point(16, 61);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(369, 154);
+            this.groupBox1.Size = new System.Drawing.Size(369, 216);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CRUD";
@@ -181,17 +199,19 @@ namespace AoLPsD
             // 
             this.txtNamaBarang.Location = new System.Drawing.Point(84, 34);
             this.txtNamaBarang.Name = "txtNamaBarang";
-            this.txtNamaBarang.Size = new System.Drawing.Size(279, 20);
+            this.txtNamaBarang.Size = new System.Drawing.Size(195, 20);
             this.txtNamaBarang.TabIndex = 19;
+            this.txtNamaBarang.TextChanged += new System.EventHandler(this.txtNamaBarang_TextChanged);
             // 
-            // txtUpdate
+            // btnUpdate
             // 
-            this.txtUpdate.Location = new System.Drawing.Point(157, 77);
-            this.txtUpdate.Name = "txtUpdate";
-            this.txtUpdate.Size = new System.Drawing.Size(100, 50);
-            this.txtUpdate.TabIndex = 35;
-            this.txtUpdate.Text = "Update";
-            this.txtUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(157, 143);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(100, 50);
+            this.btnUpdate.TabIndex = 35;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label1
             // 
@@ -220,6 +240,38 @@ namespace AoLPsD
             this.label4.TabIndex = 39;
             this.label4.Text = "PT Tae Young Abadi Jaya   -   Barang";
             // 
+            // txtStok
+            // 
+            this.txtStok.Location = new System.Drawing.Point(84, 71);
+            this.txtStok.Name = "txtStok";
+            this.txtStok.Size = new System.Drawing.Size(120, 20);
+            this.txtStok.TabIndex = 38;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 73);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Jumlah Stok";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Jumlah Stok";
+            // 
+            // txtViewStok
+            // 
+            this.txtViewStok.Location = new System.Drawing.Point(84, 78);
+            this.txtViewStok.Name = "txtViewStok";
+            this.txtViewStok.Size = new System.Drawing.Size(120, 20);
+            this.txtViewStok.TabIndex = 38;
+            // 
             // FormBarang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,11 +287,14 @@ namespace AoLPsD
             this.Controls.Add(this.button1);
             this.Name = "FormBarang";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormBarang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBarang)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStok)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtViewStok)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,16 +309,20 @@ namespace AoLPsD
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtIDBarang;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button txtDelete;
-        private System.Windows.Forms.TextBox txtNamaBarang2;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtViewNama;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button txtInsert;
+        private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtNamaBarang;
-        private System.Windows.Forms.Button txtUpdate;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown txtStok;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown txtViewStok;
     }
 }
