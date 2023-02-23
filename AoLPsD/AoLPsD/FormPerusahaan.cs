@@ -40,7 +40,7 @@ namespace AoLPsD
         {
             string connectionString = "Data Source=RJAYAA\\SQLEXPRESS;Initial Catalog=crudPerusahaan;Integrated Security=True";
             string query = "SELECT TOP 1 ID_Perusahaan FROM Perusahaan ORDER BY ID_Perusahaan DESC";
-            string id = "BD";
+            string id = "PD";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -102,8 +102,110 @@ namespace AoLPsD
             con.Close();
             DataGridPerusahaan.Columns.Clear();
             dataTable.Clear();
+            
             fillData();
-       
+            
+        }
+
+        public void ButtonUpdateDeleteEnable()
+        {
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
+        }
+        public void ViewData()
+        {
+            ButtonUpdateDeleteEnable();
+
+            int selectedIndex = DataGridPerusahaan.CurrentCell.RowIndex;
+
+            txtNamaPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
+            txtNPWP.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
+            txtKontakPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[3 + 1].Value.ToString();
+            txtKontakPerusahaan2.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[4 + 1].Value.ToString();
+            txtAlamatPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[5 + 1].Value.ToString();
+
+            txtIDPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[0+1].Value.ToString();
+            txtViewNama.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[1+1].Value.ToString();
+            txtViewNPWP.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[2+1].Value.ToString();
+            txtViewKontak.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[3+1].Value.ToString();
+            txtViewKontak2.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[4+1].Value.ToString();
+            txtViewAlamat.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[5+1].Value.ToString();
+
+
+        }
+
+        public void ViewData2()
+        {
+            ButtonUpdateDeleteEnable();
+
+            int selectedIndex = DataGridPerusahaan.CurrentCell.RowIndex;
+
+            txtNamaPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtNPWP.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[2].Value.ToString();
+            txtKontakPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[3].Value.ToString();
+            txtKontakPerusahaan2.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[4].Value.ToString();
+            txtAlamatPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[5].Value.ToString();
+
+            txtIDPerusahaan.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[0 ].Value.ToString();
+            txtViewNama.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtViewNPWP.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[2].Value.ToString();
+            txtViewKontak.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[3].Value.ToString();
+            txtViewKontak2.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[4].Value.ToString();
+            txtViewAlamat.Text = DataGridPerusahaan.Rows[selectedIndex].Cells[5].Value.ToString();
+        }
+        public void DeleteData()
+        {
+            string t0 = txtIDPerusahaan.Text;
+
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandText = "DELETE FROM Perusahaan WHERE ID_Perusahaan = @t0;";
+
+            cmd.Parameters.AddWithValue("@t0", t0);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            DataGridPerusahaan.Columns.Clear();
+            dataTable.Clear();
+            fillData();
+            ClearInsert();
+        }
+
+        public void UpdateData()
+        {
+            con.Open();
+            string t0 = txtIDPerusahaan.Text;
+            string t1 = txtNamaPerusahaan.Text;
+            string t2 = txtNPWP.Text;
+            string t3 = txtKontakPerusahaan.Text;
+            string t4 = txtKontakPerusahaan2.Text;
+            string t5 = txtAlamatPerusahaan.Text;
+
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandText = "UPDATE Perusahaan SET Nama_Perusahan = @t1,NPWP_Perusahaan = @t2,Kontak_1_Perusahaan = @t3,Kontak_2_Perusahaan = @t4,Alamat_Perusahaan = @t5 WHERE ID_Perusahaan = @t0;";
+            cmd.Parameters.AddWithValue("@t0",t0);
+            cmd.Parameters.AddWithValue("@t1",t1);
+            cmd.Parameters.AddWithValue("@t2",t2);
+            cmd.Parameters.AddWithValue("@t3",t3);
+            cmd.Parameters.AddWithValue("@t4",t4);
+            cmd.Parameters.AddWithValue("@t5",t5);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            DataGridPerusahaan.Columns.Clear();
+
+            dataTable.Clear();
+            fillData();
+            ClearInsert();
+
+            txtIDPerusahaan.Text = t0;
+            txtViewNama.Text = t1;
+            txtViewNPWP.Text = t2;
+            txtViewKontak.Text = t3;
+            txtViewKontak2.Text = t4;
+            txtViewAlamat.Text = t5;
 
 
         }
@@ -127,6 +229,67 @@ namespace AoLPsD
         private void btnInsert_Click_1(object sender, EventArgs e)
         {
             InsertData();
+            ClearInsert();
+        }
+
+        private void txtNamaPerusahaan_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNamaPerusahaan.Text))
+            {
+                btnClear.Enabled = false;
+            }
+            else
+            {
+                btnClear.Enabled = true;
+            }
+        }
+
+        public void ClearInsert()
+        {
+            txtIDPerusahaan.Text = "";
+            txtNamaPerusahaan.Text = "";
+            txtNPWP.Text = "";
+            txtKontakPerusahaan.Text = "";
+            txtKontakPerusahaan2.Text = "";
+            txtAlamatPerusahaan.Text = "";
+
+            txtViewNama.Text = "";
+            txtViewNPWP.Text = "";
+            txtViewKontak.Text = "";
+            txtViewKontak2.Text = "";
+            txtViewAlamat.Text = "";
+        }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearInsert();
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
+        }
+
+        private void DataGridPerusahaan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                ViewData();
+            }
+        }
+
+        private void DataGridPerusahaan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                ViewData2();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteData();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateData();
         }
     }
 }

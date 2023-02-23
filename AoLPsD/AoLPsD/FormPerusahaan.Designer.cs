@@ -43,10 +43,8 @@ namespace AoLPsD
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.BtnClearView = new System.Windows.Forms.Button();
-            this.View1ID = new System.Windows.Forms.TextBox();
+            this.txtIDPerusahaan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtAlamatPerusahaan = new System.Windows.Forms.RichTextBox();
@@ -94,6 +92,8 @@ namespace AoLPsD
             this.DataGridPerusahaan.Name = "DataGridPerusahaan";
             this.DataGridPerusahaan.Size = new System.Drawing.Size(961, 364);
             this.DataGridPerusahaan.TabIndex = 64;
+            this.DataGridPerusahaan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPerusahaan_CellClick);
+            this.DataGridPerusahaan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPerusahaan_CellContentClick);
             // 
             // txtViewAlamat
             // 
@@ -178,10 +178,8 @@ namespace AoLPsD
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.BtnEdit);
             this.groupBox2.Controls.Add(this.btnDelete);
-            this.groupBox2.Controls.Add(this.BtnClearView);
-            this.groupBox2.Controls.Add(this.View1ID);
+            this.groupBox2.Controls.Add(this.txtIDPerusahaan);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(446, 45);
             this.groupBox2.Name = "groupBox2";
@@ -190,40 +188,23 @@ namespace AoLPsD
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View Data";
             // 
-            // BtnEdit
-            // 
-            this.BtnEdit.Location = new System.Drawing.Point(318, 304);
-            this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(75, 23);
-            this.BtnEdit.TabIndex = 5;
-            this.BtnEdit.Text = "Edit";
-            this.BtnEdit.UseVisualStyleBackColor = true;
-            // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(237, 304);
+            this.btnDelete.Location = new System.Drawing.Point(374, 296);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // BtnClearView
+            // txtIDPerusahaan
             // 
-            this.BtnClearView.Location = new System.Drawing.Point(399, 304);
-            this.BtnClearView.Name = "BtnClearView";
-            this.BtnClearView.Size = new System.Drawing.Size(75, 23);
-            this.BtnClearView.TabIndex = 2;
-            this.BtnClearView.Text = "Clear View";
-            this.BtnClearView.UseVisualStyleBackColor = true;
-            // 
-            // View1ID
-            // 
-            this.View1ID.Enabled = false;
-            this.View1ID.Location = new System.Drawing.Point(399, 67);
-            this.View1ID.Name = "View1ID";
-            this.View1ID.Size = new System.Drawing.Size(75, 20);
-            this.View1ID.TabIndex = 1;
+            this.txtIDPerusahaan.Enabled = false;
+            this.txtIDPerusahaan.Location = new System.Drawing.Point(399, 67);
+            this.txtIDPerusahaan.Name = "txtIDPerusahaan";
+            this.txtIDPerusahaan.Size = new System.Drawing.Size(75, 20);
+            this.txtIDPerusahaan.TabIndex = 1;
             // 
             // label6
             // 
@@ -236,12 +217,13 @@ namespace AoLPsD
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(201, 339);
+            this.btnClear.Location = new System.Drawing.Point(33, 296);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(100, 50);
             this.btnClear.TabIndex = 52;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtAlamatPerusahaan
             // 
@@ -305,6 +287,7 @@ namespace AoLPsD
             this.txtNamaPerusahaan.Name = "txtNamaPerusahaan";
             this.txtNamaPerusahaan.Size = new System.Drawing.Size(209, 20);
             this.txtNamaPerusahaan.TabIndex = 44;
+            this.txtNamaPerusahaan.TextChanged += new System.EventHandler(this.txtNamaPerusahaan_TextChanged);
             // 
             // label11
             // 
@@ -328,6 +311,7 @@ namespace AoLPsD
             // 
             this.groupBox1.Controls.Add(this.btnInsert);
             this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Location = new System.Drawing.Point(12, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(385, 370);
@@ -337,9 +321,9 @@ namespace AoLPsD
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(270, 294);
+            this.btnInsert.Location = new System.Drawing.Point(245, 296);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(75, 23);
+            this.btnInsert.Size = new System.Drawing.Size(100, 50);
             this.btnInsert.TabIndex = 25;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
@@ -347,12 +331,13 @@ namespace AoLPsD
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(270, 322);
+            this.btnUpdate.Location = new System.Drawing.Point(139, 296);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(100, 50);
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FormPerusahaan
             // 
@@ -373,7 +358,6 @@ namespace AoLPsD
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtAlamatPerusahaan);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
@@ -413,10 +397,8 @@ namespace AoLPsD
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button BtnEdit;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button BtnClearView;
-        private System.Windows.Forms.TextBox View1ID;
+        private System.Windows.Forms.TextBox txtIDPerusahaan;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.RichTextBox txtAlamatPerusahaan;
