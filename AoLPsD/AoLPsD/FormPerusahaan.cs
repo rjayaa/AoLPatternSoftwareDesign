@@ -67,34 +67,7 @@ namespace AoLPsD
             return id;
         }
         
-        public string LastID()
-        {
-            con.Open();
-            string Query = "SELECT TOP 1 ID_Perusahaan FROM Perusahaan ORDER BY ID_Perusahaan DESC;";
-            SqlCommand cmd = new SqlCommand(Query, con);
-
-            string LastID = Convert.ToString(cmd.ExecuteScalar());
-            int IntId = 0;
-
-            if (LastID == "") IntId = 1;
-            else
-            {
-                string subString = LastID.Substring(LastID.Length - 4, 4);
-                IntId = Convert.ToInt32(subString) + 1;
-            }
-
-            con.Close();
-
-            string ID = "TS";
-
-            if (IntId < 10) ID = string.Concat(ID, "000", IntId.ToString());
-            else if (IntId < 100 && IntId >= 10) ID = string.Concat(ID, "00", IntId.ToString());
-            else if (IntId < 1000 && IntId >= 100) ID = string.Concat(ID, "0", IntId.ToString());
-            else ID = string.Concat(ID, IntId.ToString());
-
-
-            return ID;
-        }
+       
 
         public void fillData() {
             DataGridPerusahaan.DataSource = getDataTable();
@@ -109,6 +82,7 @@ namespace AoLPsD
             DataGridPerusahaan.Columns[2].ReadOnly = true;
             DataGridPerusahaan.Columns[3].ReadOnly = true;
             DataGridPerusahaan.Columns[4].ReadOnly = true;
+            DataGridPerusahaan.Columns[5].ReadOnly = true;
             DisableViewAndButton();
             con.Close();
         }
@@ -116,11 +90,12 @@ namespace AoLPsD
 
             con.Open();
             
-            SqlCommand cmd = new SqlCommand("INSERT INTO Perusahaan VALUES (@ID_Perusahaan,@Nama_Perusahaan,@NPWP_Perusahaan,@Kontak_Perusahaan,@Alamat_Perusahaan)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Perusahaan VALUES (@ID_Perusahaan,@Nama_Perusahaan,@NPWP_Perusahaan,@Kontak_Perusahaan,@Kontak_2_Perusahaan,@Alamat_Perusahaan)", con);
             cmd.Parameters.AddWithValue("@ID_Perusahaan", GenerateID());
             cmd.Parameters.AddWithValue("@Nama_Perusahaan", txtNamaPerusahaan.Text);
             cmd.Parameters.AddWithValue("@NPWP_Perusahaan", txtNPWP.Text);
             cmd.Parameters.AddWithValue("@Kontak_Perusahaan", txtKontakPerusahaan.Text);
+            cmd.Parameters.AddWithValue("@Kontak_2_Perusahaan", txtKontakPerusahaan2.Text);
             cmd.Parameters.AddWithValue("@Alamat_Perusahaan", txtAlamatPerusahaan.Text);
 
             cmd.ExecuteNonQuery();
@@ -134,8 +109,9 @@ namespace AoLPsD
         }
         public void DisableViewAndButton(){
             txtViewNama.Enabled     = false;
-            txtViewKontak.Enabled   = false;
-            txtViewNPWP.Enabled     = false;
+            txtViewNPWP.Enabled   = false;
+            txtViewKontak.Enabled     = false;
+            txtViewKontak2.Enabled = false;
             txtViewAlamat.Enabled   = false;
             btnClear.Enabled        = false;
             btnDelete.Enabled       = false;
@@ -146,7 +122,9 @@ namespace AoLPsD
             fillData();
         }
 
-        private void btnInsert_Click(object sender, EventArgs e)
+    
+
+        private void btnInsert_Click_1(object sender, EventArgs e)
         {
             InsertData();
         }
