@@ -30,30 +30,30 @@ namespace AoLPsD
         private void InitializeComponent()
         {
             this.DataGridPerusahaan = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtAlamatPerusahaan = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtKontakPerusahaan = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNPWP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNamaPerusahaan = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtViewAlamat = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtViewKontak = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtViewNPWP = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtViewNama = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPerusahaan)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,73 +69,74 @@ namespace AoLPsD
             this.DataGridPerusahaan.Size = new System.Drawing.Size(915, 159);
             this.DataGridPerusahaan.TabIndex = 0;
             // 
-            // button1
+            // btnInsert
             // 
-            this.button1.Location = new System.Drawing.Point(689, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 58);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Insert";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnInsert.Location = new System.Drawing.Point(339, 268);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(84, 26);
+            this.btnInsert.TabIndex = 4;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // button2
+            // btnUpdate
             // 
-            this.button2.Location = new System.Drawing.Point(811, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 58);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(440, 268);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(84, 26);
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDelete
             // 
-            this.button3.Location = new System.Drawing.Point(811, 87);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 58);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(440, 300);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(84, 26);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnClear
             // 
-            this.button4.Location = new System.Drawing.Point(689, 87);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 58);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Clear";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(339, 300);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(84, 26);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnBack
             // 
-            this.button5.Location = new System.Drawing.Point(689, 151);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 58);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Back";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnBack.Location = new System.Drawing.Point(339, 339);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(84, 26);
+            this.btnBack.TabIndex = 4;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.txtAlamatPerusahaan);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.txtKontakPerusahaan);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtNPWP);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtNamaPerusahaan);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(27, 25);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(299, 362);
             this.panel1.TabIndex = 5;
             // 
-            // richTextBox1
+            // txtAlamatPerusahaan
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(18, 227);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(190, 96);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.txtAlamatPerusahaan.Location = new System.Drawing.Point(18, 227);
+            this.txtAlamatPerusahaan.Name = "txtAlamatPerusahaan";
+            this.txtAlamatPerusahaan.Size = new System.Drawing.Size(190, 96);
+            this.txtAlamatPerusahaan.TabIndex = 11;
+            this.txtAlamatPerusahaan.Text = "";
             // 
             // label4
             // 
@@ -147,12 +148,12 @@ namespace AoLPsD
             this.label4.TabIndex = 4;
             this.label4.Text = "Alamat Perusahaan";
             // 
-            // textBox3
+            // txtKontakPerusahaan
             // 
-            this.textBox3.Location = new System.Drawing.Point(18, 164);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(190, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtKontakPerusahaan.Location = new System.Drawing.Point(18, 164);
+            this.txtKontakPerusahaan.Name = "txtKontakPerusahaan";
+            this.txtKontakPerusahaan.Size = new System.Drawing.Size(190, 20);
+            this.txtKontakPerusahaan.TabIndex = 8;
             // 
             // label3
             // 
@@ -164,12 +165,12 @@ namespace AoLPsD
             this.label3.TabIndex = 5;
             this.label3.Text = "Kontak Perusahaan";
             // 
-            // textBox2
+            // txtNPWP
             // 
-            this.textBox2.Location = new System.Drawing.Point(18, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(190, 20);
-            this.textBox2.TabIndex = 9;
+            this.txtNPWP.Location = new System.Drawing.Point(18, 98);
+            this.txtNPWP.Name = "txtNPWP";
+            this.txtNPWP.Size = new System.Drawing.Size(190, 20);
+            this.txtNPWP.TabIndex = 9;
             // 
             // label2
             // 
@@ -181,12 +182,12 @@ namespace AoLPsD
             this.label2.TabIndex = 6;
             this.label2.Text = "NPWP Perusahaan";
             // 
-            // textBox1
+            // txtNamaPerusahaan
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 20);
-            this.textBox1.TabIndex = 10;
+            this.txtNamaPerusahaan.Location = new System.Drawing.Point(18, 39);
+            this.txtNamaPerusahaan.Name = "txtNamaPerusahaan";
+            this.txtNamaPerusahaan.Size = new System.Drawing.Size(190, 20);
+            this.txtNamaPerusahaan.TabIndex = 10;
             // 
             // label1
             // 
@@ -198,28 +199,38 @@ namespace AoLPsD
             this.label1.TabIndex = 7;
             this.label1.Text = "Nama Perusahaan";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(567, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 17);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "View";
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.richTextBox2);
+            this.panel2.Controls.Add(this.txtViewAlamat);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.txtViewKontak);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBox5);
+            this.panel2.Controls.Add(this.txtViewNPWP);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Controls.Add(this.txtViewNama);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(352, 23);
+            this.panel2.Location = new System.Drawing.Point(549, 25);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(299, 362);
-            this.panel2.TabIndex = 5;
+            this.panel2.TabIndex = 7;
             // 
-            // richTextBox2
+            // txtViewAlamat
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(18, 227);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(190, 96);
-            this.richTextBox2.TabIndex = 11;
-            this.richTextBox2.Text = "";
+            this.txtViewAlamat.Location = new System.Drawing.Point(18, 227);
+            this.txtViewAlamat.Name = "txtViewAlamat";
+            this.txtViewAlamat.Size = new System.Drawing.Size(190, 96);
+            this.txtViewAlamat.TabIndex = 11;
+            this.txtViewAlamat.Text = "";
             // 
             // label5
             // 
@@ -231,12 +242,12 @@ namespace AoLPsD
             this.label5.TabIndex = 4;
             this.label5.Text = "Alamat Perusahaan";
             // 
-            // textBox4
+            // txtViewKontak
             // 
-            this.textBox4.Location = new System.Drawing.Point(18, 164);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(190, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtViewKontak.Location = new System.Drawing.Point(18, 164);
+            this.txtViewKontak.Name = "txtViewKontak";
+            this.txtViewKontak.Size = new System.Drawing.Size(190, 20);
+            this.txtViewKontak.TabIndex = 8;
             // 
             // label6
             // 
@@ -248,12 +259,12 @@ namespace AoLPsD
             this.label6.TabIndex = 5;
             this.label6.Text = "Kontak Perusahaan";
             // 
-            // textBox5
+            // txtViewNPWP
             // 
-            this.textBox5.Location = new System.Drawing.Point(18, 98);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(190, 20);
-            this.textBox5.TabIndex = 9;
+            this.txtViewNPWP.Location = new System.Drawing.Point(18, 98);
+            this.txtViewNPWP.Name = "txtViewNPWP";
+            this.txtViewNPWP.Size = new System.Drawing.Size(190, 20);
+            this.txtViewNPWP.TabIndex = 9;
             // 
             // label7
             // 
@@ -265,12 +276,12 @@ namespace AoLPsD
             this.label7.TabIndex = 6;
             this.label7.Text = "NPWP Perusahaan";
             // 
-            // textBox6
+            // txtViewNama
             // 
-            this.textBox6.Location = new System.Drawing.Point(18, 39);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(190, 20);
-            this.textBox6.TabIndex = 10;
+            this.txtViewNama.Location = new System.Drawing.Point(18, 39);
+            this.txtViewNama.Name = "txtViewNama";
+            this.txtViewNama.Size = new System.Drawing.Size(190, 20);
+            this.txtViewNama.TabIndex = 10;
             // 
             // label8
             // 
@@ -282,16 +293,6 @@ namespace AoLPsD
             this.label8.TabIndex = 7;
             this.label8.Text = "Nama Perusahaan";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(370, 14);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 17);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "View";
-            // 
             // FormPerusahaan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,14 +301,15 @@ namespace AoLPsD
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.DataGridPerusahaan);
             this.Name = "FormPerusahaan";
             this.Text = "FormPerusahaan";
+            this.Load += new System.EventHandler(this.FormPerusahaan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPerusahaan)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -321,29 +323,29 @@ namespace AoLPsD
         #endregion
 
         private System.Windows.Forms.DataGridView DataGridPerusahaan;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtAlamatPerusahaan;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtKontakPerusahaan;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNPWP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNamaPerusahaan;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RichTextBox txtViewAlamat;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtViewKontak;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtViewNPWP;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtViewNama;
+        private System.Windows.Forms.Label label8;
     }
 }
