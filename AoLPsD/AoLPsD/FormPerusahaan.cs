@@ -209,6 +209,48 @@ namespace AoLPsD
 
 
         }
+
+
+        public void DisplaySearch()
+        {
+            con.Open();
+            if(comboBox.Text == "Nama Perusahaan")
+            {
+                string q = "SELECT ID_Perusahaan, Nama_Perusahan, NPWP_Perusahaan, Kontak_1_Perusahaan, Kontak_2_Perusahaan, Alamat_Perusahaan FROM Perusahaan WHERE Nama_Perusahan LIKE '"+txtSearch.Text+"%'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridPerusahaan.DataSource = st;
+                
+            }else if(comboBox.Text == "NPWP Perusahaan")
+            {
+                string q = "SELECT ID_Perusahaan, Nama_Perusahan, NPWP_Perusahaan, Kontak_1_Perusahaan, Kontak_2_Perusahaan, Alamat_Perusahaan FROM Perusahaan WHERE NPWP_Perusahaan LIKE '" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridPerusahaan.DataSource = st;
+                con.Close();
+            }else if(comboBox.Text == "Kontak Perusahaan")
+            {
+                string query = "SELECT ID_Perusahaan, Nama_Perusahan,NPWP_Perusahaan, Kontak_1_Perusahaan, Kontak_2_Perusahaan, Alamat_Perusahaan FROM Perusahaan WHERE Kontak_1_Perusahaan OR Kontak_2_Perusahaan LIKE '" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridPerusahaan.DataSource = st;
+            }else if(comboBox.Text == "Alamat Perusahaan")
+            {
+                string query = "SELECT ID_Perusahaan, Nama_Perusahan,NPWP_Perusahaan, Kontak_1_Perusahaan, Kontak_2_Perusahaan, Alamat_Perusahaan FROM Perusahaan WHERE Alamat_Perusahaan LIKE '" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridPerusahaan.DataSource = st;
+            }
+            con.Close();
+        }
         public void DisableViewAndButton(){
             txtViewNama.Enabled     = false;
             txtViewNPWP.Enabled   = false;
@@ -258,6 +300,9 @@ namespace AoLPsD
             txtViewKontak.Text = "";
             txtViewKontak2.Text = "";
             txtViewAlamat.Text = "";
+
+            comboBox.Text = "";
+            txtSearch.Text = "";
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -290,6 +335,11 @@ namespace AoLPsD
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateData();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DisplaySearch();
         }
     }
 }

@@ -60,6 +60,9 @@ namespace AoLPsD
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPerusahaan)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,9 +91,9 @@ namespace AoLPsD
             this.DataGridPerusahaan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridPerusahaan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridPerusahaan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DataGridPerusahaan.Location = new System.Drawing.Point(0, 431);
+            this.DataGridPerusahaan.Location = new System.Drawing.Point(0, 518);
             this.DataGridPerusahaan.Name = "DataGridPerusahaan";
-            this.DataGridPerusahaan.Size = new System.Drawing.Size(961, 364);
+            this.DataGridPerusahaan.Size = new System.Drawing.Size(961, 277);
             this.DataGridPerusahaan.TabIndex = 64;
             this.DataGridPerusahaan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPerusahaan_CellClick);
             this.DataGridPerusahaan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPerusahaan_CellContentClick);
@@ -339,11 +342,44 @@ namespace AoLPsD
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // comboBox
+            // 
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "Nama Perusahaan",
+            "NPWP Perusahaan",
+            "Kontak Perusahaan",
+            "Alamat Perusahaan"});
+            this.comboBox.Location = new System.Drawing.Point(48, 442);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(121, 21);
+            this.comboBox.TabIndex = 67;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(184, 442);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(213, 20);
+            this.txtSearch.TabIndex = 68;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(51, 426);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.TabIndex = 69;
+            this.label13.Text = "Search";
+            // 
             // FormPerusahaan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 795);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.comboBox);
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DataGridPerusahaan);
@@ -414,5 +450,8 @@ namespace AoLPsD
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ComboBox comboBox;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label13;
     }
 }
