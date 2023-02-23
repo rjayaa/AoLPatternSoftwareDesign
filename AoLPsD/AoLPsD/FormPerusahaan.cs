@@ -198,7 +198,6 @@ namespace AoLPsD
 
             dataTable.Clear();
             fillData();
-            ClearInsert();
 
             txtIDPerusahaan.Text = t0;
             txtViewNama.Text = t1;
@@ -206,6 +205,7 @@ namespace AoLPsD
             txtViewKontak.Text = t3;
             txtViewKontak2.Text = t4;
             txtViewAlamat.Text = t5;
+            ClearInsert();
 
 
         }

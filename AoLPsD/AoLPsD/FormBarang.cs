@@ -158,7 +158,7 @@ namespace AoLPsD
             decimal t2 = txtStok.Value;
             
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "UPDATE Barang SET Nama_Barang = @t1, Stok_Barang = @t2;";
+            cmd.CommandText = "UPDATE Barang SET Nama_Barang = @t1, Stok_Barang = @t2 WHERE ID_Barang = @t0;";
             cmd.Parameters.AddWithValue("@t0", t0);
             cmd.Parameters.AddWithValue("@t1", t1);
             cmd.Parameters.AddWithValue("@t2", t2);
