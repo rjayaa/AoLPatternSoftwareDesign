@@ -79,6 +79,7 @@ namespace AoLPsD
             this.btnUpdate.TabIndex = 35;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label5
             // 
@@ -234,7 +235,7 @@ namespace AoLPsD
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
             "Nama Barang",
-            "Jumlah Stok "});
+            "Harga Barang"});
             this.comboBox.Location = new System.Drawing.Point(66, 309);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(83, 21);
@@ -333,6 +334,7 @@ namespace AoLPsD
             this.btnDelete.TabIndex = 34;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FormHargaBarang
             // 

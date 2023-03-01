@@ -59,6 +59,8 @@ namespace AoLPsD
             txtHarga.Text = "";
             txtIDNamaBarang.Text = "";
             txtIDPerusahaan.Text = "";
+            txtViewNamaBarang.Text = "";
+            txtViewPerusahaan.Text = "";
             txtViewHargaBarang.Text = "";
             txtViewIDNamaBarang.Text = "";
             txtViewIDPerusahaan.Text = "";
@@ -151,19 +153,15 @@ namespace AoLPsD
         public void UpdateData()
         {
             con.Open();
+
             string t0 = txtIDPerusahaan.Text;
-            string t1 = comboPerusahaan.Text;
-            string t2 = txtIDNamaBarang.Text;
-            string t3 = comboNamaBarang.Text;
-            string t4 = txtHarga.Text;
-
+            string t1 = txtIDNamaBarang.Text;
+            string t2 = txtHarga.Text;
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "UPDATE Harga_Barang Set ID_Barang = @t1 WHERE ID_Barang = @t0;";
-
+            cmd.CommandText = "UPDATE Harga_Barang Set Harga_Satuan = @t2 WHERE ID_Perusahaan = @t0 AND ID_Barang = @t1;";
             cmd.Parameters.AddWithValue("@t0", t0);
             cmd.Parameters.AddWithValue("@t1", t1);
             cmd.Parameters.AddWithValue("@t2", t2);
-            cmd.Parameters.AddWithValue("@t3", t3);
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -178,10 +176,10 @@ namespace AoLPsD
         public void DeleteData()
         {
             string t0 = txtIDPerusahaan.Text;
-
+            
             con.Open();
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "DELETE FROM Harga_Barang WHERE ID_Barang = @t0;";
+            cmd.CommandText = "DELETE FROM Harga_Barang WHERE ID_Perusahaan = @t0;";
 
             cmd.Parameters.AddWithValue("@t0", t0);
             cmd.ExecuteNonQuery();
@@ -191,6 +189,7 @@ namespace AoLPsD
 
             dataTable.Clear();
             fillData();
+            ClearInsert();
         }
 
         public void InsertComboPerusahaan()
@@ -206,6 +205,7 @@ namespace AoLPsD
             string temp = (string)cmd.ExecuteScalar();
             con.Close();
             comboPerusahaan.Text = temp;
+            txtViewPerusahaan.Text = temp;
         }
 
         public void InsertComboBarang()
@@ -221,6 +221,7 @@ namespace AoLPsD
             string temp = (string)cmd.ExecuteScalar();
             con.Close();
             comboNamaBarang.Text = temp;
+            txtViewNamaBarang.Text = temp;
         }
         public void ViewData()
         {
@@ -231,6 +232,11 @@ namespace AoLPsD
             InsertComboPerusahaan();
             InsertComboBarang();
             txtHarga.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
+            
+            
+            txtViewIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtViewIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
+            txtViewHargaBarang.Text =  DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
 
 
 
@@ -303,6 +309,16 @@ namespace AoLPsD
         private void DataGridHargaBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteData();
         }
     }
 }
