@@ -175,7 +175,7 @@ namespace AoLPsD
             con.Open();
                if(comboBox.Text == "Nama Barang")
             {
-                string q = "SELECT ID_Barang, Nama_Barang, Stok_Barang WHERE Nama_Barang LIKE'" + txtSearch.Text + "%'";
+                string q = "SELECT ID_Barang, Nama_Barang FROM Barang WHERE Nama_Barang LIKE'" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();

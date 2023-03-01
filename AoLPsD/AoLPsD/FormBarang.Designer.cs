@@ -56,8 +56,7 @@ namespace AoLPsD
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Nama Barang",
-            "Jumlah Stok "});
+            "Nama Barang"});
             this.comboBox.Location = new System.Drawing.Point(66, 243);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(83, 21);

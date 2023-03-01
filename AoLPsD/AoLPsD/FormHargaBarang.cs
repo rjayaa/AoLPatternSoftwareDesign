@@ -135,9 +135,9 @@ namespace AoLPsD
         public void InsertData()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Harga_Barang VALUES (@ID_Barang, @ID_Perusahaan, @Harga_Satuan)", con);
-            cmd.Parameters.AddWithValue("@ID_Barang", txtIDNamaBarang.Text);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Harga_Barang VALUES (@ID_Perusahaan, @ID_Barang,  @Harga_Satuan)", con);
             cmd.Parameters.AddWithValue("@ID_Perusahaan", txtIDPerusahaan.Text);
+            cmd.Parameters.AddWithValue("@ID_Barang", txtIDNamaBarang.Text);
             cmd.Parameters.AddWithValue("@Harga_Satuan", txtHarga.Text);
 
 
@@ -227,18 +227,16 @@ namespace AoLPsD
         {
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridHargaBarang.CurrentCell.RowIndex;
-            txtIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
+            txtIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
+            txtIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
             InsertComboPerusahaan();
             InsertComboBarang();
             txtHarga.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
             
             
-            txtViewIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtViewIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
+            txtViewIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
+            txtViewIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
             txtViewHargaBarang.Text =  DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
-
-
 
         }
         private void comboPerusahaan_SelectedIndexChanged(object sender, EventArgs e)
