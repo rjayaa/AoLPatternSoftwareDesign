@@ -34,29 +34,29 @@ namespace AoLPsD
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboNamaBarang = new System.Windows.Forms.ComboBox();
+            this.txtHarga = new System.Windows.Forms.TextBox();
+            this.txtIDNamaBarang = new System.Windows.Forms.TextBox();
+            this.txtIDPerusahaan = new System.Windows.Forms.TextBox();
+            this.comboPerusahaan = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.DataGridHargaBarang = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox = new System.Windows.Forms.ComboBox();
-            this.comboPerusahaan = new System.Windows.Forms.ComboBox();
-            this.comboNamaBarang = new System.Windows.Forms.ComboBox();
-            this.txtIDPerusahaan = new System.Windows.Forms.TextBox();
-            this.txtIDNamaBarang = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtHarga = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtViewHargaBarang = new System.Windows.Forms.TextBox();
             this.txtViewIDNamaBarang = new System.Windows.Forms.TextBox();
+            this.txtViewNamaBarang = new System.Windows.Forms.TextBox();
+            this.txtViewPerusahaan = new System.Windows.Forms.TextBox();
             this.txtViewIDPerusahaan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.txtViewPerusahaan = new System.Windows.Forms.TextBox();
-            this.txtViewNamaBarang = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridHargaBarang)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -118,6 +118,49 @@ namespace AoLPsD
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Harga";
             // 
+            // comboNamaBarang
+            // 
+            this.comboNamaBarang.FormattingEnabled = true;
+            this.comboNamaBarang.Location = new System.Drawing.Point(136, 65);
+            this.comboNamaBarang.Name = "comboNamaBarang";
+            this.comboNamaBarang.Size = new System.Drawing.Size(173, 21);
+            this.comboNamaBarang.TabIndex = 38;
+            this.comboNamaBarang.SelectedIndexChanged += new System.EventHandler(this.comboNamaBarang_SelectedIndexChanged);
+            // 
+            // txtHarga
+            // 
+            this.txtHarga.Location = new System.Drawing.Point(136, 110);
+            this.txtHarga.Multiline = true;
+            this.txtHarga.Name = "txtHarga";
+            this.txtHarga.Size = new System.Drawing.Size(99, 20);
+            this.txtHarga.TabIndex = 21;
+            // 
+            // txtIDNamaBarang
+            // 
+            this.txtIDNamaBarang.Enabled = false;
+            this.txtIDNamaBarang.Location = new System.Drawing.Point(332, 65);
+            this.txtIDNamaBarang.Name = "txtIDNamaBarang";
+            this.txtIDNamaBarang.Size = new System.Drawing.Size(99, 20);
+            this.txtIDNamaBarang.TabIndex = 21;
+            // 
+            // txtIDPerusahaan
+            // 
+            this.txtIDPerusahaan.Enabled = false;
+            this.txtIDPerusahaan.Location = new System.Drawing.Point(332, 34);
+            this.txtIDPerusahaan.Name = "txtIDPerusahaan";
+            this.txtIDPerusahaan.Size = new System.Drawing.Size(99, 20);
+            this.txtIDPerusahaan.TabIndex = 21;
+            this.txtIDPerusahaan.TextChanged += new System.EventHandler(this.txtIDPerusahaan_TextChanged);
+            // 
+            // comboPerusahaan
+            // 
+            this.comboPerusahaan.FormattingEnabled = true;
+            this.comboPerusahaan.Location = new System.Drawing.Point(136, 33);
+            this.comboPerusahaan.Name = "comboPerusahaan";
+            this.comboPerusahaan.Size = new System.Drawing.Size(173, 21);
+            this.comboPerusahaan.TabIndex = 38;
+            this.comboPerusahaan.SelectedIndexChanged += new System.EventHandler(this.comboPerusahaan_SelectedIndexChanged);
+            // 
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(57, 180);
@@ -127,6 +170,15 @@ namespace AoLPsD
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Harga Barang";
             // 
             // btnInsert
             // 
@@ -166,6 +218,7 @@ namespace AoLPsD
             this.DataGridHargaBarang.Size = new System.Drawing.Size(957, 188);
             this.DataGridHargaBarang.TabIndex = 51;
             this.DataGridHargaBarang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridHargaBarang_CellClick);
+            this.DataGridHargaBarang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridHargaBarang_CellContentClick);
             // 
             // button1
             // 
@@ -186,58 +239,6 @@ namespace AoLPsD
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(83, 21);
             this.comboBox.TabIndex = 54;
-            // 
-            // comboPerusahaan
-            // 
-            this.comboPerusahaan.FormattingEnabled = true;
-            this.comboPerusahaan.Location = new System.Drawing.Point(136, 33);
-            this.comboPerusahaan.Name = "comboPerusahaan";
-            this.comboPerusahaan.Size = new System.Drawing.Size(173, 21);
-            this.comboPerusahaan.TabIndex = 38;
-            this.comboPerusahaan.SelectedIndexChanged += new System.EventHandler(this.comboPerusahaan_SelectedIndexChanged);
-            // 
-            // comboNamaBarang
-            // 
-            this.comboNamaBarang.FormattingEnabled = true;
-            this.comboNamaBarang.Location = new System.Drawing.Point(136, 65);
-            this.comboNamaBarang.Name = "comboNamaBarang";
-            this.comboNamaBarang.Size = new System.Drawing.Size(173, 21);
-            this.comboNamaBarang.TabIndex = 38;
-            this.comboNamaBarang.SelectedIndexChanged += new System.EventHandler(this.comboNamaBarang_SelectedIndexChanged);
-            // 
-            // txtIDPerusahaan
-            // 
-            this.txtIDPerusahaan.Enabled = false;
-            this.txtIDPerusahaan.Location = new System.Drawing.Point(332, 34);
-            this.txtIDPerusahaan.Name = "txtIDPerusahaan";
-            this.txtIDPerusahaan.Size = new System.Drawing.Size(99, 20);
-            this.txtIDPerusahaan.TabIndex = 21;
-            this.txtIDPerusahaan.TextChanged += new System.EventHandler(this.txtIDPerusahaan_TextChanged);
-            // 
-            // txtIDNamaBarang
-            // 
-            this.txtIDNamaBarang.Enabled = false;
-            this.txtIDNamaBarang.Location = new System.Drawing.Point(332, 65);
-            this.txtIDNamaBarang.Name = "txtIDNamaBarang";
-            this.txtIDNamaBarang.Size = new System.Drawing.Size(99, 20);
-            this.txtIDNamaBarang.TabIndex = 21;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Harga Barang";
-            // 
-            // txtHarga
-            // 
-            this.txtHarga.Location = new System.Drawing.Point(136, 110);
-            this.txtHarga.Multiline = true;
-            this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(99, 20);
-            this.txtHarga.TabIndex = 21;
             // 
             // groupBox2
             // 
@@ -272,6 +273,22 @@ namespace AoLPsD
             this.txtViewIDNamaBarang.Name = "txtViewIDNamaBarang";
             this.txtViewIDNamaBarang.Size = new System.Drawing.Size(99, 20);
             this.txtViewIDNamaBarang.TabIndex = 21;
+            // 
+            // txtViewNamaBarang
+            // 
+            this.txtViewNamaBarang.Enabled = false;
+            this.txtViewNamaBarang.Location = new System.Drawing.Point(136, 66);
+            this.txtViewNamaBarang.Name = "txtViewNamaBarang";
+            this.txtViewNamaBarang.Size = new System.Drawing.Size(173, 20);
+            this.txtViewNamaBarang.TabIndex = 21;
+            // 
+            // txtViewPerusahaan
+            // 
+            this.txtViewPerusahaan.Enabled = false;
+            this.txtViewPerusahaan.Location = new System.Drawing.Point(136, 37);
+            this.txtViewPerusahaan.Name = "txtViewPerusahaan";
+            this.txtViewPerusahaan.Size = new System.Drawing.Size(173, 20);
+            this.txtViewPerusahaan.TabIndex = 21;
             // 
             // txtViewIDPerusahaan
             // 
@@ -316,22 +333,6 @@ namespace AoLPsD
             this.btnDelete.TabIndex = 34;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // txtViewPerusahaan
-            // 
-            this.txtViewPerusahaan.Enabled = false;
-            this.txtViewPerusahaan.Location = new System.Drawing.Point(136, 37);
-            this.txtViewPerusahaan.Name = "txtViewPerusahaan";
-            this.txtViewPerusahaan.Size = new System.Drawing.Size(173, 20);
-            this.txtViewPerusahaan.TabIndex = 21;
-            // 
-            // txtViewNamaBarang
-            // 
-            this.txtViewNamaBarang.Enabled = false;
-            this.txtViewNamaBarang.Location = new System.Drawing.Point(136, 66);
-            this.txtViewNamaBarang.Name = "txtViewNamaBarang";
-            this.txtViewNamaBarang.Size = new System.Drawing.Size(173, 20);
-            this.txtViewNamaBarang.TabIndex = 21;
             // 
             // FormHargaBarang
             // 

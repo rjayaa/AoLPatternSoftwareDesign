@@ -193,11 +193,46 @@ namespace AoLPsD
             fillData();
         }
 
+        public void InsertComboPerusahaan()
+        {
+            string t0 = txtIDPerusahaan.Text;
+
+            string sql = "SELECT Nama_Perusahan FROM Perusahaan WHERE ID_Perusahaan = @id";
+
+            cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", t0);
+
+            con.Open();
+            string temp = (string)cmd.ExecuteScalar();
+            con.Close();
+            comboPerusahaan.Text = temp;
+        }
+
+        public void InsertComboBarang()
+        {
+            string t0 = txtIDNamaBarang.Text;
+
+            string sql = "SELECT Nama_Barang FROM Barang WHERE ID_Barang = @id";
+
+            cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", t0);
+
+            con.Open();
+            string temp = (string)cmd.ExecuteScalar();
+            con.Close();
+            comboNamaBarang.Text = temp;
+        }
         public void ViewData()
         {
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridHargaBarang.CurrentCell.RowIndex;
-            comboPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
+            txtIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
+            InsertComboPerusahaan();
+            InsertComboBarang();
+            txtHarga.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
+
+
 
         }
         private void comboPerusahaan_SelectedIndexChanged(object sender, EventArgs e)
@@ -263,6 +298,11 @@ namespace AoLPsD
             {
                 ViewData();
             }
+        }
+
+        private void DataGridHargaBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
