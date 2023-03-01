@@ -223,7 +223,38 @@ namespace AoLPsD
             comboNamaBarang.Text = temp;
             txtViewNamaBarang.Text = temp;
         }
+
+        public void DisplaySearch()
+        {
+            con.Open();
+            if(comboBox.Text == "Harga Barang")
+            {
+                string q = "SELECT ID_Perusahaan, ID_Barang, Harga_Satuan FROM Harga_Barang WHERE Harga_Satuan LIKE'" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridHargaBarang.DataSource = st;
+            }
+            con.Close();
+        }
         public void ViewData()
+        {
+            ButtonUpdateDeleteEnable();
+            int selectedIndex = DataGridHargaBarang.CurrentCell.RowIndex;
+            txtIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0+1].Value.ToString();
+            txtIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1+1].Value.ToString();
+            InsertComboPerusahaan();
+            InsertComboBarang();
+            txtHarga.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
+            
+            
+            txtViewIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0 + 1].Value.ToString();
+            txtViewIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
+            txtViewHargaBarang.Text =  DataGridHargaBarang.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
+
+        }
+        public void ViewData2()
         {
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridHargaBarang.CurrentCell.RowIndex;
@@ -232,12 +263,11 @@ namespace AoLPsD
             InsertComboPerusahaan();
             InsertComboBarang();
             txtHarga.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
-            
-            
+
+
             txtViewIDPerusahaan.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[0].Value.ToString();
             txtViewIDNamaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtViewHargaBarang.Text =  DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
-
+            txtViewHargaBarang.Text = DataGridHargaBarang.Rows[selectedIndex].Cells[2].Value.ToString();
         }
         private void comboPerusahaan_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -306,7 +336,10 @@ namespace AoLPsD
 
         private void DataGridHargaBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if(e.ColumnIndex == 3)
+            {
+                ViewData2();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -317,6 +350,11 @@ namespace AoLPsD
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DisplaySearch();
         }
     }
 }

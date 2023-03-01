@@ -206,6 +206,7 @@ namespace AoLPsD
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(212, 20);
             this.txtSearch.TabIndex = 52;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // DataGridHargaBarang
             // 
@@ -234,7 +235,6 @@ namespace AoLPsD
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Nama Barang",
             "Harga Barang"});
             this.comboBox.Location = new System.Drawing.Point(66, 309);
             this.comboBox.Name = "comboBox";
