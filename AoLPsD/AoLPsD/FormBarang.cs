@@ -37,7 +37,7 @@ namespace AoLPsD
 
         public string GenerateID()
         {
-            string connectionString = "Data Source=RJAYAA\\SQLEXPRESS;Initial Catalog=crudPerusahaan;Integrated Security=True";
+            string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=crudPerusahaan;Integrated Security=True;");
             string query = "SELECT TOP 1 ID_Barang FROM Barang ORDER BY ID_Barang DESC";
             string id = "BD";
 
