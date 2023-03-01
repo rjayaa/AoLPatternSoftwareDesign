@@ -21,3 +21,4 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLPsD\AoLPsD\obj\Deb
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLPsD\AoLPsD\obj\Debug\AoLPsD.exe
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLPsD\AoLPsD\obj\Debug\AoLPsD.pdb
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLPsD\AoLPsD\obj\Debug\AoLPsD.FormBarang.resources
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLPsD\AoLPsD\obj\Debug\AoLPsD.FormHargaBarang.resources

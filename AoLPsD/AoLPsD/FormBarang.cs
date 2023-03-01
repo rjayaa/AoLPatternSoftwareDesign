@@ -77,7 +77,7 @@ namespace AoLPsD
 
             DataGridBarang.Columns[0].ReadOnly = true;
             DataGridBarang.Columns[1].ReadOnly = true;
-            DataGridBarang.Columns[2].ReadOnly = true;
+            
 
             DisableViewAndButton();
             con.Close();
@@ -85,7 +85,6 @@ namespace AoLPsD
         public void DisableViewAndButton()
         {
             txtViewNama.Enabled = false;
-            txtViewStok.Enabled = false;
             btnClear.Enabled = false;
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
@@ -94,10 +93,9 @@ namespace AoLPsD
         public void InsertData()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Barang VALUES (@ID_Barang, @Nama_Barang, @Stok_Barang)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Barang VALUES (@ID_Barang, @Nama_Barang)", con);
             cmd.Parameters.AddWithValue("@ID_Barang", GenerateID());
             cmd.Parameters.AddWithValue("@Nama_Barang", txtNamaBarang.Text);
-            cmd.Parameters.AddWithValue("@Stok_Barang", txtStok.Value);
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -115,10 +113,8 @@ namespace AoLPsD
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridBarang.CurrentCell.RowIndex;
             txtNamaBarang.Text = DataGridBarang.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
-            txtStok.Text = DataGridBarang.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
             txtIDBarang.Text = DataGridBarang.Rows[selectedIndex].Cells[0 + 1].Value.ToString();
             txtViewNama.Text = DataGridBarang.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
-            txtViewStok.Text = DataGridBarang.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
         }
 
         public void ViewData2()
@@ -126,10 +122,8 @@ namespace AoLPsD
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridBarang.CurrentCell.RowIndex;
             txtNamaBarang.Text = DataGridBarang.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtStok.Text = DataGridBarang.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
             txtIDBarang.Text = DataGridBarang.Rows[selectedIndex].Cells[0].Value.ToString();
             txtViewNama.Text = DataGridBarang.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtViewStok.Text = DataGridBarang.Rows[selectedIndex].Cells[2].Value.ToString();
         }
        
         public void DeleteData()
@@ -155,13 +149,13 @@ namespace AoLPsD
             con.Open();
             string t0 = txtIDBarang.Text;
             string t1 = txtNamaBarang.Text;
-            decimal t2 = txtStok.Value;
+            
             
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "UPDATE Barang SET Nama_Barang = @t1, Stok_Barang = @t2 WHERE ID_Barang = @t0;";
+            cmd.CommandText = "UPDATE Barang SET Nama_Barang = @t1 WHERE ID_Barang = @t0;";
             cmd.Parameters.AddWithValue("@t0", t0);
             cmd.Parameters.AddWithValue("@t1", t1);
-            cmd.Parameters.AddWithValue("@t2", t2);
+            
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -173,7 +167,7 @@ namespace AoLPsD
 
             txtIDBarang.Text = t0;
             txtViewNama.Text = t1;
-            txtViewStok.Value = t2;
+            
         }
 
         public void DisplaySearch()
@@ -182,14 +176,6 @@ namespace AoLPsD
                if(comboBox.Text == "Nama Barang")
             {
                 string q = "SELECT ID_Barang, Nama_Barang, Stok_Barang WHERE Nama_Barang LIKE'" + txtSearch.Text + "%'";
-                SqlCommand cmd = new SqlCommand(q, con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable st = new DataTable();
-                st.Load(reader);
-                DataGridBarang.DataSource = st;
-            }else if(comboBox.Text == "Jumlah Stok")
-            {
-                string q = "SELECT ID_Barang, Nama_Barang, Stok_Barang WHERE Stok_Barang LIKE'" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -210,9 +196,7 @@ namespace AoLPsD
             txtIDBarang.Text = "";
             txtNamaBarang.Text = "";
             txtSearch.Text = "";
-            txtStok.Value = 0;
             txtViewNama.Text = "";
-            txtViewStok.Value = 0;
             comboBox.Text = "";
 
         }
@@ -256,7 +240,7 @@ namespace AoLPsD
 
         private void DataGridBarang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex ==3)
+            if (e.ColumnIndex ==2)
             {
                 ViewData2();
             }
