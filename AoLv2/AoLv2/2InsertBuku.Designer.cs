@@ -30,6 +30,7 @@ namespace AoLv2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHarga = new System.Windows.Forms.NumericUpDown();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -46,13 +47,12 @@ namespace AoLv2
             this.txtJudulBuku = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DataGridBuku = new System.Windows.Forms.DataGridView();
-            this.txtHarga = new System.Windows.Forms.NumericUpDown();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridBuku)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHarga)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridBuku)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -73,12 +73,25 @@ namespace AoLv2
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtJudulBuku);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(24, 25);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(667, 226);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Form Buku";
+            // 
+            // txtHarga
+            // 
+            this.txtHarga.Location = new System.Drawing.Point(142, 180);
+            this.txtHarga.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.txtHarga.Name = "txtHarga";
+            this.txtHarga.Size = new System.Drawing.Size(120, 20);
+            this.txtHarga.TabIndex = 13;
             // 
             // btnDelete
             // 
@@ -131,20 +144,20 @@ namespace AoLv2
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(421, 32);
+            this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(422, 36);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 20);
+            this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 10;
             this.label6.Text = "ID Buku";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 181);
+            this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 184);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 20);
+            this.label5.Size = new System.Drawing.Size(46, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Harga";
             // 
@@ -160,10 +173,10 @@ namespace AoLv2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 145);
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 149);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 20);
+            this.label4.Size = new System.Drawing.Size(86, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Tahun Terbit";
             // 
@@ -177,10 +190,10 @@ namespace AoLv2
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 105);
+            this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 111);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 20);
+            this.label3.Size = new System.Drawing.Size(97, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Penerbit Buku";
             // 
@@ -194,10 +207,10 @@ namespace AoLv2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 20);
+            this.label2.Size = new System.Drawing.Size(114, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Pengarang Buku";
             // 
@@ -212,10 +225,10 @@ namespace AoLv2
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 30);
+            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 20);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Judul Buku";
             // 
@@ -230,18 +243,6 @@ namespace AoLv2
             this.DataGridBuku.TabIndex = 1;
             this.DataGridBuku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuku_CellClick);
             this.DataGridBuku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuku_CellContentClick);
-            // 
-            // txtHarga
-            // 
-            this.txtHarga.Location = new System.Drawing.Point(142, 180);
-            this.txtHarga.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.txtHarga.Name = "txtHarga";
-            this.txtHarga.Size = new System.Drawing.Size(120, 20);
-            this.txtHarga.TabIndex = 13;
             // 
             // comboBox
             // 
@@ -262,10 +263,10 @@ namespace AoLv2
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(30, 278);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 20);
+            this.label7.Size = new System.Drawing.Size(53, 16);
             this.label7.TabIndex = 3;
             this.label7.Text = "Search";
             // 
@@ -292,8 +293,8 @@ namespace AoLv2
             this.Load += new System.EventHandler(this._2InsertBuku_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridBuku)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHarga)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridBuku)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

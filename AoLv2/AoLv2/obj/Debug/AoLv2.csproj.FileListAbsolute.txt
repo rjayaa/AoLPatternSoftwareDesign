@@ -9,3 +9,4 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.csproj.CoreCompileInputs.cache
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.exe
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.pdb
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2._3InsertPelanggan.resources
