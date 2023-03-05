@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AoLv2
 {
-    public partial class Form1 : Form
+    public partial class _1Menu : Form
     {
-        public Form1()
+        public _1Menu()
         {
             InitializeComponent();
         }
