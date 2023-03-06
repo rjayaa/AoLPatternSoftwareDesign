@@ -254,12 +254,13 @@ namespace AoLv2
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
             "",
-            "ID Buku",
-            "Judul Buku",
-            "Pengarang Buku",
-            "Penerbit Buku",
-            "Tahun Terbit",
-            "Harga Buku"});
+            "BookID",
+            "Title",
+            "Author",
+            "Publisher",
+            "Publication Year",
+            "Price",
+            "Stock"});
             this.comboBox.Location = new System.Drawing.Point(96, 277);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(130, 21);

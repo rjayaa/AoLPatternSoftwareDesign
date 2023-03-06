@@ -13,7 +13,7 @@ namespace AoLv2
 {
     public partial class _3InsertPelanggan : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBuku;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
         DataTable dataTable = new DataTable();
         public _3InsertPelanggan()
         {
@@ -24,7 +24,7 @@ namespace AoLv2
             dataTable.Reset();
             dataTable = new DataTable();
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pelanggan", con))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Customers", con))
             {
                 con.Open();
                 SqlDataReader rd = cmd.ExecuteReader();
@@ -35,8 +35,8 @@ namespace AoLv2
         }
         public string GenerateID()
         {
-            string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBuku;Integrated Security=True;");
-            string query = "SELECT TOP 1 ID_Pelanggan FROM Pelanggan ORDER BY ID_Pelanggan DESC";
+            string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+            string query = "SELECT TOP 1 CustomerID FROM Customers ORDER BY CustomerID DESC";
             string id = "PN";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -109,11 +109,11 @@ namespace AoLv2
         public void InsertData()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Pelanggan VALUES (@ID_Pelanggan, @Nama, @Alamat,@NoTelepon, @Email)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Customers VALUES (@CustomerID, @Name, @Address,@Phone, @Email)", con);
             cmd.Parameters.AddWithValue("@ID_Pelanggan", GenerateID());
-            cmd.Parameters.AddWithValue("@Nama", txtNama.Text);
-            cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text);
-            cmd.Parameters.AddWithValue("@NoTelepon", txtTelepon.Text);
+            cmd.Parameters.AddWithValue("@Name", txtNama.Text);
+            cmd.Parameters.AddWithValue("@Address", txtAlamat.Text);
+            cmd.Parameters.AddWithValue("@Phone", txtTelepon.Text);
             cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
            
 
@@ -131,7 +131,7 @@ namespace AoLv2
 
             con.Open();
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "DELETE FROM Pelanggan WHERE ID_Pelanggan = @t0;";
+            cmd.CommandText = "DELETE FROM Customers WHERE CustomerID = @t0;";
             cmd.Parameters.AddWithValue("@t0", t0);
 
             cmd.ExecuteNonQuery();
@@ -154,7 +154,7 @@ namespace AoLv2
             
 
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "UPDATE Pelanggan SET Nama = @t0, Alamat = @t1, NoTelepon = @t2, Email = @t3 WHERE ID_Pelanggan = @tid;";
+            cmd.CommandText = "UPDATE Customer SET Name = @t0, Address = @t1, Phone = @t2, Email = @t3 WHERE ID_Pelanggan = @tid;";
             cmd.Parameters.AddWithValue("@tid", tid);
             cmd.Parameters.AddWithValue("@t0", t0);
             cmd.Parameters.AddWithValue("@t1", t1);
@@ -174,11 +174,13 @@ namespace AoLv2
         }
 
         public void DisplayDataSearch()
-        {           
+        {
+
+            
             con.Open();
             if (comboBox.Text == "")
             {
-                string q = "SELECT ID_Pelanggan, Nama, Alamat, NoTelepon, Email FROM Pelanggan WHERE ID_Pelanggan LIKE '" + txtSearch.Text + "%' OR Nama LIKE '" + txtSearch.Text + "%' OR Alamat LIKE '" + txtSearch.Text + "%' OR Email LIKE '" + txtSearch.Text + "%' OR NoTelepon LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Pelanggan WHERE CustomerID LIKE '" + txtSearch.Text + "%' OR Name LIKE '" + txtSearch.Text + "%' OR Address LIKE '" + txtSearch.Text + "%' OR Email LIKE '" + txtSearch.Text + "%' OR Phone LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -186,45 +188,45 @@ namespace AoLv2
                 DataGridPelanggan.DataSource = st;
 
             }
-            else if (comboBox.Text == "ID Pelanggan")
+            else if (comboBox.Text == "Customer ID")
             {
-                string q = "SELECT ID_Pelanggan, Nama, Alamat, NoTelepon, Email FROM Pelanggan WHERE ID_Pelanggan LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Pelanggan WHERE CustomerID LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Nama Pelanggan")
+            else if (comboBox.Text == "Name")
             {
-                string q = "SELECT ID_Pelanggan, Nama, Alamat, NoTelepon, Email  FROM Pelanggan WHERE Nama LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Name LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Alamat Pelanggan")
+            else if (comboBox.Text == "Address")
             {
-                string q = "SELECT ID_Pelanggan, Nama, Alamat, NoTelepon, Email  FROM Pelanggan WHERE Alamat LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Address LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "No Telepon")
+            else if (comboBox.Text == "Phone")
             {
-                string q = "SELECT ID_Pelanggan, Nama, Alamat, NoTelepon, Email  FROM Pelanggan WHERE NoTelepon LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Phone LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Email Pelanggan")
+            else if (comboBox.Text == "Email")
             {
-                string q = "SELECT ID_Pelanggan, Nama, Alamat, NoTelepon, Email  FROM Pelanggan WHERE Email LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Email LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();

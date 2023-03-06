@@ -179,6 +179,15 @@ namespace AoLv2
 
        public void DisplayDataSearch()
         {
+
+
+            //            BookID
+            //            Title
+            //Author
+            //Publisher
+            //Publication Year
+            //Price
+            //Stock
             con.Open();
             if(comboBox.Text == "")
             {
@@ -190,7 +199,7 @@ namespace AoLv2
                 DataGridBuku.DataSource = st;
 
             }
-            else if(comboBox.Text == "ID Buku")
+            else if(comboBox.Text == "BookID")
             {
                 string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE BookID LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -198,7 +207,7 @@ namespace AoLv2
                 DataTable st = new DataTable();
                 st.Load(reader);
                 DataGridBuku.DataSource = st;
-            }else if (comboBox.Text == "Title Buku") 
+            }else if (comboBox.Text == "Title") 
             {
                 string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Title LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -207,7 +216,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridBuku.DataSource = st;
             }
-            else if (comboBox.Text == "Author Buku")
+            else if (comboBox.Text == "Author")
             {
                 string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Author LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -216,7 +225,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridBuku.DataSource = st;
             }
-            else if (comboBox.Text == "Publisher Buku")
+            else if (comboBox.Text == "Publisher")
             {
                 string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Publisher LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -225,7 +234,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridBuku.DataSource = st;
             }
-            else if (comboBox.Text == "Tahun Terbit")
+            else if (comboBox.Text == "Publication Year")
             {
                 string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE PublisherYear LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -234,7 +243,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridBuku.DataSource = st;
             }
-            else if (comboBox.Text == "Price Buku")
+            else if (comboBox.Text == "Price")
             {
                 string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Harga LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);

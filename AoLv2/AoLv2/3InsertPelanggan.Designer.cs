@@ -114,9 +114,9 @@ namespace AoLv2
             this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(376, 36);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 16);
+            this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 10;
-            this.label6.Text = "ID Pelanggan";
+            this.label6.Text = "CustomerID";
             // 
             // txtEmail
             // 
@@ -131,11 +131,11 @@ namespace AoLv2
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
             "",
-            "ID Pelanggan",
-            "Nama Pelanggan",
-            "Alamat Pelanggan",
-            "No Telepon",
-            "Email Pelanggan"});
+            "Customer ID",
+            "Name",
+            "Address",
+            "Phone",
+            "Email"});
             this.comboBox.Location = new System.Drawing.Point(99, 242);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(130, 21);
@@ -183,9 +183,9 @@ namespace AoLv2
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 16);
+            this.label2.Size = new System.Drawing.Size(60, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Alamat";
+            this.label2.Text = "Address";
             // 
             // txtNama
             // 
@@ -203,7 +203,7 @@ namespace AoLv2
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nama";
+            this.label1.Text = "Name";
             // 
             // label7
             // 
@@ -221,9 +221,9 @@ namespace AoLv2
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(15, 111);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
+            this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "No Telepon";
+            this.label3.Text = "Phone";
             // 
             // groupBox1
             // 
