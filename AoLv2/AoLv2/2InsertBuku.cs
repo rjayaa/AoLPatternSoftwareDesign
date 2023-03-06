@@ -350,8 +350,8 @@ namespace AoLv2
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInsert();
-            //btnDelete.Enabled = false;
-            //btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
 
         }
 
