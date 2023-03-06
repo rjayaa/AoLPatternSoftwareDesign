@@ -30,12 +30,12 @@ namespace AoLv2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -54,15 +54,6 @@ namespace AoLv2
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Insert Data";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(19, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Insert Buku";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(161, 30);
@@ -72,17 +63,35 @@ namespace AoLv2
             this.button2.Text = "Insert Pelanggan";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 50);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Insert Buku";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Location = new System.Drawing.Point(35, 147);
+            this.groupBox2.Location = new System.Drawing.Point(35, 272);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(295, 172);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Show Data";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(87, 86);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 50);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Data Transaksi";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -102,19 +111,10 @@ namespace AoLv2
             this.button4.Text = "Data Buku";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(87, 86);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 50);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Data Transaksi";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Location = new System.Drawing.Point(35, 338);
+            this.groupBox3.Location = new System.Drawing.Point(35, 157);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(295, 100);
             this.groupBox3.TabIndex = 1;
@@ -134,7 +134,7 @@ namespace AoLv2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 475);
+            this.ClientSize = new System.Drawing.Size(362, 475);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

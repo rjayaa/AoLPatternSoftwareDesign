@@ -64,6 +64,12 @@
     <Compile Include="3InsertPelanggan.Designer.cs">
       <DependentUpon>3InsertPelanggan.cs</DependentUpon>
     </Compile>
+    <Compile Include="4InsertTransaksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4InsertTransaksi.Designer.cs">
+      <DependentUpon>4InsertTransaksi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="1Menu.resx">
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="3InsertPelanggan.resx">
       <DependentUpon>3InsertPelanggan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4InsertTransaksi.resx">
+      <DependentUpon>4InsertTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
