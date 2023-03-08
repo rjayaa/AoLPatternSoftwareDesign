@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+
 namespace AoLv2
 {
     public partial class _3InsertPelanggan : Form
     {
+        //tokoBukuuEntities tb = new tokoBukuuEntities();
         SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
         DataTable dataTable = new DataTable();
         public _3InsertPelanggan()
@@ -110,12 +112,12 @@ namespace AoLv2
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO Customers VALUES (@CustomerID, @Name, @Address,@Phone, @Email)", con);
-            cmd.Parameters.AddWithValue("@ID_Pelanggan", GenerateID());
+            cmd.Parameters.AddWithValue("@CustomerID", GenerateID());
             cmd.Parameters.AddWithValue("@Name", txtNama.Text);
             cmd.Parameters.AddWithValue("@Address", txtAlamat.Text);
             cmd.Parameters.AddWithValue("@Phone", txtTelepon.Text);
             cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-           
+
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -151,7 +153,7 @@ namespace AoLv2
             string t1 = txtAlamat.Text;
             string t2 = txtTelepon.Text;
             string t3 = txtEmail.Text;
-            
+
 
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandText = "UPDATE Customer SET Name = @t0, Address = @t1, Phone = @t2, Email = @t3 WHERE ID_Pelanggan = @tid;";
@@ -160,7 +162,7 @@ namespace AoLv2
             cmd.Parameters.AddWithValue("@t1", t1);
             cmd.Parameters.AddWithValue("@t2", t2);
             cmd.Parameters.AddWithValue("@t3", t3);
-            
+
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -176,7 +178,7 @@ namespace AoLv2
         public void DisplayDataSearch()
         {
 
-            
+
             con.Open();
             if (comboBox.Text == "")
             {
@@ -238,25 +240,25 @@ namespace AoLv2
 
         public void ViewData()
         {
-                ButtonUpdateDeleteEnable();
-                int selectedIndex = DataGridPelanggan.CurrentCell.RowIndex;
-                txtIDPelanggan.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0].Value.ToString();
-                txtNama.Text = DataGridPelanggan.Rows[selectedIndex].Cells[1].Value.ToString();
-                txtAlamat.Text = DataGridPelanggan.Rows[selectedIndex].Cells[2].Value.ToString();
-                txtTelepon.Text = DataGridPelanggan.Rows[selectedIndex].Cells[3].Value.ToString();
-                txtEmail.Text = DataGridPelanggan.Rows[selectedIndex].Cells[4].Value.ToString();
-           
+            ButtonUpdateDeleteEnable();
+            int selectedIndex = DataGridPelanggan.CurrentCell.RowIndex;
+            txtIDPelanggan.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0].Value.ToString();
+            txtNama.Text = DataGridPelanggan.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtAlamat.Text = DataGridPelanggan.Rows[selectedIndex].Cells[2].Value.ToString();
+            txtTelepon.Text = DataGridPelanggan.Rows[selectedIndex].Cells[3].Value.ToString();
+            txtEmail.Text = DataGridPelanggan.Rows[selectedIndex].Cells[4].Value.ToString();
+
         }
 
         public void ViewDataWhileSearching()
         {
-                ButtonUpdateDeleteEnable();
-                int selectedIndex = DataGridPelanggan.CurrentCell.RowIndex;
-                txtIDPelanggan.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0+1].Value.ToString();
-                txtNama.Text = DataGridPelanggan.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
-                txtAlamat.Text = DataGridPelanggan.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
-                txtTelepon.Text = DataGridPelanggan.Rows[selectedIndex].Cells[3 + 1].Value.ToString();
-                txtEmail.Text = DataGridPelanggan.Rows[selectedIndex].Cells[4 + 1].Value.ToString();
+            ButtonUpdateDeleteEnable();
+            int selectedIndex = DataGridPelanggan.CurrentCell.RowIndex;
+            txtIDPelanggan.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0 + 1].Value.ToString();
+            txtNama.Text = DataGridPelanggan.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
+            txtAlamat.Text = DataGridPelanggan.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
+            txtTelepon.Text = DataGridPelanggan.Rows[selectedIndex].Cells[3 + 1].Value.ToString();
+            txtEmail.Text = DataGridPelanggan.Rows[selectedIndex].Cells[4 + 1].Value.ToString();
 
         }
         private void txtEmail_Validating(object sender, CancelEventArgs e)
@@ -281,12 +283,12 @@ namespace AoLv2
         private void button1_Click(object sender, EventArgs e)
         {
             InsertData();
-            ClearInsert(); 
+            ClearInsert();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            UpdateData(); 
+            UpdateData();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -298,7 +300,7 @@ namespace AoLv2
             ClearInsert();
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
-               
+
         }
 
         private void txtNama_TextChanged(object sender, EventArgs e)

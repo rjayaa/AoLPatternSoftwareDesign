@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
 namespace AoLv2
 {
     public partial class _2InsertBuku : Form

@@ -11,3 +11,8 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.pdb
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2._3InsertPelanggan.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2._4InsertTransaksi.resources
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\EntityFramework.dll
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\EntityFramework.xml
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.csproj.CopyComplete

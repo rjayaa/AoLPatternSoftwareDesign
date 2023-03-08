@@ -16,7 +16,7 @@ namespace AoLv2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new _2InsertBuku());
+            Application.Run(new _4InsertTransaksi());
         }
     }
 }
