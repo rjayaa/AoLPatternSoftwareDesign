@@ -61,37 +61,44 @@
     <Compile Include="1Menu.Designer.cs">
       <DependentUpon>1Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insertion\2InsertBuku.cs">
+    <Compile Include="ConnectionDatabase\ConnectionStringHelper.cs" />
+    <Compile Include="Insertion\InsertBuku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\2InsertBuku.Designer.cs">
-      <DependentUpon>2InsertBuku.cs</DependentUpon>
+    <Compile Include="Insertion\InsertBuku.Designer.cs">
+      <DependentUpon>InsertBuku.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insertion\3InsertPelanggan.cs">
+    <Compile Include="Insertion\InsertCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\3InsertPelanggan.Designer.cs">
-      <DependentUpon>3InsertPelanggan.cs</DependentUpon>
+    <Compile Include="Insertion\InsertCustomer.Designer.cs">
+      <DependentUpon>InsertCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insertion\4InsertTransaksi.cs">
+    <Compile Include="Insertion\InsertOrderItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\4InsertTransaksi.Designer.cs">
-      <DependentUpon>4InsertTransaksi.cs</DependentUpon>
+    <Compile Include="Insertion\InsertOrderItems.Designer.cs">
+      <DependentUpon>InsertOrderItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Insertion\InsertOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Insertion\InsertOrders.Designer.cs">
+      <DependentUpon>InsertOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="1Menu.resx">
       <DependentUpon>1Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insertion\2InsertBuku.resx">
-      <DependentUpon>2InsertBuku.cs</DependentUpon>
+    <EmbeddedResource Include="Insertion\InsertBuku.resx">
+      <DependentUpon>InsertBuku.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insertion\3InsertPelanggan.resx">
-      <DependentUpon>3InsertPelanggan.cs</DependentUpon>
+    <EmbeddedResource Include="Insertion\InsertCustomer.resx">
+      <DependentUpon>InsertCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insertion\4InsertTransaksi.resx">
-      <DependentUpon>4InsertTransaksi.cs</DependentUpon>
+    <EmbeddedResource Include="Insertion\InsertOrders.resx">
+      <DependentUpon>InsertOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

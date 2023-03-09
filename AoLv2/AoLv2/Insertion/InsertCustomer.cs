@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-
+using AoLv2.ConnectionHelper;
 namespace AoLv2
 {
-    public partial class _3InsertPelanggan : Form
+    public partial class InsertCustomer : Form
     {
-        //tokoBukuuEntities tb = new tokoBukuuEntities();
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
         DataTable dataTable = new DataTable();
-        public _3InsertPelanggan()
+        public InsertCustomer()
         {
             InitializeComponent();
         }
@@ -275,7 +274,7 @@ namespace AoLv2
             }
         }
 
-        private void _3InsertPelanggan_Load(object sender, EventArgs e)
+        private void InsertCustomer_Load(object sender, EventArgs e)
         {
             fillData();
         }

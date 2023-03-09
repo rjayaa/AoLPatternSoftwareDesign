@@ -1,7 +1,7 @@
 ﻿
 namespace AoLv2
 {
-    partial class _3InsertPelanggan
+    partial class InsertCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -261,7 +261,7 @@ namespace AoLv2
             this.Controls.Add(this.groupBox1);
             this.Name = "_3InsertPelanggan";
             this.Text = "_3InsertPelanggan";
-            this.Load += new System.EventHandler(this._3InsertPelanggan_Load);
+            this.Load += new System.EventHandler(this.InsertCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPelanggan)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

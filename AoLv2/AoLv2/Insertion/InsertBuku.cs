@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using AoLv2.ConnectionHelper;
 namespace AoLv2
 {
-    public partial class _2InsertBuku : Form
+    public partial class InsertBuku : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
-
+        // SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
         DataTable dataTable = new DataTable();
-        public _2InsertBuku()
+        public InsertBuku()
         {
             InitializeComponent();
         }

@@ -1,7 +1,7 @@
 ﻿
 namespace AoLv2
 {
-    partial class _4InsertTransaksi
+    partial class InsertOrders
     {
         /// <summary>
         /// Required designer variable.
@@ -78,7 +78,7 @@ namespace AoLv2
             // txtCustomerID
             // 
             this.txtCustomerID.Enabled = false;
-            this.txtCustomerID.Location = new System.Drawing.Point(372, 75);
+            this.txtCustomerID.Location = new System.Drawing.Point(372, 76);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(100, 23);
             this.txtCustomerID.TabIndex = 17;
@@ -110,9 +110,9 @@ namespace AoLv2
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(395, 200);
+            this.btnDelete.Location = new System.Drawing.Point(393, 191);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(86, 33);
+            this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -120,9 +120,9 @@ namespace AoLv2
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(303, 200);
+            this.btnAdd.Location = new System.Drawing.Point(287, 191);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(86, 33);
+            this.btnAdd.Size = new System.Drawing.Size(100, 50);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = " Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@ namespace AoLv2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(284, 78);
+            this.label2.Location = new System.Drawing.Point(284, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 16);
             this.label2.TabIndex = 3;
@@ -166,7 +166,6 @@ namespace AoLv2
             this.DataGridTransaction.Name = "DataGridTransaction";
             this.DataGridTransaction.Size = new System.Drawing.Size(539, 150);
             this.DataGridTransaction.TabIndex = 2;
-            
             this.DataGridTransaction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridTransaction_CellContentClick);
             // 
             // _4InsertTransaksi

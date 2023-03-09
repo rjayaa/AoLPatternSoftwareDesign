@@ -8,23 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using AoLv2.ConnectionHelper;
 namespace AoLv2
 {
-    public partial class _4InsertTransaksi : Form
+    public partial class InsertOrders : Form
     {
 
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+        //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+
+        SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
 
         DataTable dataTable = new DataTable();
         SqlCommand cmd;
         SqlDataReader dr;
-        public _4InsertTransaksi()
+        public InsertOrders()
         {
             InitializeComponent();
         }
 
         public DataTable getDataTable()
         {
+
             dataTable.Reset();
             dataTable = new DataTable();
 

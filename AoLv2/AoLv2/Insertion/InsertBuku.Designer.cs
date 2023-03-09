@@ -1,7 +1,7 @@
 ﻿
 namespace AoLv2
 {
-    partial class _2InsertBuku
+    partial class InsertBuku
     {
         /// <summary>
         /// Required designer variable.
