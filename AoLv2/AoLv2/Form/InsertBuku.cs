@@ -184,19 +184,10 @@ namespace AoLv2
 
        public void DisplayDataSearch()
         {
-
-
-            //            BookID
-            //            Title
-            //Author
-            //Publisher
-            //Publication Year
-            //Price
-            //Stock
             con.Open();
             if(comboBox.Text == "")
             {
-                string q = "SELECT BookID, Title, Pengarang, Penerbit, TahunTerbit, Price, Stock FROM Books WHERE BookID LIKE '" + txtSearch.Text + "%' OR Title LIKE '" + txtSearch.Text + "%' OR Pengarang LIKE '" + txtSearch.Text + "%' OR Penerbit LIKE '" + txtSearch.Text + "%' OR TahunTerbit LIKE '" + txtSearch.Text + "%' OR Price LIKE '" + txtSearch.Text + "%' OR Stock LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock FROM Books WHERE BookID LIKE '" + txtSearch.Text + "%' OR Title LIKE '" + txtSearch.Text + "%' OR Author LIKE '" + txtSearch.Text + "%' OR Publisher LIKE '" + txtSearch.Text + "%' OR PublicationYear LIKE '" + txtSearch.Text + "%' OR Price LIKE '" + txtSearch.Text + "%' OR Stock LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -206,7 +197,7 @@ namespace AoLv2
             }
             else if(comboBox.Text == "BookID")
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE BookID LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE BookID LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -214,7 +205,7 @@ namespace AoLv2
                 DataGridBuku.DataSource = st;
             }else if (comboBox.Text == "Title") 
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Title LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE Title LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -223,7 +214,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Author")
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Author LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE Author LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -232,7 +223,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Publisher")
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Publisher LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE Publisher LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -241,7 +232,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Publication Year")
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE PublisherYear LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE PublicationYear LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -250,7 +241,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Price")
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Harga LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE Harga LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -259,7 +250,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Stock")
             {
-                string q = "SELECT BookID, Title, Author, Publisher, PublisherYear, Price, Stock  FROM Books WHERE Stock LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT BookID, Title, Author, Publisher, PublicationYear, Price, Stock  FROM Books WHERE Stock LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();

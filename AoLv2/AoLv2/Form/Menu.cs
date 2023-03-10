@@ -17,13 +17,6 @@ namespace AoLv2
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            InsertBuku buku = new InsertBuku();
-            buku.Show();
-            buku.FormClosed += Menu_FormClosed;
-        }
         private void btnPelanggan_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -46,6 +39,13 @@ namespace AoLv2
             customer.FormClosed += Menu_FormClosed;
         }
 
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InsertBuku buku = new InsertBuku();
+            buku.Show();
+            buku.FormClosed += Menu_FormClosed;
+        }
         private void Menu_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();

@@ -36,7 +36,7 @@ namespace AoLv2
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnBook = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -105,7 +105,7 @@ namespace AoLv2
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.btnBook);
             this.groupBox2.Location = new System.Drawing.Point(35, 291);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(285, 100);
@@ -113,14 +113,15 @@ namespace AoLv2
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pembayaran ||  Faktur";
             // 
-            // button3
+            // btnBook
             // 
-            this.button3.Location = new System.Drawing.Point(19, 32);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(222, 50);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Pengelolaan Data Buku";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBook.Location = new System.Drawing.Point(19, 32);
+            this.btnBook.Name = "btnBook";
+            this.btnBook.Size = new System.Drawing.Size(222, 50);
+            this.btnBook.TabIndex = 1;
+            this.btnBook.Text = "Pengelolaan Data Buku";
+            this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // Menu
             // 
@@ -148,6 +149,6 @@ namespace AoLv2
         private System.Windows.Forms.Button btnPelanggan;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBook;
     }
 }
