@@ -84,6 +84,9 @@ namespace AoLv2
             DataGridBuku.Columns[6].ReadOnly = true;
 
 
+            // dua kode dibawah ini buat menghapus default column & row di datagrid
+            DataGridBuku.AllowUserToAddRows = false;
+            DataGridBuku.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
         }

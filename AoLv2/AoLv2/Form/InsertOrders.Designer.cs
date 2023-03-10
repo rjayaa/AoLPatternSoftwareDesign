@@ -31,6 +31,7 @@ namespace AoLv2
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtOrderID = new System.Windows.Forms.TextBox();
@@ -41,7 +42,8 @@ namespace AoLv2
             this.label2 = new System.Windows.Forms.Label();
             this.comboCustomer = new System.Windows.Forms.ComboBox();
             this.DataGridTransaction = new System.Windows.Forms.DataGridView();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDetail = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTransaction)).BeginInit();
             this.SuspendLayout();
@@ -58,13 +60,14 @@ namespace AoLv2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.txtCustomerID);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtOrderID);
-            this.groupBox1.Controls.Add(this.DatePicker);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.txtOrderID);
+            this.groupBox1.Controls.Add(this.DatePicker);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.comboCustomer);
@@ -72,10 +75,20 @@ namespace AoLv2
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 259);
+            this.groupBox1.Size = new System.Drawing.Size(500, 228);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transaction";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(158, 153);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(100, 50);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtCustomerID
             // 
@@ -112,7 +125,7 @@ namespace AoLv2
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(266, 191);
+            this.btnDelete.Location = new System.Drawing.Point(266, 153);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 13;
@@ -122,7 +135,7 @@ namespace AoLv2
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(372, 191);
+            this.btnAdd.Location = new System.Drawing.Point(372, 153);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 50);
             this.btnAdd.TabIndex = 13;
@@ -166,30 +179,42 @@ namespace AoLv2
             this.DataGridTransaction.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DataGridTransaction.Location = new System.Drawing.Point(0, 302);
             this.DataGridTransaction.Name = "DataGridTransaction";
-            this.DataGridTransaction.Size = new System.Drawing.Size(539, 150);
+            this.DataGridTransaction.RowHeadersVisible = false;
+            this.DataGridTransaction.Size = new System.Drawing.Size(547, 150);
             this.DataGridTransaction.TabIndex = 2;
-            
             this.DataGridTransaction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridTransaction_CellContentClick);
             // 
-            // btnClear
+            // btnDetail
             // 
-            this.btnClear.Location = new System.Drawing.Point(160, 191);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(100, 50);
-            this.btnClear.TabIndex = 18;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnDetail.Location = new System.Drawing.Point(336, 259);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(157, 25);
+            this.btnDetail.TabIndex = 19;
+            this.btnDetail.Text = "Detail Pemesanan";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(52, 153);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(100, 50);
+            this.btnExit.TabIndex = 19;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // InsertOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 452);
+            this.ClientSize = new System.Drawing.Size(547, 452);
+            this.Controls.Add(this.btnDetail);
             this.Controls.Add(this.DataGridTransaction);
             this.Controls.Add(this.groupBox1);
             this.Name = "InsertOrders";
             this.Text = "Transaction";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InsertOrders_FormClosed);
             this.Load += new System.EventHandler(this._4InsertTransaksi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -213,5 +238,7 @@ namespace AoLv2
         private System.Windows.Forms.DataGridView DataGridTransaction;
         private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDetail;
+        private System.Windows.Forms.Button btnExit;
     }
 }

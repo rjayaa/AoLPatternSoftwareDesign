@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using AoLv2.ConnectionHelper;
+using AoLv2.Insertion;
 namespace AoLv2
 {
     public partial class InsertOrders : Form
@@ -31,6 +32,7 @@ namespace AoLv2
 
             dataTable.Reset();
             dataTable = new DataTable();
+            
 
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Orders", con))
             {
@@ -113,6 +115,7 @@ namespace AoLv2
         public void fillData()
         {
             DataGridTransaction.DataSource = getDataTable();
+
             DataGridViewButtonColumn colBut = new DataGridViewButtonColumn();
             colBut.Name = "";
             colBut.Text = "View";
@@ -123,6 +126,10 @@ namespace AoLv2
             DataGridTransaction.Columns[1].ReadOnly = true;
             DataGridTransaction.Columns[2].ReadOnly = true;
 
+
+            // dua kode dibawah ini buat menghapus default column & row di datagrid
+            DataGridTransaction.AllowUserToAddRows = false;
+            DataGridTransaction.RowHeadersVisible = false;
             con.Close();
         }
 
@@ -249,6 +256,24 @@ namespace AoLv2
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInsert();
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InsertOrderItems customer = new InsertOrderItems();
+            customer.Show();
+            customer.FormClosed += InsertOrders_FormClosed;
+        }
+
+        private void InsertOrders_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

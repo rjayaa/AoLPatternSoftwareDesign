@@ -81,7 +81,9 @@ namespace AoLv2.Insertion
             DataGridDetail.Columns[2].ReadOnly = true;
             DataGridDetail.Columns[3].ReadOnly = true;
 
-
+            // dua kode dibawah ini buat menghapus default column & row di datagrid
+            DataGridDetail.AllowUserToAddRows = false;
+            DataGridDetail.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
         }

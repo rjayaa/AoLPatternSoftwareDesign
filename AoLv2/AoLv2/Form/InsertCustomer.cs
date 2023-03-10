@@ -80,7 +80,9 @@ namespace AoLv2
             DataGridPelanggan.Columns[3].ReadOnly = true;
             DataGridPelanggan.Columns[4].ReadOnly = true;
 
-
+            // dua kode dibawah ini buat menghapus default column & row di datagrid
+            DataGridPelanggan.AllowUserToAddRows = false;
+            DataGridPelanggan.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
         }
