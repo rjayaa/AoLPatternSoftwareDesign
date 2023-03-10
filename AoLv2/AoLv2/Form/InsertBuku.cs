@@ -106,6 +106,7 @@ namespace AoLv2
             txtPenerbit.Text = "";
             txtTahunTerbit.Text = "";
             txtHarga.Value = 0;
+            txtStock.Value = 0;
         }
 
         public void InsertData()

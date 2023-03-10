@@ -39,8 +39,8 @@ namespace AoLv2.Insertion
         public string GenerateID()
         {
             //string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
-            string query = "SELECT TOP 1 CustomerID FROM Customers ORDER BY CustomerID DESC";
-            string id = "DO";
+            string query = "SELECT TOP 1 OrderItemID FROM OrderItems ORDER BY OrderItemID DESC";
+            string id = "TP";
 
             using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
             {
@@ -146,7 +146,7 @@ namespace AoLv2.Insertion
             dataTable.Clear();
             fillData();
             ClearInsert();
-            MessageBox.Show("Update Buku Berhasil!!!");
+            MessageBox.Show("Update Berhasil!!!");
 
         }
 
@@ -154,9 +154,10 @@ namespace AoLv2.Insertion
         {
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridDetail.CurrentCell.RowIndex;
-         //   txt.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0].Value.ToString();
-            
-            
+            txtOrderDetailID.Text = DataGridDetail.Rows[selectedIndex].Cells[0].Value.ToString();
+            comboOrder.Text = DataGridDetail.Rows[selectedIndex].Cells[1].Value.ToString();
+            comboBook.Text = DataGridDetail.Rows[selectedIndex].Cells[2].Value.ToString();
+            txtQuantity.Value = Convert.ToInt32(DataGridDetail.Rows[selectedIndex].Cells[3].Value);
         }
 
         public void DisplayDataSearch()
@@ -240,6 +241,7 @@ namespace AoLv2.Insertion
         {
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
+            btnClear.Enabled = true;
         }
         public void DisableViewAndButton()
         {
@@ -288,6 +290,11 @@ namespace AoLv2.Insertion
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearInsert();
         }
     }
 }

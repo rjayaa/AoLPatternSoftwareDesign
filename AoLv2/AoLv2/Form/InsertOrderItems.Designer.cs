@@ -32,6 +32,7 @@ namespace AoLv2.Insertion
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtOrderDetailID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@ namespace AoLv2.Insertion
             this.comboSearch = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridDetail)).BeginInit();
@@ -95,6 +95,16 @@ namespace AoLv2.Insertion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(298, 193);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 50);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtOrderDetailID
             // 
             this.txtOrderDetailID.Enabled = false;
@@ -131,6 +141,7 @@ namespace AoLv2.Insertion
             this.btnClear.TabIndex = 21;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnUpdate
             // 
@@ -228,16 +239,6 @@ namespace AoLv2.Insertion
             this.label4.Size = new System.Drawing.Size(53, 16);
             this.label4.TabIndex = 26;
             this.label4.Text = "Search";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(298, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // InsertOrderItems
             // 

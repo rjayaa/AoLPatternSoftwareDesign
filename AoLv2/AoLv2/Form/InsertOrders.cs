@@ -44,11 +44,11 @@ namespace AoLv2
 
         public string GenerateID()
         {
-            string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+            //string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
             string query = "SELECT TOP 1 OrderID FROM Orders ORDER BY OrderID DESC";
-            string id = "OD";
+            string id = "IO";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
@@ -87,7 +87,7 @@ namespace AoLv2
 
         public void GetCustomerName(string customerName)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+            SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
             SqlCommand cmd = new SqlCommand("SELECT * FROM Customers WHERE Name=@customerName", con);
             cmd.Parameters.AddWithValue("@customerName", customerName);
             con.Open();
@@ -130,11 +130,12 @@ namespace AoLv2
         public void InsertData()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@OrderID, @CustomerID, @OrderDate)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@OrderID, @CustomerID, @OrderDate, @Status)", con);
             cmd.Parameters.AddWithValue("@OrderID", GenerateID());
             cmd.Parameters.AddWithValue("@CustomerID", txtCustomerID.Text);
             DateTime orderDate = DateTime.Parse(DatePicker.Text);
             cmd.Parameters.AddWithValue("@OrderDate", orderDate);
+            cmd.Parameters.AddWithValue("@Status", "Pending");
 
 
             cmd.ExecuteNonQuery();
@@ -147,15 +148,34 @@ namespace AoLv2
 
         public void DeleteData()
         {
-            string t0 = txtOrderID.Text;
+            string orderId = txtOrderID.Text;
 
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "DELETE FROM Orders WHERE OrderID = @t0;";
-            cmd.Parameters.AddWithValue("@t0", t0);
+            // Check if the order is referenced by OrderItems table
+            bool isReferenced = false;
+            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM OrderItems WHERE OrderID = @OrderId", con))
+            {
+                cmd.Parameters.AddWithValue("@OrderId", orderId);
+                con.Open();
+                int count = (int)cmd.ExecuteScalar();
+                con.Close();
+                isReferenced = count > 0;
+            }
 
-            cmd.ExecuteNonQuery();
-            con.Close();
+            if (isReferenced)
+            {
+                // Display warning message box if the order is referenced by OrderItems table
+                MessageBox.Show("Transaksi ini sedang berlangsung, tidak dapat dihapus!!.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Delete the order if it is not referenced by OrderItems table
+            using (SqlCommand cmd = new SqlCommand("DELETE FROM Orders WHERE OrderID = @OrderId", con))
+            {
+                cmd.Parameters.AddWithValue("@OrderId", orderId);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
 
             DataGridTransaction.Columns.Clear();
             dataTable.Clear();
@@ -185,7 +205,7 @@ namespace AoLv2
         {
             string customerName = "";
 
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
+            SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
             SqlCommand cmd = new SqlCommand("SELECT * FROM Customers WHERE CustomerID=@customerId", con);
             cmd.Parameters.AddWithValue("@customerId", id);
             con.Open();
@@ -200,8 +220,6 @@ namespace AoLv2
 
             return customerName;
         }
-
-
 
         public void ViewData()
         {
@@ -220,12 +238,17 @@ namespace AoLv2
 
         private void DataGridTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 3)
+            if(e.ColumnIndex == 4)
             {
                 ViewData();
             }
         }
 
        
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearInsert();
+        }
     }
 }

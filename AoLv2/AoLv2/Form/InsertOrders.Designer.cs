@@ -41,6 +41,7 @@ namespace AoLv2
             this.label2 = new System.Windows.Forms.Label();
             this.comboCustomer = new System.Windows.Forms.ComboBox();
             this.DataGridTransaction = new System.Windows.Forms.DataGridView();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTransaction)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@ namespace AoLv2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.txtCustomerID);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtOrderID);
@@ -110,7 +112,7 @@ namespace AoLv2
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(393, 191);
+            this.btnDelete.Location = new System.Drawing.Point(266, 191);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 13;
@@ -120,7 +122,7 @@ namespace AoLv2
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(287, 191);
+            this.btnAdd.Location = new System.Drawing.Point(372, 191);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 50);
             this.btnAdd.TabIndex = 13;
@@ -166,7 +168,18 @@ namespace AoLv2
             this.DataGridTransaction.Name = "DataGridTransaction";
             this.DataGridTransaction.Size = new System.Drawing.Size(539, 150);
             this.DataGridTransaction.TabIndex = 2;
+            
             this.DataGridTransaction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridTransaction_CellContentClick);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(160, 191);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(100, 50);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // InsertOrders
             // 
@@ -199,5 +212,6 @@ namespace AoLv2
         private System.Windows.Forms.TextBox txtOrderID;
         private System.Windows.Forms.DataGridView DataGridTransaction;
         private System.Windows.Forms.TextBox txtCustomerID;
+        private System.Windows.Forms.Button btnClear;
     }
 }

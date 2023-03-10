@@ -155,7 +155,7 @@ namespace AoLv2
 
 
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "UPDATE Customer SET Name = @t0, Address = @t1, Phone = @t2, Email = @t3 WHERE ID_Pelanggan = @tid;";
+            cmd.CommandText = "UPDATE Customers SET Name = @t0, Address = @t1, Phone = @t2, Email = @t3 WHERE CustomerID = @tid;";
             cmd.Parameters.AddWithValue("@tid", tid);
             cmd.Parameters.AddWithValue("@t0", t0);
             cmd.Parameters.AddWithValue("@t1", t1);
