@@ -30,6 +30,9 @@ namespace AoLv2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.txtStock = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtHarga = new System.Windows.Forms.NumericUpDown();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -50,16 +53,15 @@ namespace AoLv2
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.txtStock = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHarga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuku)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStock)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.txtStock);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtHarga);
@@ -81,10 +83,42 @@ namespace AoLv2
             this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(24, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(667, 246);
+            this.groupBox1.Size = new System.Drawing.Size(667, 265);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Form Buku";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(425, 209);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(100, 50);
+            this.btnExit.TabIndex = 16;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(142, 213);
+            this.txtStock.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(120, 20);
+            this.txtStock.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 217);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 16);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Stock";
             // 
             // txtHarga
             // 
@@ -181,9 +215,9 @@ namespace AoLv2
             this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(6, 149);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 16);
+            this.label4.Size = new System.Drawing.Size(110, 16);
             this.label4.TabIndex = 6;
-            this.label4.Text = "PublicationYear";
+            this.label4.Text = "Publication Year";
             // 
             // txtPenerbit
             // 
@@ -242,9 +276,9 @@ namespace AoLv2
             this.DataGridBuku.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridBuku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridBuku.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DataGridBuku.Location = new System.Drawing.Point(0, 316);
+            this.DataGridBuku.Location = new System.Drawing.Point(0, 349);
             this.DataGridBuku.Name = "DataGridBuku";
-            this.DataGridBuku.Size = new System.Drawing.Size(713, 208);
+            this.DataGridBuku.Size = new System.Drawing.Size(713, 175);
             this.DataGridBuku.TabIndex = 1;
             this.DataGridBuku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuku_CellClick);
             this.DataGridBuku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuku_CellContentClick);
@@ -261,7 +295,7 @@ namespace AoLv2
             "Publication Year",
             "Price",
             "Stock"});
-            this.comboBox.Location = new System.Drawing.Point(96, 277);
+            this.comboBox.Location = new System.Drawing.Point(96, 309);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(130, 21);
             this.comboBox.TabIndex = 2;
@@ -270,7 +304,7 @@ namespace AoLv2
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(30, 278);
+            this.label7.Location = new System.Drawing.Point(30, 310);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 16);
             this.label7.TabIndex = 3;
@@ -278,35 +312,13 @@ namespace AoLv2
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(243, 278);
+            this.txtSearch.Location = new System.Drawing.Point(243, 310);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 14;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // txtStock
-            // 
-            this.txtStock.Location = new System.Drawing.Point(142, 213);
-            this.txtStock.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(120, 20);
-            this.txtStock.TabIndex = 15;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 217);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 16);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Stock";
-            // 
-            // _2InsertBuku
+            // InsertBuku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -316,14 +328,14 @@ namespace AoLv2
             this.Controls.Add(this.comboBox);
             this.Controls.Add(this.DataGridBuku);
             this.Controls.Add(this.groupBox1);
-            this.Name = "_2InsertBuku";
-            this.Text = "FormBooks";
+            this.Name = "InsertBuku";
+            this.Text = "Book";
             this.Load += new System.EventHandler(this._2InsertBuku_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHarga)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridBuku)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +366,6 @@ namespace AoLv2
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.NumericUpDown txtStock;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnExit;
     }
 }

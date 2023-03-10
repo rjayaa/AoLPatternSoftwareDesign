@@ -48,13 +48,14 @@ namespace AoLv2
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPelanggan)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(246, 243);
+            this.txtSearch.Location = new System.Drawing.Point(244, 276);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 19;
@@ -62,7 +63,7 @@ namespace AoLv2
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(485, 153);
+            this.btnDelete.Location = new System.Drawing.Point(485, 132);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 12;
@@ -72,7 +73,7 @@ namespace AoLv2
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(379, 153);
+            this.btnClear.Location = new System.Drawing.Point(379, 132);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 50);
             this.btnClear.TabIndex = 12;
@@ -82,7 +83,7 @@ namespace AoLv2
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(485, 91);
+            this.btnUpdate.Location = new System.Drawing.Point(485, 70);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 50);
             this.btnUpdate.TabIndex = 12;
@@ -92,7 +93,7 @@ namespace AoLv2
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(379, 91);
+            this.btnInsert.Location = new System.Drawing.Point(379, 70);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(100, 50);
             this.btnInsert.TabIndex = 12;
@@ -136,7 +137,7 @@ namespace AoLv2
             "Address",
             "Phone",
             "Email"});
-            this.comboBox.Location = new System.Drawing.Point(99, 242);
+            this.comboBox.Location = new System.Drawing.Point(99, 276);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(130, 21);
             this.comboBox.TabIndex = 17;
@@ -146,9 +147,9 @@ namespace AoLv2
             this.DataGridPelanggan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridPelanggan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridPelanggan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DataGridPelanggan.Location = new System.Drawing.Point(0, 289);
+            this.DataGridPelanggan.Location = new System.Drawing.Point(0, 319);
             this.DataGridPelanggan.Name = "DataGridPelanggan";
-            this.DataGridPelanggan.Size = new System.Drawing.Size(640, 168);
+            this.DataGridPelanggan.Size = new System.Drawing.Size(640, 138);
             this.DataGridPelanggan.TabIndex = 16;
             this.DataGridPelanggan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellClick);
             this.DataGridPelanggan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellContentClick);
@@ -209,7 +210,7 @@ namespace AoLv2
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(33, 243);
+            this.label7.Location = new System.Drawing.Point(33, 277);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 16);
             this.label7.TabIndex = 18;
@@ -227,6 +228,7 @@ namespace AoLv2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnUpdate);
@@ -244,12 +246,22 @@ namespace AoLv2
             this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(24, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(604, 213);
+            this.groupBox1.Size = new System.Drawing.Size(604, 246);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Form Buku";
             // 
-            // _3InsertPelanggan
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(379, 188);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(100, 50);
+            this.btnExit.TabIndex = 13;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // InsertCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -259,8 +271,8 @@ namespace AoLv2
             this.Controls.Add(this.DataGridPelanggan);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
-            this.Name = "_3InsertPelanggan";
-            this.Text = "_3InsertPelanggan";
+            this.Name = "InsertCustomer";
+            this.Text = "Customer";
             this.Load += new System.EventHandler(this.InsertCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPelanggan)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -291,5 +303,6 @@ namespace AoLv2
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnExit;
     }
 }

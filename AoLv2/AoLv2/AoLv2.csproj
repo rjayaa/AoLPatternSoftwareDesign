@@ -55,49 +55,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1Menu.cs">
+    <Compile Include="Form\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="1Menu.Designer.cs">
-      <DependentUpon>1Menu.cs</DependentUpon>
+    <Compile Include="Form\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionDatabase\ConnectionStringHelper.cs" />
-    <Compile Include="Insertion\InsertBuku.cs">
+    <Compile Include="Form\InsertBuku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\InsertBuku.Designer.cs">
+    <Compile Include="Form\InsertBuku.Designer.cs">
       <DependentUpon>InsertBuku.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insertion\InsertCustomer.cs">
+    <Compile Include="Form\InsertCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\InsertCustomer.Designer.cs">
+    <Compile Include="Form\InsertCustomer.Designer.cs">
       <DependentUpon>InsertCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insertion\InsertOrderItems.cs">
+    <Compile Include="Form\InsertOrderItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\InsertOrderItems.Designer.cs">
+    <Compile Include="Form\InsertOrderItems.Designer.cs">
       <DependentUpon>InsertOrderItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insertion\InsertOrders.cs">
+    <Compile Include="Form\InsertOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insertion\InsertOrders.Designer.cs">
+    <Compile Include="Form\InsertOrders.Designer.cs">
       <DependentUpon>InsertOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="1Menu.resx">
-      <DependentUpon>1Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Form\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insertion\InsertBuku.resx">
+    <EmbeddedResource Include="Form\InsertBuku.resx">
       <DependentUpon>InsertBuku.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insertion\InsertCustomer.resx">
+    <EmbeddedResource Include="Form\InsertCustomer.resx">
       <DependentUpon>InsertCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insertion\InsertOrders.resx">
+    <EmbeddedResource Include="Form\InsertOrderItems.resx">
+      <DependentUpon>InsertOrderItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\InsertOrders.resx">
       <DependentUpon>InsertOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -2,7 +2,6 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\AoLv2.exe
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\AoLv2.pdb
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.csproj.AssemblyReference.cache
-C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2._1Menu.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.Properties.Resources.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.csproj.GenerateResource.cache
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.csproj.CoreCompileInputs.cache
@@ -16,3 +15,5 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.InsertBuku.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.InsertCustomer.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.InsertOrders.resources
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.Insertion.InsertOrderItems.resources
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.Menu.resources

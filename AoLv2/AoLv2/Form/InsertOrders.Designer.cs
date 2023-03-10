@@ -73,7 +73,7 @@ namespace AoLv2
             this.groupBox1.Size = new System.Drawing.Size(500, 259);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Transaksi";
+            this.groupBox1.Text = "Transaction";
             // 
             // txtCustomerID
             // 
@@ -168,14 +168,14 @@ namespace AoLv2
             this.DataGridTransaction.TabIndex = 2;
             this.DataGridTransaction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridTransaction_CellContentClick);
             // 
-            // _4InsertTransaksi
+            // InsertOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 452);
             this.Controls.Add(this.DataGridTransaction);
             this.Controls.Add(this.groupBox1);
-            this.Name = "_4InsertTransaksi";
+            this.Name = "InsertOrders";
             this.Text = "Transaction";
             this.Load += new System.EventHandler(this._4InsertTransaksi_Load);
             this.groupBox1.ResumeLayout(false);
