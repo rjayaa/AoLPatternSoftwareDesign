@@ -183,7 +183,7 @@ namespace AoLv2
             con.Open();
             if (comboBox.Text == "")
             {
-                string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Pelanggan WHERE CustomerID LIKE '" + txtSearch.Text + "%' OR Name LIKE '" + txtSearch.Text + "%' OR Address LIKE '" + txtSearch.Text + "%' OR Email LIKE '" + txtSearch.Text + "%' OR Phone LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Customers WHERE CustomerID LIKE '" + txtSearch.Text + "%' OR Name LIKE '" + txtSearch.Text + "%' OR Address LIKE '" + txtSearch.Text + "%' OR Email LIKE '" + txtSearch.Text + "%' OR Phone LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -193,7 +193,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Customer ID")
             {
-                string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Pelanggan WHERE CustomerID LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Customers WHERE CustomerID LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -202,7 +202,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Name")
             {
-                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Name LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Name LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -211,7 +211,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Address")
             {
-                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Address LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Address LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -220,7 +220,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Phone")
             {
-                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Phone LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Phone LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();
@@ -229,7 +229,7 @@ namespace AoLv2
             }
             else if (comboBox.Text == "Email")
             {
-                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Pelanggan WHERE Email LIKE '" + txtSearch.Text + "%'";
+                string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Email LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable st = new DataTable();

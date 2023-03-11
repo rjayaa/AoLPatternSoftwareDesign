@@ -10,13 +10,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using AoLv2.ConnectionHelper;
 using AoLv2.Insertion;
+using System.Globalization;
+
 namespace AoLv2
 {
     public partial class InsertOrders : Form
     {
-
-        //SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
-
         SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
 
         DataTable dataTable = new DataTable();
@@ -44,9 +43,19 @@ namespace AoLv2
             return dataTable;
         }
 
+        public void fixBug()
+        {
+            txtSearch.Text = "IO002";
+            txtSearch.Text = "";
+        }
+        private void _4InsertTransaksi_Load(object sender, EventArgs e)
+        {
+            fetchDataCustomer();
+            fillData();
+            fixBug();
+        }
         public string GenerateID()
         {
-            //string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
             string query = "SELECT TOP 1 OrderID FROM Orders ORDER BY OrderID DESC";
             string id = "IO";
 
@@ -137,12 +146,12 @@ namespace AoLv2
         public void InsertData()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@OrderID, @CustomerID, @OrderDate, @Status)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@OrderID, @CustomerID, @OrderDate)", con);
             cmd.Parameters.AddWithValue("@OrderID", GenerateID());
             cmd.Parameters.AddWithValue("@CustomerID", txtCustomerID.Text);
             DateTime orderDate = DateTime.Parse(DatePicker.Text);
             cmd.Parameters.AddWithValue("@OrderDate", orderDate);
-            cmd.Parameters.AddWithValue("@Status", "Pending");
+            
 
 
             cmd.ExecuteNonQuery();
@@ -198,15 +207,7 @@ namespace AoLv2
             comboCustomer.Text = "";
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            InsertData();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DeleteData();
-        }
+        
 
         public string GetCustomerID(string id)
         {
@@ -231,30 +232,91 @@ namespace AoLv2
         public void ViewData()
         {
             int selectedIndex = DataGridTransaction.CurrentCell.RowIndex;
-            txtOrderID.Text = DataGridTransaction.Rows[selectedIndex].Cells[0].Value.ToString();
-            txtCustomerID.Text = DataGridTransaction.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtOrderID.Text = DataGridTransaction.Rows[selectedIndex].Cells[0+1].Value.ToString();
+            txtCustomerID.Text = DataGridTransaction.Rows[selectedIndex].Cells[1+1].Value.ToString();
             comboCustomer.Text = GetCustomerID(txtCustomerID.Text);
-            DatePicker.Value = Convert.ToDateTime(DataGridTransaction.Rows[selectedIndex].Cells[2].Value);
+
+            // ambil nilai tanggal dari Cells pada baris yang dipilih, lalu set ke dalam DateTimePicker
+            DateTime dateValues;
+            if (DateTime.TryParse(DataGridTransaction.Rows[selectedIndex].Cells[2+1].Value.ToString(), out dateValues))
+            {
+                DatePicker.Value = dateValues;
+            }
         }
 
-        private void _4InsertTransaksi_Load(object sender, EventArgs e)
+        private void DataGridTransaction_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            fetchDataCustomer();
-            fillData();
-        }
-
-        private void DataGridTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.ColumnIndex == 4)
+            if (e.RowIndex >= 0 && DataGridTransaction.Columns[e.ColumnIndex].Name != "View" && DataGridTransaction.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 ViewData();
             }
         }
+        public void DisplayDataSearch()
+        {
+            con.Open();
+           
+            if (comboSearch.Text == "")
+            {
 
-       
+                string q = "SELECT OrderID, CustomerID, OrderDate FROM Orders WHERE OrderID LIKE '" + txtSearch.Text + "%' OR CustomerID LIKE'" + txtSearch.Text + "%' OR OrderDate LIKE'" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridTransaction.DataSource = st;
+            }
+            else if (comboSearch.Text == "Order ID")
+            {
+                string q = "SELECT OrderID, CustomerID, OrderDate FROM Orders WHERE OrderID LIKE '" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridTransaction.DataSource = st;
+            }
+            else if (comboSearch.Text == "Customer ID")
+            {
+                string q = "SELECT OrderID, CustomerID, OrderDate FROM Orders WHERE CustomerID LIKE '" + txtSearch.Text + "%'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable st = new DataTable();
+                st.Load(reader);
+                DataGridTransaction.DataSource = st;
+            }
+            else if (comboSearch.Text == "DD-MM-YY")
+            {
+                string searchValue = txtSearch.Text.Trim();
+                string searchQuery = "SELECT * FROM Orders WHERE OrderDate = @searchValue";
 
+                if (DateTime.TryParseExact(searchValue, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateValue))
+                {
+                    // jika input dari textbox merupakan format tanggal yang valid
+
+                    SqlCommand cmd = new SqlCommand(searchQuery, con);
+                    cmd.Parameters.AddWithValue("@searchValue", dateValue);
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    dataTable.Clear();
+                    sda.Fill(dataTable);
+                    DataGridTransaction.DataSource = dataTable;
+
+                }
+            }
+
+            con.Close();
+        }
         private void btnClear_Click(object sender, EventArgs e)
         {
+            ClearInsert();
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            InsertData();
+            ClearInsert();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteData();
             ClearInsert();
         }
 
@@ -275,5 +337,15 @@ namespace AoLv2
         {
             this.Close();
         }
+
+       
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DisplayDataSearch();
+
+        }
+
+       
     }
 }
