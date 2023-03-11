@@ -43,7 +43,7 @@ namespace AoLv2
             return dataTable;
         }
 
-        public void fixBug()
+        public void fixSearchBug()
         {
             txtSearch.Text = "IO002";
             txtSearch.Text = "";
@@ -52,7 +52,7 @@ namespace AoLv2
         {
             fetchDataCustomer();
             fillData();
-            fixBug();
+            fixSearchBug();
         }
         public string GenerateID()
         {
@@ -162,6 +162,29 @@ namespace AoLv2
             fillData();
         }
 
+        public void UpdateData()
+        {
+            con.Open();
+            string tid = txtOrderID.Text;
+            string t0 = txtCustomerID.Text;
+            string t1 = comboCustomer.Text;
+            DateTime temp = DatePicker.Value;
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandText = "UPDATE Orders SET CustomerID = @t0, OrderDate = @temp WHERE OrderID = @tid;";
+            cmd.Parameters.AddWithValue("@tid", tid);
+            cmd.Parameters.AddWithValue("@t0", t0);
+            cmd.Parameters.AddWithValue("@temp", temp);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            DataGridTransaction.Columns.Clear();
+            dataTable.Clear();
+            fillData();
+            ClearInsert();
+            MessageBox.Show("Update Berhasil!!!");
+            fixSearchBug();
+        }
         public void DeleteData()
         {
             string orderId = txtOrderID.Text;
@@ -205,6 +228,8 @@ namespace AoLv2
             txtOrderID.Text = "";
             txtCustomerID.Text = "";
             comboCustomer.Text = "";
+            comboSearch.Text = "";
+            txtSearch.Text = "";
         }
 
         
@@ -257,7 +282,6 @@ namespace AoLv2
            
             if (comboSearch.Text == "")
             {
-
                 string q = "SELECT OrderID, CustomerID, OrderDate FROM Orders WHERE OrderID LIKE '" + txtSearch.Text + "%' OR CustomerID LIKE'" + txtSearch.Text + "%' OR OrderDate LIKE'" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -346,6 +370,9 @@ namespace AoLv2
 
         }
 
-       
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
     }
 }

@@ -149,17 +149,21 @@ namespace AoLv2.Insertion
             fillData();
             ClearInsert();
             MessageBox.Show("Update Berhasil!!!");
-
+            fixSearchBug();
         }
-
+        public void fixSearchBug()
+        {
+            txtSearch.Text = "IO002";
+            txtSearch.Text = "";
+        }
         public void ViewData()
         {
             ButtonUpdateDeleteEnable();
             int selectedIndex = DataGridDetail.CurrentCell.RowIndex;
-            txtOrderDetailID.Text = DataGridDetail.Rows[selectedIndex].Cells[0].Value.ToString();
-            comboOrder.Text = DataGridDetail.Rows[selectedIndex].Cells[1].Value.ToString();
-            comboBook.Text = DataGridDetail.Rows[selectedIndex].Cells[2].Value.ToString();
-            txtQuantity.Value = Convert.ToInt32(DataGridDetail.Rows[selectedIndex].Cells[3].Value);
+            txtOrderDetailID.Text = DataGridDetail.Rows[selectedIndex].Cells[0+1].Value.ToString();
+            comboOrder.Text = DataGridDetail.Rows[selectedIndex].Cells[1+1].Value.ToString();
+            comboBook.Text = DataGridDetail.Rows[selectedIndex].Cells[2+1].Value.ToString();
+            txtQuantity.Value = Convert.ToInt32(DataGridDetail.Rows[selectedIndex].Cells[3+1].Value);
         }
 
         public void DisplayDataSearch()
@@ -236,6 +240,8 @@ namespace AoLv2.Insertion
             comboOrder.Text = "";
             comboBook.Text = "";
             txtOrderDetailID.Text = "";
+            comboSearch.Text = "";
+            txtSearch.Text = "";
             txtQuantity.Value = 0;
         }
 
@@ -257,6 +263,7 @@ namespace AoLv2.Insertion
             fetchDataFromOrderTable();
             fetchDataFromBookTable();
             fillData();
+            fixSearchBug();
 
         }
 
@@ -276,17 +283,14 @@ namespace AoLv2.Insertion
             UpdateData();
         }
 
-        private void DataGridDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 4)
-            {
-                ViewData();
-            }
-        }
+       
 
         private void DataGridDetail_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0 && DataGridDetail.Columns[e.ColumnIndex].Name != "View" && DataGridDetail.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                ViewData();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -297,6 +301,11 @@ namespace AoLv2.Insertion
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInsert();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DisplayDataSearch();
         }
     }
 }

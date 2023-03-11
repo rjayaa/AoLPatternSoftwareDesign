@@ -206,7 +206,7 @@ namespace AoLv2.Insertion
             this.DataGridDetail.Size = new System.Drawing.Size(566, 150);
             this.DataGridDetail.TabIndex = 4;
             this.DataGridDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridDetail_CellClick);
-            this.DataGridDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridDetail_CellContentClick);
+            
             // 
             // comboSearch
             // 
@@ -224,11 +224,11 @@ namespace AoLv2.Insertion
             // 
             // txtSearch
             // 
-            this.txtSearch.Enabled = false;
             this.txtSearch.Location = new System.Drawing.Point(208, 267);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 26;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label4
             // 
