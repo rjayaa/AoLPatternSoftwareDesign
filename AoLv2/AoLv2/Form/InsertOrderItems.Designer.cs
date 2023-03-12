@@ -47,6 +47,8 @@ namespace AoLv2.Insertion
             this.comboSearch = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridDetail)).BeginInit();
@@ -74,6 +76,8 @@ namespace AoLv2.Insertion
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtOrderDetailID);
             this.groupBox1.Controls.Add(this.label6);
@@ -90,14 +94,14 @@ namespace AoLv2.Insertion
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(528, 249);
+            this.groupBox1.Size = new System.Drawing.Size(793, 249);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(298, 193);
+            this.button1.Location = new System.Drawing.Point(564, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 50);
             this.button1.TabIndex = 26;
@@ -108,7 +112,7 @@ namespace AoLv2.Insertion
             // txtOrderDetailID
             // 
             this.txtOrderDetailID.Enabled = false;
-            this.txtOrderDetailID.Location = new System.Drawing.Point(404, 36);
+            this.txtOrderDetailID.Location = new System.Drawing.Point(670, 40);
             this.txtOrderDetailID.Name = "txtOrderDetailID";
             this.txtOrderDetailID.Size = new System.Drawing.Size(100, 23);
             this.txtOrderDetailID.TabIndex = 25;
@@ -117,7 +121,7 @@ namespace AoLv2.Insertion
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(295, 38);
+            this.label6.Location = new System.Drawing.Point(561, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 16);
             this.label6.TabIndex = 24;
@@ -125,7 +129,7 @@ namespace AoLv2.Insertion
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(404, 137);
+            this.btnDelete.Location = new System.Drawing.Point(670, 132);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 20;
@@ -135,7 +139,7 @@ namespace AoLv2.Insertion
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(298, 137);
+            this.btnClear.Location = new System.Drawing.Point(564, 132);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 50);
             this.btnClear.TabIndex = 21;
@@ -145,7 +149,7 @@ namespace AoLv2.Insertion
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(404, 75);
+            this.btnUpdate.Location = new System.Drawing.Point(670, 70);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 50);
             this.btnUpdate.TabIndex = 22;
@@ -155,7 +159,7 @@ namespace AoLv2.Insertion
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(298, 75);
+            this.btnInsert.Location = new System.Drawing.Point(564, 70);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(100, 50);
             this.btnInsert.TabIndex = 23;
@@ -201,12 +205,11 @@ namespace AoLv2.Insertion
             this.DataGridDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DataGridDetail.Location = new System.Drawing.Point(0, 300);
+            this.DataGridDetail.Location = new System.Drawing.Point(0, 420);
             this.DataGridDetail.Name = "DataGridDetail";
-            this.DataGridDetail.Size = new System.Drawing.Size(566, 150);
+            this.DataGridDetail.Size = new System.Drawing.Size(917, 150);
             this.DataGridDetail.TabIndex = 4;
             this.DataGridDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridDetail_CellClick);
-            
             // 
             // comboSearch
             // 
@@ -240,11 +243,27 @@ namespace AoLv2.Insertion
             this.label4.TabIndex = 26;
             this.label4.Text = "Search";
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(279, 76);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 27;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(279, 35);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 23);
+            this.textBox2.TabIndex = 28;
+            // 
             // InsertOrderItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 450);
+            this.ClientSize = new System.Drawing.Size(917, 570);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.comboSearch);
@@ -282,5 +301,7 @@ namespace AoLv2.Insertion
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

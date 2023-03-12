@@ -36,13 +36,14 @@ namespace AoLv2
         }
         public string GenerateID()
         {
-            string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
-            string query = "SELECT TOP 1 CustomerID FROM Customers ORDER BY CustomerID DESC";
-            string id = "PN";
+            string prefix = "CUS"; // ganti dengan tiga huruf awalan yang diinginkan
+            string query = "SELECT TOP 1 CustomerID FROM Customers WHERE LEFT(CustomerID, 3) = @prefix ORDER BY CustomerID DESC";
+            string id = "";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@prefix", prefix);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -50,13 +51,13 @@ namespace AoLv2
                 {
                     reader.Read();
                     string lastID = reader.GetString(0);
-                    string subString = lastID.Substring(2, 3);
+                    string subString = lastID.Substring(3, 3);
                     int intID = int.Parse(subString) + 1;
-                    id += intID.ToString("D3");
+                    id = prefix + intID.ToString("D3");
                 }
                 else
                 {
-                    id += "001";
+                    id = prefix + "001";
                 }
 
                 reader.Close();
@@ -68,23 +69,24 @@ namespace AoLv2
         public void fillData()
         {
             DataGridPelanggan.DataSource = getDataTable();
-            DataGridViewButtonColumn colBut = new DataGridViewButtonColumn();
-            colBut.Name = "";
-            colBut.Text = "View";
-            colBut.UseColumnTextForButtonValue = true;
+            var colBut = new DataGridViewButtonColumn
+            {
+                Name = "",
+                Text = "View",
+                UseColumnTextForButtonValue = true
+            };
             DataGridPelanggan.Columns.Add(colBut);
 
-            DataGridPelanggan.Columns[0].ReadOnly = true;
-            DataGridPelanggan.Columns[1].ReadOnly = true;
-            DataGridPelanggan.Columns[2].ReadOnly = true;
-            DataGridPelanggan.Columns[3].ReadOnly = true;
-            DataGridPelanggan.Columns[4].ReadOnly = true;
+            foreach (DataGridViewColumn column in DataGridPelanggan.Columns)
+            {
+                column.ReadOnly = true;
+            }
 
-            // dua kode dibawah ini buat menghapus default column & row di datagrid
             DataGridPelanggan.AllowUserToAddRows = false;
             DataGridPelanggan.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
+            fixSearchBug();
         }
 
         public void DisableViewAndButton()
@@ -144,6 +146,7 @@ namespace AoLv2
             dataTable.Clear();
             fillData();
             ClearInsert();
+            
         }
 
         public void UpdateData()
@@ -178,10 +181,9 @@ namespace AoLv2
 
         public void DisplayDataSearch()
         {
-
-
+            
             con.Open();
-            if (comboBox.Text == "")
+            if (comboSearch.Text == "")
             {
                 string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Customers WHERE CustomerID LIKE '" + txtSearch.Text + "%' OR Name LIKE '" + txtSearch.Text + "%' OR Address LIKE '" + txtSearch.Text + "%' OR Email LIKE '" + txtSearch.Text + "%' OR Phone LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -191,7 +193,7 @@ namespace AoLv2
                 DataGridPelanggan.DataSource = st;
 
             }
-            else if (comboBox.Text == "Customer ID")
+            else if (comboSearch.Text == "Customer ID")
             {
                 string q = "SELECT CustomerID, Name, Address, Phone, Email FROM Customers WHERE CustomerID LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -200,7 +202,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Name")
+            else if (comboSearch.Text == "Name")
             {
                 string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Name LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -209,7 +211,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Address")
+            else if (comboSearch.Text == "Address")
             {
                 string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Address LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -218,7 +220,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Phone")
+            else if (comboSearch.Text == "Phone")
             {
                 string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Phone LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -227,7 +229,7 @@ namespace AoLv2
                 st.Load(reader);
                 DataGridPelanggan.DataSource = st;
             }
-            else if (comboBox.Text == "Email")
+            else if (comboSearch.Text == "Email")
             {
                 string q = "SELECT CustomerID, Name, Address, Phone, Email  FROM Customers WHERE Email LIKE '" + txtSearch.Text + "%'";
                 SqlCommand cmd = new SqlCommand(q, con);
@@ -239,29 +241,17 @@ namespace AoLv2
             con.Close();
         }
 
+        
         public void ViewData()
         {
             ButtonUpdateDeleteEnable();
-            int selectedIndex = DataGridPelanggan.CurrentCell.RowIndex;
-            txtIDPelanggan.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0].Value.ToString();
-            txtNama.Text = DataGridPelanggan.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtAlamat.Text = DataGridPelanggan.Rows[selectedIndex].Cells[2].Value.ToString();
-            txtTelepon.Text = DataGridPelanggan.Rows[selectedIndex].Cells[3].Value.ToString();
-            txtEmail.Text = DataGridPelanggan.Rows[selectedIndex].Cells[4].Value.ToString();
-
+            txtIDPelanggan.Text = DataGridPelanggan.SelectedRows[0].Cells[0 + 1].Value.ToString();
+            txtNama.Text = DataGridPelanggan.SelectedRows[0].Cells[1 + 1].Value.ToString();
+            txtAlamat.Text = DataGridPelanggan.SelectedRows[0].Cells[2 + 1].Value.ToString();
+            txtTelepon.Text = DataGridPelanggan.SelectedRows[0].Cells[3 + 1].Value.ToString();
+            txtEmail.Text = DataGridPelanggan.SelectedRows[0].Cells[4 + 1].Value.ToString();
         }
-
-        public void ViewDataWhileSearching()
-        {
-            ButtonUpdateDeleteEnable();
-            int selectedIndex = DataGridPelanggan.CurrentCell.RowIndex;
-            txtIDPelanggan.Text = DataGridPelanggan.Rows[selectedIndex].Cells[0 + 1].Value.ToString();
-            txtNama.Text = DataGridPelanggan.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
-            txtAlamat.Text = DataGridPelanggan.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
-            txtTelepon.Text = DataGridPelanggan.Rows[selectedIndex].Cells[3 + 1].Value.ToString();
-            txtEmail.Text = DataGridPelanggan.Rows[selectedIndex].Cells[4 + 1].Value.ToString();
-
-        }
+ 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
             // Regular expression untuk validasi email
@@ -316,22 +306,6 @@ namespace AoLv2
             }
         }
 
-        private void DataGridPelanggan_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 5)
-            {
-                ViewData();
-            }
-        }
-
-        private void DataGridPelanggan_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                ViewDataWhileSearching();
-            }
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DisplayDataSearch();
@@ -340,6 +314,21 @@ namespace AoLv2
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        public void fixSearchBug()
+        {
+            txtSearch.Text = "CUS001";
+            txtSearch.Text = "";
+        }
+        private void DataGridPelanggan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if(DataGridPelanggan.Columns[e.ColumnIndex].Name == "")
+            {
+                ViewData();
+            }
         }
     }
 

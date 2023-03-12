@@ -37,7 +37,7 @@ namespace AoLv2
             this.txtIDPelanggan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.comboSearch = new System.Windows.Forms.ComboBox();
             this.DataGridPelanggan = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTelepon = new System.Windows.Forms.TextBox();
@@ -127,20 +127,20 @@ namespace AoLv2
             this.txtEmail.TabIndex = 7;
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
-            // comboBox
+            // comboSearch
             // 
-            this.comboBox.FormattingEnabled = true;
-            this.comboBox.Items.AddRange(new object[] {
+            this.comboSearch.FormattingEnabled = true;
+            this.comboSearch.Items.AddRange(new object[] {
             "",
             "Customer ID",
             "Name",
             "Address",
             "Phone",
             "Email"});
-            this.comboBox.Location = new System.Drawing.Point(99, 276);
-            this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(130, 21);
-            this.comboBox.TabIndex = 17;
+            this.comboSearch.Location = new System.Drawing.Point(99, 276);
+            this.comboSearch.Name = "comboSearch";
+            this.comboSearch.Size = new System.Drawing.Size(130, 21);
+            this.comboSearch.TabIndex = 17;
             // 
             // DataGridPelanggan
             // 
@@ -149,9 +149,10 @@ namespace AoLv2
             this.DataGridPelanggan.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DataGridPelanggan.Location = new System.Drawing.Point(0, 319);
             this.DataGridPelanggan.Name = "DataGridPelanggan";
+            this.DataGridPelanggan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridPelanggan.Size = new System.Drawing.Size(640, 138);
             this.DataGridPelanggan.TabIndex = 16;
-            this.DataGridPelanggan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellClick);
+            //this.DataGridPelanggan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellClick);
             this.DataGridPelanggan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellContentClick);
             // 
             // label4
@@ -267,7 +268,7 @@ namespace AoLv2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 457);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.comboBox);
+            this.Controls.Add(this.comboSearch);
             this.Controls.Add(this.DataGridPelanggan);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
@@ -292,7 +293,7 @@ namespace AoLv2
         private System.Windows.Forms.TextBox txtIDPelanggan;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.ComboBox comboBox;
+        private System.Windows.Forms.ComboBox comboSearch;
         private System.Windows.Forms.DataGridView DataGridPelanggan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTelepon;

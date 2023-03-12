@@ -31,6 +31,7 @@ namespace AoLv2
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@ namespace AoLv2
             this.comboSearch = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTransaction)).BeginInit();
             this.SuspendLayout();
@@ -81,14 +81,24 @@ namespace AoLv2
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 323);
+            this.groupBox1.Size = new System.Drawing.Size(777, 323);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transaction";
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(671, 153);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(100, 50);
+            this.btnUpdate.TabIndex = 20;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(372, 265);
+            this.btnExit.Location = new System.Drawing.Point(671, 265);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 50);
             this.btnExit.TabIndex = 19;
@@ -98,7 +108,7 @@ namespace AoLv2
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(266, 209);
+            this.btnClear.Location = new System.Drawing.Point(565, 209);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 50);
             this.btnClear.TabIndex = 18;
@@ -116,7 +126,7 @@ namespace AoLv2
             // 
             // btnDetail
             // 
-            this.btnDetail.Location = new System.Drawing.Point(315, 22);
+            this.btnDetail.Location = new System.Drawing.Point(603, 22);
             this.btnDetail.Name = "btnDetail";
             this.btnDetail.Size = new System.Drawing.Size(157, 25);
             this.btnDetail.TabIndex = 19;
@@ -136,7 +146,7 @@ namespace AoLv2
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(372, 209);
+            this.btnDelete.Location = new System.Drawing.Point(671, 209);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 13;
@@ -146,11 +156,11 @@ namespace AoLv2
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(266, 153);
+            this.btnAdd.Location = new System.Drawing.Point(565, 153);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 50);
             this.btnAdd.TabIndex = 13;
-            this.btnAdd.Text = " Add";
+            this.btnAdd.Text = "Insert";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -203,10 +213,10 @@ namespace AoLv2
             this.DataGridTransaction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridTransaction.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DataGridTransaction.Location = new System.Drawing.Point(0, 403);
+            this.DataGridTransaction.Location = new System.Drawing.Point(0, 504);
             this.DataGridTransaction.Name = "DataGridTransaction";
             this.DataGridTransaction.RowHeadersVisible = false;
-            this.DataGridTransaction.Size = new System.Drawing.Size(547, 113);
+            this.DataGridTransaction.Size = new System.Drawing.Size(854, 113);
             this.DataGridTransaction.TabIndex = 2;
             this.DataGridTransaction.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridTransaction_CellClick);
             // 
@@ -240,21 +250,11 @@ namespace AoLv2
             this.txtSearch.TabIndex = 20;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(372, 153);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(100, 50);
-            this.btnUpdate.TabIndex = 20;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // InsertOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 516);
+            this.ClientSize = new System.Drawing.Size(854, 617);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboSearch);

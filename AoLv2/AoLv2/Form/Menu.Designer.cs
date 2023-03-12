@@ -111,7 +111,7 @@ namespace AoLv2
             this.groupBox2.Size = new System.Drawing.Size(285, 100);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pembayaran ||  Faktur";
+            this.groupBox2.Text = "Buku";
             // 
             // btnBook
             // 

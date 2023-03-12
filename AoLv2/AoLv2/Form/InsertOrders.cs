@@ -42,10 +42,30 @@ namespace AoLv2
 
             return dataTable;
         }
+        public void fillData()
+        {
+            DataGridTransaction.DataSource = getDataTable();
+
+            DataGridViewButtonColumn colBut = new DataGridViewButtonColumn();
+            colBut.Name = "";
+            colBut.Text = "View";
+            colBut.UseColumnTextForButtonValue = true;
+            DataGridTransaction.Columns.Add(colBut);
+
+            DataGridTransaction.Columns[0].ReadOnly = true;
+            DataGridTransaction.Columns[1].ReadOnly = true;
+            DataGridTransaction.Columns[2].ReadOnly = true;
+
+
+            // dua kode dibawah ini buat menghapus default column & row di datagrid
+            DataGridTransaction.AllowUserToAddRows = false;
+            DataGridTransaction.RowHeadersVisible = false;
+            con.Close();
+        }
 
         public void fixSearchBug()
         {
-            txtSearch.Text = "IO002";
+            txtSearch.Text = "CUS001";
             txtSearch.Text = "";
         }
         private void _4InsertTransaksi_Load(object sender, EventArgs e)
@@ -56,12 +76,14 @@ namespace AoLv2
         }
         public string GenerateID()
         {
-            string query = "SELECT TOP 1 OrderID FROM Orders ORDER BY OrderID DESC";
-            string id = "IO";
+            string prefix = "ORD"; // ganti dengan tiga huruf awalan yang diinginkan
+            string query = "SELECT TOP 1 OrderID FROM Orders WHERE LEFT(OrderID, 3) = @prefix ORDER BY OrderID DESC";
+            string id = "";
 
             using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@prefix", prefix);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -69,13 +91,13 @@ namespace AoLv2
                 {
                     reader.Read();
                     string lastID = reader.GetString(0);
-                    string subString = lastID.Substring(2, 3);
+                    string subString = lastID.Substring(3, 3);
                     int intID = int.Parse(subString) + 1;
-                    id += intID.ToString("D3");
+                    id = prefix + intID.ToString("D3");
                 }
                 else
                 {
-                    id += "001";
+                    id = prefix + "001";
                 }
 
                 reader.Close();
@@ -117,29 +139,6 @@ namespace AoLv2
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetCustomerName(comboCustomer.Text);
-        }
-
-       
-
-        public void fillData()
-        {
-            DataGridTransaction.DataSource = getDataTable();
-
-            DataGridViewButtonColumn colBut = new DataGridViewButtonColumn();
-            colBut.Name = "";
-            colBut.Text = "View";
-            colBut.UseColumnTextForButtonValue = true;
-            DataGridTransaction.Columns.Add(colBut);
-
-            DataGridTransaction.Columns[0].ReadOnly = true;
-            DataGridTransaction.Columns[1].ReadOnly = true;
-            DataGridTransaction.Columns[2].ReadOnly = true;
-
-
-            // dua kode dibawah ini buat menghapus default column & row di datagrid
-            DataGridTransaction.AllowUserToAddRows = false;
-            DataGridTransaction.RowHeadersVisible = false;
-            con.Close();
         }
 
 
@@ -220,6 +219,7 @@ namespace AoLv2
             dataTable.Clear();
             fillData();
             ClearInsert();
+            
         }
 
 
@@ -256,6 +256,7 @@ namespace AoLv2
 
         public void ViewData()
         {
+            
             int selectedIndex = DataGridTransaction.CurrentCell.RowIndex;
             txtOrderID.Text = DataGridTransaction.Rows[selectedIndex].Cells[0+1].Value.ToString();
             txtCustomerID.Text = DataGridTransaction.Rows[selectedIndex].Cells[1+1].Value.ToString();
@@ -342,6 +343,7 @@ namespace AoLv2
         {
             DeleteData();
             ClearInsert();
+            fixSearchBug();
         }
 
         private void btnDetail_Click(object sender, EventArgs e)

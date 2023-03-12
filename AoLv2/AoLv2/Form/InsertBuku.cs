@@ -13,7 +13,6 @@ namespace AoLv2
 {
     public partial class InsertBuku : Form
     {
-        // SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
         SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
         DataTable dataTable = new DataTable();
         public InsertBuku()
@@ -35,15 +34,18 @@ namespace AoLv2
             return dataTable;
         }
 
+
+
         public string GenerateID()
         {
-            string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
-            string query = "SELECT TOP 1 BookID FROM Books ORDER BY BookID DESC";
-            string id = "BD";
+            string prefix = "BOO"; // ganti dengan tiga huruf awalan yang diinginkan
+            string query = "SELECT TOP 1 BookID FROM Books WHERE LEFT(BookID, 3) = @prefix ORDER BY BookID DESC";
+            string id = "";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
             {
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@prefix", prefix);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -51,13 +53,13 @@ namespace AoLv2
                 {
                     reader.Read();
                     string lastID = reader.GetString(0);
-                    string subString = lastID.Substring(2, 3);
+                    string subString = lastID.Substring(3, 3);
                     int intID = int.Parse(subString) + 1;
-                    id += intID.ToString("D3");
+                    id = prefix + intID.ToString("D3");
                 }
                 else
                 {
-                    id += "001";
+                    id = prefix + "001";
                 }
 
                 reader.Close();
@@ -89,6 +91,7 @@ namespace AoLv2
             DataGridBuku.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
+            fixSearchBug();
         }
         public void DisableViewAndButton()
         {
@@ -259,43 +262,36 @@ namespace AoLv2
             }
             con.Close();
         }
+        
+        public void fixSearchBug()
+        {
+            txtSearch.Text = "BOK001";
+            txtSearch.Text = "";
+        }
         public void ViewData()
         {
+            
             ButtonUpdateDeleteEnable();
-          
-                int selectedIndex = DataGridBuku.CurrentCell.RowIndex;
-                txtIDBuku.Text = DataGridBuku.Rows[selectedIndex].Cells[0].Value.ToString();
-                txtJudulBuku.Text = DataGridBuku.Rows[selectedIndex].Cells[1].Value.ToString();
-                txtPengarang.Text = DataGridBuku.Rows[selectedIndex].Cells[2].Value.ToString();
-                txtPenerbit.Text = DataGridBuku.Rows[selectedIndex].Cells[3].Value.ToString();
-                txtTahunTerbit.Text = DataGridBuku.Rows[selectedIndex].Cells[4].Value.ToString();
-                txtHarga.Value = Convert.ToDecimal(DataGridBuku.Rows[selectedIndex].Cells[5].Value);
-                txtStock.Value = Convert.ToDecimal(DataGridBuku.Rows[selectedIndex].Cells[6].Value); 
-           
-        }
+            int selectedIndex = DataGridBuku.CurrentCell.RowIndex;
+            txtIDBuku.Text = DataGridBuku.Rows[selectedIndex].Cells[0 + 1].Value.ToString();
+            txtJudulBuku.Text = DataGridBuku.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
+            txtPengarang.Text = DataGridBuku.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
+            txtPenerbit.Text = DataGridBuku.Rows[selectedIndex].Cells[3 + 1].Value.ToString();
+            txtTahunTerbit.Text = DataGridBuku.Rows[selectedIndex].Cells[4 + 1].Value.ToString();
 
-        public void ViewDataWhileSearching()
-        {
-                int selectedIndex = DataGridBuku.CurrentCell.RowIndex;
-                txtIDBuku.Text = DataGridBuku.Rows[selectedIndex].Cells[0+1].Value.ToString();
-                txtJudulBuku.Text = DataGridBuku.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
-                txtPengarang.Text = DataGridBuku.Rows[selectedIndex].Cells[2 + 1].Value.ToString();
-                txtPenerbit.Text = DataGridBuku.Rows[selectedIndex].Cells[3 + 1].Value.ToString();
-                txtTahunTerbit.Text = DataGridBuku.Rows[selectedIndex].Cells[4 + 1].Value.ToString();
-
-                // i dont know how tf this code works
-                string hargaStr = DataGridBuku.Rows[selectedIndex].Cells[5 + 1].Value.ToString();
-                decimal harga;
-                if (!string.IsNullOrEmpty(hargaStr) && decimal.TryParse(hargaStr, out harga))
-                 {
-                     txtHarga.Value = harga;
-                 }
-                 string stocktemp = DataGridBuku.Rows[selectedIndex].Cells[6 + 1].Value.ToString();
-                 decimal stock;
-                 if (!string.IsNullOrEmpty(stocktemp) && decimal.TryParse(stocktemp, out stock))
-                 {
-                     txtStock.Value = stock;
-                 }
+            // i dont know how tf this code works
+            string hargaStr = DataGridBuku.Rows[selectedIndex].Cells[5 + 1].Value.ToString();
+            decimal harga;
+            if (!string.IsNullOrEmpty(hargaStr) && decimal.TryParse(hargaStr, out harga))
+            {
+                txtHarga.Value = harga;
+            }
+            string stocktemp = DataGridBuku.Rows[selectedIndex].Cells[6 + 1].Value.ToString();
+            decimal stock;
+            if (!string.IsNullOrEmpty(stocktemp) && decimal.TryParse(stocktemp, out stock))
+            {
+                txtStock.Value = stock;
+            }
         }
 
 
@@ -326,6 +322,7 @@ namespace AoLv2
         private void _2InsertBuku_Load(object sender, EventArgs e)
         {
             fillData();
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -363,21 +360,6 @@ namespace AoLv2
             }
         }
 
-        private void DataGridBuku_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.ColumnIndex == 6)
-            {
-                ViewData();
-            }
-        }
-        private void DataGridBuku_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                ViewDataWhileSearching();
-            }
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DisplayDataSearch();
@@ -386,6 +368,14 @@ namespace AoLv2
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DataGridBuku_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGridBuku.Columns[e.ColumnIndex].Name == "")
+            {
+                ViewData();
+            }
         }
     }
 }

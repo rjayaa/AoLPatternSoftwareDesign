@@ -86,8 +86,17 @@
     <Compile Include="Form\InsertOrders.Designer.cs">
       <DependentUpon>InsertOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\InsertPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\InsertPayment.Designer.cs">
+      <DependentUpon>InsertPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\InsertPayment.resx">
+      <DependentUpon>InsertPayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>

@@ -280,7 +280,7 @@ namespace AoLv2
             this.DataGridBuku.Name = "DataGridBuku";
             this.DataGridBuku.Size = new System.Drawing.Size(713, 175);
             this.DataGridBuku.TabIndex = 1;
-            this.DataGridBuku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuku_CellClick);
+            
             this.DataGridBuku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridBuku_CellContentClick);
             // 
             // comboBox

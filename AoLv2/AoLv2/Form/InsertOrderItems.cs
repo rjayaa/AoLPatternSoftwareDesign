@@ -35,38 +35,6 @@ namespace AoLv2.Insertion
 
             return dataTable;
         }
-
-        public string GenerateID()
-        {
-            //string connectionString = (@"Data Source=.\SQLEXPRESS;Initial Catalog=tokoBukuu;Integrated Security=True;");
-            string query = "SELECT TOP 1 OrderItemID FROM OrderItems ORDER BY OrderItemID DESC";
-            string id = "TP";
-
-            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    string lastID = reader.GetString(0);
-                    string subString = lastID.Substring(2, 3);
-                    int intID = int.Parse(subString) + 1;
-                    id += intID.ToString("D3");
-                }
-                else
-                {
-                    id += "001";
-                }
-
-                reader.Close();
-            }
-
-            return id;
-        }
-
         public void fillData()
         {
             DataGridDetail.DataSource = getDataTable();
@@ -87,6 +55,39 @@ namespace AoLv2.Insertion
             DisableViewAndButton();
             con.Close();
         }
+        public string GenerateID()
+        {
+            string prefix = "OID"; // ganti dengan tiga huruf awalan yang diinginkan
+            string query = "SELECT TOP 1 OrderItemID FROM OrderItems WHERE LEFT(OrderItemID, 3) = @prefix ORDER BY OrderItemID DESC";
+            string id = "";
+
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@prefix", prefix);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    string lastID = reader.GetString(0);
+                    string subString = lastID.Substring(3, 3);
+                    int intID = int.Parse(subString) + 1;
+                    id = prefix + intID.ToString("D3");
+                }
+                else
+                {
+                    id = prefix + "001";
+                }
+
+                reader.Close();
+            }
+
+            return id;
+        }
+
+
         public void InsertData()
         {
             con.Open();
@@ -153,7 +154,7 @@ namespace AoLv2.Insertion
         }
         public void fixSearchBug()
         {
-            txtSearch.Text = "IO002";
+            txtSearch.Text = "OID001";
             txtSearch.Text = "";
         }
         public void ViewData()

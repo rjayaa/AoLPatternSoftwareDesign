@@ -27,16 +27,16 @@ namespace AoLv2
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            InsertOrderItems customer = new InsertOrderItems();
-            customer.Show();
-            customer.FormClosed += Menu_FormClosed;
+            InsertPayment payment = new InsertPayment();
+            payment.Show();
+            payment.FormClosed += Menu_FormClosed;
         }
         private void btnTransaksi_Click(object sender, EventArgs e)
         {
             this.Hide();
-            InsertOrders customer = new InsertOrders();
-            customer.Show();
-            customer.FormClosed += Menu_FormClosed;
+            InsertOrders orders = new InsertOrders();
+            orders.Show();
+            orders.FormClosed += Menu_FormClosed;
         }
 
         private void btnBook_Click(object sender, EventArgs e)
