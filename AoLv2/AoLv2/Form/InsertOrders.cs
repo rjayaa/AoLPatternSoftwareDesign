@@ -25,7 +25,6 @@ namespace AoLv2
         {
             InitializeComponent();
         }
-
         public DataTable getDataTable()
         {
 
@@ -61,8 +60,8 @@ namespace AoLv2
             DataGridTransaction.AllowUserToAddRows = false;
             DataGridTransaction.RowHeadersVisible = false;
             con.Close();
+            fixSearchBug();
         }
-
         public void fixSearchBug()
         {
             txtSearch.Text = "CUS001";
@@ -71,8 +70,9 @@ namespace AoLv2
         private void _4InsertTransaksi_Load(object sender, EventArgs e)
         {
             fetchDataCustomer();
+            txtOrderID.Text = GenerateID();
             fillData();
-            fixSearchBug();
+            
         }
         public string GenerateID()
         {
@@ -117,7 +117,6 @@ namespace AoLv2
             }
             con.Close();
         }
-
         public void GetCustomerName(string customerName)
         {
             SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
@@ -134,19 +133,15 @@ namespace AoLv2
 
             con.Close();
         }
-
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetCustomerName(comboCustomer.Text);
         }
-
-
         public void InsertData()
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@OrderID, @CustomerID, @OrderDate)", con);
-            cmd.Parameters.AddWithValue("@OrderID", GenerateID());
+            cmd.Parameters.AddWithValue("@OrderID", txtOrderID.Text);
             cmd.Parameters.AddWithValue("@CustomerID", txtCustomerID.Text);
             DateTime orderDate = DateTime.Parse(DatePicker.Text);
             cmd.Parameters.AddWithValue("@OrderDate", orderDate);
@@ -160,7 +155,6 @@ namespace AoLv2
 
             fillData();
         }
-
         public void UpdateData()
         {
             con.Open();
@@ -221,19 +215,14 @@ namespace AoLv2
             ClearInsert();
             
         }
-
-
         public void ClearInsert()
         {
-            txtOrderID.Text = "";
+            txtOrderID.Text = GenerateID();
             txtCustomerID.Text = "";
             comboCustomer.Text = "";
             comboSearch.Text = "";
             txtSearch.Text = "";
         }
-
-        
-
         public string GetCustomerID(string id)
         {
             string customerName = "";
@@ -253,7 +242,6 @@ namespace AoLv2
 
             return customerName;
         }
-
         public void ViewData()
         {
             
@@ -267,14 +255,6 @@ namespace AoLv2
             if (DateTime.TryParse(DataGridTransaction.Rows[selectedIndex].Cells[2+1].Value.ToString(), out dateValues))
             {
                 DatePicker.Value = dateValues;
-            }
-        }
-
-        private void DataGridTransaction_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && DataGridTransaction.Columns[e.ColumnIndex].Name != "View" && DataGridTransaction.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                ViewData();
             }
         }
         public void DisplayDataSearch()
@@ -332,40 +312,29 @@ namespace AoLv2
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInsert();
+            txtOrderID.Text = GenerateID();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             InsertData();
             ClearInsert();
+            txtOrderID.Text = GenerateID();
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
             ClearInsert();
-            fixSearchBug();
+            txtOrderID.Text = GenerateID();
         }
-
-        private void btnDetail_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            InsertOrderItems customer = new InsertOrderItems();
-            customer.Show();
-            customer.FormClosed += InsertOrders_FormClosed;
-        }
-
+       
         private void InsertOrders_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-       
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DisplayDataSearch();
@@ -375,6 +344,24 @@ namespace AoLv2
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateData();
+            ClearInsert();
+            txtOrderID.Text = GenerateID();
+        }
+
+        private void DataGridTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(DataGridTransaction.Columns[e.ColumnIndex].Name == "")
+            {
+                ViewData();
+            }
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InsertOrderItems customer = new InsertOrderItems();
+            customer.Show();
+            customer.FormClosed += InsertOrders_FormClosed;
         }
     }
 }

@@ -104,7 +104,7 @@ namespace AoLv2
 
         public void ClearInsert()
         {
-            txtIDPelanggan.Text = "";
+            txtIDPelanggan.Text = GenerateID();
             txtNama.Text = "";
             txtAlamat.Text = "";
             txtTelepon.Text = "";
@@ -115,7 +115,7 @@ namespace AoLv2
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO Customers VALUES (@CustomerID, @Name, @Address,@Phone, @Email)", con);
-            cmd.Parameters.AddWithValue("@CustomerID", GenerateID());
+            cmd.Parameters.AddWithValue("@CustomerID", txtIDPelanggan.Text);
             cmd.Parameters.AddWithValue("@Name", txtNama.Text);
             cmd.Parameters.AddWithValue("@Address", txtAlamat.Text);
             cmd.Parameters.AddWithValue("@Phone", txtTelepon.Text);
@@ -241,7 +241,6 @@ namespace AoLv2
             con.Close();
         }
 
-        
         public void ViewData()
         {
             ButtonUpdateDeleteEnable();
@@ -268,6 +267,7 @@ namespace AoLv2
 
         private void InsertCustomer_Load(object sender, EventArgs e)
         {
+            txtIDPelanggan.Text = GenerateID();
             fillData();
         }
 
@@ -275,6 +275,7 @@ namespace AoLv2
         {
             InsertData();
             ClearInsert();
+            txtIDPelanggan.Text = GenerateID();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -284,6 +285,7 @@ namespace AoLv2
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
+            txtIDPelanggan.Text = GenerateID();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -315,7 +317,6 @@ namespace AoLv2
         {
             this.Close();
         }
-
 
         public void fixSearchBug()
         {

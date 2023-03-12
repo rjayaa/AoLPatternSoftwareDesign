@@ -30,6 +30,7 @@ namespace AoLv2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@ namespace AoLv2
             this.label6 = new System.Windows.Forms.Label();
             this.comboSearch = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridPayment)).BeginInit();
             this.SuspendLayout();
@@ -73,12 +73,22 @@ namespace AoLv2
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(37, 35);
+            this.groupBox1.Location = new System.Drawing.Point(12, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(653, 275);
+            this.groupBox1.Size = new System.Drawing.Size(653, 286);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(424, 219);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 50);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtCusName
             // 
@@ -227,15 +237,15 @@ namespace AoLv2
             this.DataGridPayment.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DataGridPayment.Location = new System.Drawing.Point(0, 364);
             this.DataGridPayment.Name = "DataGridPayment";
-            this.DataGridPayment.Size = new System.Drawing.Size(718, 216);
+            this.DataGridPayment.Size = new System.Drawing.Size(670, 216);
             this.DataGridPayment.TabIndex = 1;
-            this.DataGridPayment.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPayment_CellClick);
+            this.DataGridPayment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPayment_CellContentClick);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(56, 332);
+            this.label6.Location = new System.Drawing.Point(31, 332);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 16);
             this.label6.TabIndex = 16;
@@ -244,33 +254,23 @@ namespace AoLv2
             // comboSearch
             // 
             this.comboSearch.FormattingEnabled = true;
-            this.comboSearch.Location = new System.Drawing.Point(200, 327);
+            this.comboSearch.Location = new System.Drawing.Point(175, 327);
             this.comboSearch.Name = "comboSearch";
             this.comboSearch.Size = new System.Drawing.Size(121, 21);
             this.comboSearch.TabIndex = 16;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(336, 328);
+            this.txtSearch.Location = new System.Drawing.Point(311, 328);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 16;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(530, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // InsertPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 580);
+            this.ClientSize = new System.Drawing.Size(670, 580);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.comboSearch);
             this.Controls.Add(this.label6);

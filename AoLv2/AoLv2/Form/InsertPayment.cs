@@ -37,6 +37,7 @@ namespace AoLv2
 
             return dataTable;
         }
+
         public void fillData()
         {
             DataGridPayment.DataSource = getDataTable();
@@ -55,10 +56,16 @@ namespace AoLv2
             // dua kode dibawah ini buat menghapus default column & row di datagrid
             DataGridPayment.AllowUserToAddRows = false;
             DataGridPayment.RowHeadersVisible = false;
-            //DisableViewAndButton();
+            DisableViewAndButton();
             con.Close();
+            fixSearchBug();
         }
-
+        public void DisableViewAndButton()
+        {
+            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
+        }
         public void fetchDataOrder()
         {
             string sql = "SELECT * FROM Orders";
@@ -239,7 +246,6 @@ namespace AoLv2
             fetchDataOrder();
             txtPaymentID.Text = GenerateID();
             fillData();
-            fixSearchBug();
         }
 
         private void comboOrderID_SelectedIndexChanged(object sender, EventArgs e)
@@ -260,13 +266,6 @@ namespace AoLv2
             txtPaymentID.Text = GenerateID();
         }
 
-        private void DataGridPayment_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && DataGridPayment.Columns[e.ColumnIndex].Name != "View" && DataGridPayment.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                ViewData();
-            }
-        }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -276,6 +275,14 @@ namespace AoLv2
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DataGridPayment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGridPayment.Columns[e.ColumnIndex].Name == "")
+            {
+                ViewData();
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace AoLv2
 
         public string GenerateID()
         {
-            string prefix = "BOO"; // ganti dengan tiga huruf awalan yang diinginkan
+            string prefix = "BOK"; // ganti dengan tiga huruf awalan yang diinginkan
             string query = "SELECT TOP 1 BookID FROM Books WHERE LEFT(BookID, 3) = @prefix ORDER BY BookID DESC";
             string id = "";
 
@@ -106,7 +106,7 @@ namespace AoLv2
         }
         public void ClearInsert()
         {
-            txtIDBuku.Text = "";
+            txtIDBuku.Text = GenerateID();
             txtJudulBuku.Text = "";
             txtPengarang.Text = "";
             txtPenerbit.Text = "";
@@ -119,7 +119,7 @@ namespace AoLv2
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO Books VALUES (@BookID, @Title, @Author, @Publisher, @PublicationYear, @Price,@Stock)", con);
-            cmd.Parameters.AddWithValue("@BookID", GenerateID());
+            cmd.Parameters.AddWithValue("@BookID", txtIDBuku.Text);
             cmd.Parameters.AddWithValue("@Title", txtJudulBuku.Text);
             cmd.Parameters.AddWithValue("@Author", txtPengarang.Text);
             cmd.Parameters.AddWithValue("@Publisher", txtPenerbit.Text);
@@ -162,7 +162,7 @@ namespace AoLv2
             string t2 = txtPenerbit.Text;
             string t3 = txtTahunTerbit.Text;
             decimal t4 = txtHarga.Value;
-            decimal t5 = txtHarga.Value;
+            decimal t5 = txtStock.Value;
 
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandText = "UPDATE Books SET Title = @t0, Author = @t1, Publisher = @t2, PublicationYear = @t3, Price = @t4, Stock = @t5  WHERE BookID = @tid;";
@@ -321,6 +321,7 @@ namespace AoLv2
 
         private void _2InsertBuku_Load(object sender, EventArgs e)
         {
+            txtIDBuku.Text = GenerateID();
             fillData();
             
         }
@@ -328,6 +329,7 @@ namespace AoLv2
         {
             InsertData();
             ClearInsert();
+            txtIDBuku.Text= GenerateID();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -338,6 +340,7 @@ namespace AoLv2
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
+            txtIDBuku.Text = GenerateID();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

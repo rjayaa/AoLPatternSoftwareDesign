@@ -54,6 +54,7 @@ namespace AoLv2.Insertion
             DataGridDetail.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
+            fixSearchBug();
         }
         public string GenerateID()
         {
@@ -92,7 +93,7 @@ namespace AoLv2.Insertion
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO OrderItems VALUES (@OrderItemID, @OrderID, @BookID, @Quantity)", con);
-            cmd.Parameters.AddWithValue("@OrderItemID", GenerateID());
+            cmd.Parameters.AddWithValue("@OrderItemID", txtOrderDetailID.Text);
             cmd.Parameters.AddWithValue("@OrderID", comboOrder.Text);
             cmd.Parameters.AddWithValue("@BookID", comboBook.Text);
             cmd.Parameters.AddWithValue("@Quantity", txtQuantity.Value);
@@ -236,11 +237,64 @@ namespace AoLv2.Insertion
             }
             con.Close();
         }
+        public void FillCustomerName(string orderID, TextBox textBox)
+        {
+            string query = "SELECT C.Name FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID WHERE O.OrderID = @orderID";
+
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@orderID", orderID);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    string customerName = reader.GetString(0);
+                    textBox.Text = customerName;
+                }
+                else
+                {
+                    textBox.Text = "";
+                }
+
+                reader.Close();
+            }
+        }
+
+        public void FillBookTitle(string bookID, TextBox textBox)
+        {
+            string query = "SELECT Title FROM Books WHERE BookID = @bookID";
+
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@bookID", bookID);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    string bookTitle = reader.GetString(0);
+                    textBox.Text = bookTitle;
+                }
+                else
+                {
+                    textBox.Text = "";
+                }
+
+                reader.Close();
+            }
+        }
+
+
         public void ClearInsert()
         {
             comboOrder.Text = "";
             comboBook.Text = "";
-            txtOrderDetailID.Text = "";
+            txtOrderDetailID.Text = GenerateID();
             comboSearch.Text = "";
             txtSearch.Text = "";
             txtQuantity.Value = 0;
@@ -263,37 +317,30 @@ namespace AoLv2.Insertion
         {
             fetchDataFromOrderTable();
             fetchDataFromBookTable();
+            txtOrderDetailID.Text = GenerateID();
             fillData();
-            fixSearchBug();
-
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
             InsertData();
             ClearInsert();
+            txtOrderDetailID.Text = GenerateID();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
+            ClearInsert();
+            txtOrderDetailID.Text = GenerateID();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateData();
+            ClearInsert();
+            txtOrderDetailID.Text = GenerateID();
         }
-
-       
-
-        private void DataGridDetail_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && DataGridDetail.Columns[e.ColumnIndex].Name != "View" && DataGridDetail.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                ViewData();
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -307,6 +354,24 @@ namespace AoLv2.Insertion
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             DisplayDataSearch();
+        }
+
+        private void DataGridDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(DataGridDetail.Columns[e.ColumnIndex].Name == "")
+            {
+                ViewData();
+            }
+        }
+
+        private void comboOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillCustomerName(comboOrder.Text, txtOrderName);
+        }
+
+        private void comboBook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillBookTitle(comboBook.Text, txtBook);
         }
     }
 }

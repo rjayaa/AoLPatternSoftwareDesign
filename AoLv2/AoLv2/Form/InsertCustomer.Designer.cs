@@ -152,7 +152,6 @@ namespace AoLv2
             this.DataGridPelanggan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridPelanggan.Size = new System.Drawing.Size(640, 138);
             this.DataGridPelanggan.TabIndex = 16;
-            //this.DataGridPelanggan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellClick);
             this.DataGridPelanggan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPelanggan_CellContentClick);
             // 
             // label4
