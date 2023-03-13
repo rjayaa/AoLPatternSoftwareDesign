@@ -30,11 +30,11 @@ namespace AoLv2
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnInvoices = new System.Windows.Forms.Button();
             this.btnDetailTransaksi = new System.Windows.Forms.Button();
             this.btnTransaksi = new System.Windows.Forms.Button();
             this.btnPelanggan = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBook = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
@@ -44,7 +44,7 @@ namespace AoLv2
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnInvoices);
             this.groupBox3.Controls.Add(this.btnDetailTransaksi);
             this.groupBox3.Location = new System.Drawing.Point(35, 157);
             this.groupBox3.Name = "groupBox3";
@@ -52,6 +52,16 @@ namespace AoLv2
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pembayaran ||  Faktur";
+            // 
+            // btnInvoices
+            // 
+            this.btnInvoices.Location = new System.Drawing.Point(141, 32);
+            this.btnInvoices.Name = "btnInvoices";
+            this.btnInvoices.Size = new System.Drawing.Size(100, 50);
+            this.btnInvoices.TabIndex = 2;
+            this.btnInvoices.Text = "Pembuatan Faktur / Invoice";
+            this.btnInvoices.UseVisualStyleBackColor = true;
+            this.btnInvoices.Click += new System.EventHandler(this.btnInvoices_Click);
             // 
             // btnDetailTransaksi
             // 
@@ -93,15 +103,6 @@ namespace AoLv2
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Insert Data";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(141, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Pembuatan Faktur / Invoice";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -145,7 +146,7 @@ namespace AoLv2
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnTransaksi;
         private System.Windows.Forms.Button btnDetailTransaksi;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnInvoices;
         private System.Windows.Forms.Button btnPelanggan;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;

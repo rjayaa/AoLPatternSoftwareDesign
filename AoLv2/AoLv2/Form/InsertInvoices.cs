@@ -8,17 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AoLv2.ConnectionHelper;
-using AoLv2.Insertion;
 using System.Data.SqlClient;
 namespace AoLv2
 {
-    public partial class InsertPayment : Form
+    public partial class InsertInvoices : Form
     {
         SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
         DataTable dataTable = new DataTable();
         SqlCommand cmd;
         SqlDataReader dr;
-        public InsertPayment()
+        public InsertInvoices()
         {
             InitializeComponent();
         }
@@ -28,7 +27,7 @@ namespace AoLv2
             dataTable.Reset();
             dataTable = new DataTable();
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Payments", con))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Invoices", con))
             {
                 con.Open();
                 SqlDataReader rd = cmd.ExecuteReader();
@@ -40,32 +39,27 @@ namespace AoLv2
 
         public void fillData()
         {
-            DataGridPayment.DataSource = getDataTable();
+            DataGridInvoices.DataSource = getDataTable();
             DataGridViewButtonColumn colBut = new DataGridViewButtonColumn();
             colBut.Name = "";
             colBut.Text = "View";
             colBut.UseColumnTextForButtonValue = true;
-            DataGridPayment.Columns.Add(colBut);
+            DataGridInvoices.Columns.Add(colBut);
 
-            DataGridPayment.Columns[0].ReadOnly = true;
-            DataGridPayment.Columns[1].ReadOnly = true;
-            DataGridPayment.Columns[2].ReadOnly = true;
-            DataGridPayment.Columns[3].ReadOnly = true;
-            DataGridPayment.Columns[4].ReadOnly = true;
+            DataGridInvoices.Columns[0].ReadOnly = true;
+            DataGridInvoices.Columns[1].ReadOnly = true;
+            DataGridInvoices.Columns[2].ReadOnly = true;
+            DataGridInvoices.Columns[3].ReadOnly = true;
+
 
             // dua kode dibawah ini buat menghapus default column & row di datagrid
-            DataGridPayment.AllowUserToAddRows = false;
-            DataGridPayment.RowHeadersVisible = false;
+            DataGridInvoices.AllowUserToAddRows = false;
+            DataGridInvoices.RowHeadersVisible = false;
             DisableViewAndButton();
             con.Close();
             fixSearchBug();
         }
-        public void DisableViewAndButton()
-        {
-            btnClear.Enabled = false;
-            btnDelete.Enabled = false;
-            btnUpdate.Enabled = false;
-        }
+
         public void fetchDataOrder()
         {
             string sql = "SELECT * FROM Orders";
@@ -78,10 +72,11 @@ namespace AoLv2
             }
             con.Close();
         }
+
         public string GenerateID()
         {
-            string prefix = "PAY"; // ganti dengan tiga huruf awalan yang diinginkan
-            string query = "SELECT TOP 1 PaymentID FROM Payments WHERE LEFT(PaymentID, 3) = @prefix ORDER BY PaymentID DESC";
+            string prefix = "TRD"; // ganti dengan tiga huruf awalan yang diinginkan
+            string query = "SELECT TOP 1 InvoiceID FROM Invoices WHERE LEFT(InvoiceID, 3) = @prefix ORDER BY InvoiceID DESC";
             string id = "";
 
             using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
@@ -110,7 +105,6 @@ namespace AoLv2
             return id;
         }
 
-        // method untuk cari nama dari table customers
         public void FillCustomerName(string orderID, TextBox textBox)
         {
             string query = "SELECT C.Name FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID WHERE O.OrderID = @orderID";
@@ -136,80 +130,61 @@ namespace AoLv2
                 reader.Close();
             }
         }
-       
+
         public void InsertData()
         {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Payments VALUES (@PaymentID, @OrderID, @Amount, @PaymentDate, @PaymentMethod)", con);
-                cmd.Parameters.AddWithValue("@PaymentID", txtPaymentID.Text);
-                cmd.Parameters.AddWithValue("@OrderID", comboOrderID.Text);
-                int amount = Convert.ToInt32(txtAmount.Text.Replace(",", ""));
-                cmd.Parameters.AddWithValue("@Amount", amount);
-                DateTime orderDate = DateTime.Parse(txtPaymentDate.Text);
-                cmd.Parameters.AddWithValue("@PaymentDate", orderDate);
-                cmd.Parameters.AddWithValue("@PaymentMethod", comboPayment.Text);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO Invoices VALUES (@InvoiceID, @OrderID, @Amount, @IssuedDate)", con);
+            cmd.Parameters.AddWithValue("@InvoiceID", txtInvoiceID.Text);
+            cmd.Parameters.AddWithValue("@OrderID", comboOrderID.Text);
+            int amount = Convert.ToInt32(txtAmount.Text.Replace(",", ""));
+            cmd.Parameters.AddWithValue("@Amount", amount);
+            DateTime tanggalKeluarBuku = DateTime.Parse(txtInvoiceDate.Text);
+            cmd.Parameters.AddWithValue("@IssuedDate", tanggalKeluarBuku);
+            
 
-                cmd.ExecuteNonQuery();
-                con.Close();
-                DataGridPayment.Columns.Clear();
-                dataTable.Clear();
-                
-                fillData();
-                ClearInsert();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            DataGridInvoices.Columns.Clear();
+            dataTable.Clear();
+
+            fillData();
+            ClearInsert();
         }
 
         public void DeleteData()
         {
-            string temp = txtPaymentID.Text;
+            string temp = txtInvoiceID.Text;
             con.Open();
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "DELETE FROM Payments WHERE PaymentID = @t0;";
+            cmd.CommandText = "DELETE FROM Invoices WHERE InvoiceID = @t0;";
             cmd.Parameters.AddWithValue("@t0", temp);
 
             cmd.ExecuteNonQuery();
             con.Close();
 
-            DataGridPayment.Columns.Clear();
+            DataGridInvoices.Columns.Clear();
             dataTable.Clear();
             fillData();
             ClearInsert();
         }
-        public void ButtonUpdateDeleteEnable()
-        {
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-        }
-        public void fixSearchBug()
-        {
-            txtSearch.Text = "PAY001";
-            txtSearch.Text = "";
-        }
+
         public void ViewData()
         {
             ButtonUpdateDeleteEnable();
 
-            int selectedIndex = DataGridPayment.CurrentCell.RowIndex; 
-            txtPaymentID.Text = DataGridPayment.Rows[selectedIndex].Cells[0].Value.ToString();
-            comboOrderID.Text = DataGridPayment.Rows[selectedIndex].Cells[1].Value.ToString();
-            txtAmount.Text = DataGridPayment.Rows[selectedIndex].Cells[2].Value.ToString();
-            DateTime dateValues;
-            if (DateTime.TryParse(DataGridPayment.Rows[selectedIndex].Cells[3].Value.ToString(), out dateValues))
-            {
-                txtPaymentDate.Value = dateValues;
-            }
-            comboPayment.Text = DataGridPayment.Rows[selectedIndex].Cells[4].Value.ToString();
-        }
+            int selectedIndex = DataGridInvoices.CurrentCell.RowIndex;
 
-        public void ClearInsert()
-        {
-            comboOrderID.Text = "";
-            txtCusName.Text = "";
-            txtPaymentDate.Value = DateTime.Now;
-            comboPayment.Text = "";
-            txtAmount.Text = "";
-            comboSearch.Text = "";
-            txtSearch.Text = "";
-            txtPaymentID.Text = GenerateID();
+            txtInvoiceID.Text = DataGridInvoices.Rows[selectedIndex].Cells[0].Value.ToString();
+            comboOrderID.Text = DataGridInvoices.Rows[selectedIndex].Cells[1].Value.ToString();
+            txtAmount.Text = DataGridInvoices.Rows[selectedIndex].Cells[2].Value.ToString();
+            DateTime dateValues;
+            if (DateTime.TryParse(DataGridInvoices.Rows[selectedIndex].Cells[3].Value.ToString(), out dateValues))
+            {
+                txtInvoiceDate.Value = dateValues;
+            }
+
+
         }
 
         public void CalculateAmount()
@@ -241,48 +216,79 @@ namespace AoLv2
             }
         }
 
-        private void InsertPayment_Load(object sender, EventArgs e)
+        private void InsertInvoices_Load(object sender, EventArgs e)
         {
             fetchDataOrder();
-            txtPaymentID.Text = GenerateID();
+            txtInvoiceID.Text = GenerateID();
             fillData();
+        }
+
+        public void ButtonUpdateDeleteEnable()
+        {
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+        }
+        public void ClearInsert()
+        {
+            txtInvoiceID.Text = GenerateID();
+            comboOrderID.Text = "";
+            txtOrder.Text = "";
+            txtAmount.Text = "";
+            txtInvoiceDate.Value = DateTime.Now;
+        }
+
+        public void fixSearchBug()
+        {
+            txtSearch.Text = "TRD001";
+            txtSearch.Text = "";
+        }
+        public void DisableViewAndButton()
+        {
+            btnClear.Enabled = false;
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         private void comboOrderID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillCustomerName(comboOrderID.Text, txtCusName);
+            FillCustomerName(comboOrderID.Text, txtOrder);
             CalculateAmount();
         }
-
         private void btnInsert_Click(object sender, EventArgs e)
         {
             InsertData();
-            txtPaymentID.Text = GenerateID();
+            txtInvoiceID.Text = GenerateID();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
-            txtPaymentID.Text = GenerateID();
+            txtInvoiceID.Text = GenerateID();
         }
-
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInsert();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void DataGridPayment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (DataGridPayment.Columns[e.ColumnIndex].Name == "")
+            if (DataGridInvoices.Columns[e.ColumnIndex].Name == "")
             {
                 ViewData();
             }
         }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+       
     }
 }

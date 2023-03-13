@@ -46,10 +46,18 @@ namespace AoLv2
             buku.Show();
             buku.FormClosed += Menu_FormClosed;
         }
+        private void btnInvoices_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InsertInvoices invoices = new InsertInvoices();
+            invoices.Show();
+            invoices.FormClosed += Menu_FormClosed;
+        }
         private void Menu_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
         }
 
+       
     }
 }

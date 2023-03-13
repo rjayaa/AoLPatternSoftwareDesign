@@ -18,3 +18,4 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.Insertion.InsertOrderItems.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.Menu.resources
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.InsertPayment.resources
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.InsertInvoices.resources
