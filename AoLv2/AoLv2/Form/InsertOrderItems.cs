@@ -153,6 +153,14 @@ namespace AoLv2.Insertion
             MessageBox.Show("Update Berhasil!!!");
             fixSearchBug();
         }
+
+
+        
+
+
+
+
+
         public void fixSearchBug()
         {
             txtSearch.Text = "OID001";
@@ -298,6 +306,8 @@ namespace AoLv2.Insertion
             comboSearch.Text = "";
             txtSearch.Text = "";
             txtQuantity.Value = 0;
+            txtOrderName.Text = "";
+            txtBook.Text = "";
         }
 
         public void ButtonUpdateDeleteEnable()
@@ -326,6 +336,9 @@ namespace AoLv2.Insertion
             InsertData();
             ClearInsert();
             txtOrderDetailID.Text = GenerateID();
+            //ReduceBookStock(comboBook.Text, Convert.ToInt32(txtQuantity.Value));
+            //ReduceBookStockFromOrderItems(comboBook.Text);
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

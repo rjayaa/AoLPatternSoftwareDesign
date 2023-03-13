@@ -183,6 +183,7 @@ namespace AoLv2
             {
                 txtInvoiceDate.Value = dateValues;
             }
+            FillCustomerName(comboOrderID.Text, txtOrder);
 
 
         }
@@ -235,6 +236,7 @@ namespace AoLv2
             txtOrder.Text = "";
             txtAmount.Text = "";
             txtInvoiceDate.Value = DateTime.Now;
+            txtResult.Text = "";
         }
 
         public void fixSearchBug()
@@ -244,7 +246,7 @@ namespace AoLv2
         }
         public void DisableViewAndButton()
         {
-            btnClear.Enabled = false;
+            btnClear.Enabled = true;
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
         }
@@ -289,6 +291,196 @@ namespace AoLv2
             this.Close();
         }
 
-       
+        //public string GetBookTitleFromOrder(string orderID)
+        //{
+        //    string bookTitles = "";
+        //    using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+        //    {
+        //        string query = "SELECT Books.Title FROM Books " +
+        //                       "INNER JOIN OrderItems ON Books.BookID = OrderItems.BookID " +
+        //                       "WHERE OrderItems.OrderID = @OrderID";
+
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        command.Parameters.AddWithValue("@OrderID", orderID);
+
+        //        connection.Open();
+
+        //        SqlDataReader reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            bookTitles += reader["Title"].ToString() + ", ";
+        //        }
+
+        //        reader.Close();
+        //    }
+
+        //    // Remove trailing comma and whitespace
+        //    bookTitles = bookTitles.TrimEnd(',', ' ');
+
+        //    return bookTitles;
+        //}
+
+        //public string GetOrderDetails(string orderID)
+        //{
+        //    // Connect to database
+        //    using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+        //    {
+        //        connection.Open();
+
+        //        // Create command to retrieve order items for the specified order ID
+        //        string query = "SELECT OrderItems.Quantity, Books.Title, Books.Price FROM OrderItems " +
+        //                       "JOIN Books ON OrderItems.BookID = Books.BookID " +
+        //                       "WHERE OrderItems.OrderID = @OrderID";
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        command.Parameters.AddWithValue("@OrderID", orderID);
+
+        //        // Execute command and read the results
+        //        SqlDataReader reader = command.ExecuteReader();
+        //        StringBuilder result = new StringBuilder();
+        //        while (reader.Read())
+        //        {
+        //            int quantity = reader.GetInt32(0);
+        //            string title = reader.GetString(1);
+        //            decimal price = reader.GetDecimal(2);
+
+        //            // Append the book title, quantity, and price to the result string
+        //            result.AppendLine($"{title}\t{quantity}\t{price:C}");
+        //        }
+
+        //        // Close the reader and return the result string
+        //        reader.Close();
+        //        return result.ToString();
+        //    }
+        //}
+
+
+        public DataTable GetBooksAndQuantitiesFromOrder(string orderID)
+        {
+            // Create a data table to store the results
+            DataTable orderDetails = new DataTable();
+            orderDetails.Columns.Add("BookID", typeof(string));
+            orderDetails.Columns.Add("Title", typeof(string));
+            orderDetails.Columns.Add("Quantity", typeof(int));
+
+            // Connect to the database
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            {
+                connection.Open();
+
+                // Retrieve the book and quantity information for the order
+                string query = "SELECT oi.BookID, b.Title, oi.Quantity FROM OrderItems oi JOIN Books b ON oi.BookID = b.BookID WHERE OrderID = @OrderID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@OrderID", orderID);
+
+                // Execute the query and fill the data table
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(orderDetails);
+            }
+
+            return orderDetails;
+        }
+
+        public decimal GetBookPrice(string bookID)
+        {
+            // Connect to the database
+            using (SqlConnection connection = new SqlConnection(ConnectionStringHelper.GetConnectionString()))
+            {
+                connection.Open();
+
+                // Retrieve the book's price
+                string query = "SELECT Price FROM Books WHERE BookID = @BookID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@BookID", bookID);
+
+                // Execute the query and return the price
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    int price = Convert.ToInt32(result);
+                    return price / 100m;
+                }
+                else
+                {
+                    return 0m;
+                }
+            }
+        }
+
+        public void PrintOrderDetails(string orderID)
+        {
+            // Retrieve the book and quantity information for the order
+            DataTable orderDetails = GetBooksAndQuantitiesFromOrder(orderID);
+
+            // Calculate the total price for the order
+            decimal totalPrice = 0;
+            foreach (DataRow row in orderDetails.Rows)
+            {
+                string bookID = row["BookID"].ToString();
+                int quantity = Convert.ToInt32(row["Quantity"]);
+                decimal price = GetBookPrice(bookID);
+                decimal total = price * quantity;
+
+                // Print the book details for the order
+               
+                txtResult.Text += string.Format("{0,-30} {1,-10} {2,-10}\n", row["Title"].ToString(), quantity, price.ToString("C"));
+                txtResult.Text += string.Format("{0,-30} {1,-10} {2,-10}\n\n", "", "", total.ToString("C"));
+
+                // Add the total price for this book to the total price for the order
+                totalPrice += total;
+            }
+
+            // Print the total price for the order
+            txtResult.Text += string.Format("{0,-30} {1,-10}\n", "Total:", totalPrice.ToString("C"));
+        }
+
+        private void DisplayOrderDetails(string orderId, string customerName)
+        {
+            DataTable orderDetails = GetBooksAndQuantitiesFromOrder(orderId);
+
+            // Create a variable to store the output
+            StringBuilder result = new StringBuilder();
+            result.AppendLine("==============================================");
+            result.AppendLine("Order ID\t\t: " + orderId);
+            result.AppendLine("Customer Name\t\t: " + customerName);
+            result.AppendLine("==============================================\n");
+            result.AppendLine("Book Title\t\tQuantity\tPrice");
+            result.AppendLine("==============================================");
+
+            decimal totalPrice = 0;
+
+            foreach (DataRow row in orderDetails.Rows)
+            {
+                string bookTitle = row["Title"].ToString();
+                int quantity = Convert.ToInt32(row["Quantity"]);
+                decimal price = GetBookPrice(row["BookID"].ToString());
+
+                totalPrice += price * quantity;
+
+                result.AppendLine(bookTitle + "\t\t" + quantity + "\t$" + price.ToString("0.00") + "\t\t$" + (price * quantity).ToString("0.00"));
+            }
+
+            result.AppendLine("==============================================");
+            result.AppendLine();
+            result.AppendLine("Total:\t\t\t\t\tRp." + totalPrice.ToString("0.00"));
+
+            txtResult.Text = result.ToString();
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            DisplayOrderDetails(comboOrderID.Text, txtOrder.Text);
+ 
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString(txtResult.Text, new Font("Microsoft Sans Serif", 12, FontStyle.Bold), Brushes.Black, new Point(10, 10));
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+        }
     }
 }
