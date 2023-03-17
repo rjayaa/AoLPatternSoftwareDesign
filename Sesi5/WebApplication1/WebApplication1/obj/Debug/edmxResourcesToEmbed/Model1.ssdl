@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseGuitarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="guitar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="brand" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="price" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="guitar_type_id" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="guitar_types">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="user_id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="transaction_date" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\RAGIL\ONEDRIVE\DOCUMENTS\AOLPATTERNSOFTWAREDESIGN\SESI5\WEBAPPLICATION1\WEBAPPLICATION1\APP_DATA\DATABASEGUITAR.MDF.dbo.transaction_details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="transaction_details">
+    <Key>
+      <PropertyRef Name="transaction_id" />
+      <PropertyRef Name="guitar_id" />
+      <PropertyRef Name="quantity" />
+    </Key>
+    <Property Name="transaction_id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="guitar_id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_cloth_ToTable">
+    <End Role="guitar_types" Type="Self.guitar_types" Multiplicity="1" />
+    <End Role="guitar" Type="Self.guitar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="guitar_types">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="guitar">
+        <PropertyRef Name="guitar_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transaction_details_ToTable">
+    <End Role="transaction" Type="Self.transaction" Multiplicity="1" />
+    <End Role="transaction_details" Type="Self.transaction_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="transaction_details">
+        <PropertyRef Name="transaction_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transaction_details_ToTable_1">
+    <End Role="guitar" Type="Self.guitar" Multiplicity="1" />
+    <End Role="transaction_details" Type="Self.transaction_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="guitar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="transaction_details">
+        <PropertyRef Name="guitar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transaction_ToTable">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="transaction" Type="Self.transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="transaction">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseGuitarModelStoreContainer">
+    <EntitySet Name="guitar" EntityType="Self.guitar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="guitar_types" EntityType="Self.guitar_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaction" EntityType="Self.transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaction_details" EntityType="Self.transaction_details" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [transaction_details].[transaction_id] AS [transaction_id], 
+    [transaction_details].[guitar_id] AS [guitar_id], 
+    [transaction_details].[quantity] AS [quantity]
+    FROM [dbo].[transaction_details] AS [transaction_details]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_cloth_ToTable" Association="Self.FK_cloth_ToTable">
+      <End Role="guitar_types" EntitySet="guitar_types" />
+      <End Role="guitar" EntitySet="guitar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transaction_details_ToTable" Association="Self.FK_transaction_details_ToTable">
+      <End Role="transaction" EntitySet="transaction" />
+      <End Role="transaction_details" EntitySet="transaction_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transaction_details_ToTable_1" Association="Self.FK_transaction_details_ToTable_1">
+      <End Role="guitar" EntitySet="guitar" />
+      <End Role="transaction_details" EntitySet="transaction_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transaction_ToTable" Association="Self.FK_transaction_ToTable">
+      <End Role="user" EntitySet="user" />
+      <End Role="transaction" EntitySet="transaction" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
