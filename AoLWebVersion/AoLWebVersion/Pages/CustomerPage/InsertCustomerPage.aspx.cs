@@ -24,12 +24,17 @@ namespace AoLWebVersion.Pages
             {
                 newId = prefix + "001";
             }
+            else if (lastId.Length != 6 || !lastId.StartsWith(prefix))
+            {
+                throw new Exception("Invalid customer ID format");
+            }
             else
             {
-                int idNumber = Convert.ToInt32(lastId.Substring(2));
+                int idNumber = Convert.ToInt32(lastId.Substring(3));
                 idNumber++;
-                newId = String.Format("{0}{0:000}",prefix , idNumber);
+                newId = String.Format("{0}{1:000}", prefix, idNumber);
             }
+
             return newId;
         }
 
