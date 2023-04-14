@@ -342,40 +342,6 @@ namespace AoLv2
             }
         }
 
-
-        //private void DisplayOrderDetails(string orderId, string customerName)
-        //{
-        //    DataTable orderDetails = GetBooksAndQuantitiesFromOrder(orderId);
-
-        //    // Create a variable to store the output
-        //    StringBuilder result = new StringBuilder();
-        //    result.AppendLine("==============================================");
-        //    result.AppendLine("Order ID\t\t: " + orderId);
-        //    result.AppendLine("Customer Name\t\t: " + customerName);
-        //    result.AppendLine("==============================================\n");
-        //    result.AppendLine("Book Title\t\tQuantity\tPrice");
-        //    result.AppendLine("==============================================");
-
-        //    decimal totalPrice = 0;
-
-        //    foreach (DataRow row in orderDetails.Rows)
-        //    {
-        //        string bookTitle = row["Title"].ToString();
-        //        int quantity = Convert.ToInt32(row["Quantity"]);
-        //        decimal price = GetBookPrice(row["BookID"].ToString());
-
-        //        totalPrice += price * quantity;
-
-        //        result.AppendLine(bookTitle + "\t\t" + quantity + "\t$" + price.ToString("0.00") + "\t\t$" + (price * quantity).ToString("0.00"));
-        //    }
-
-        //    result.AppendLine("==============================================");
-        //    result.AppendLine();
-        //    result.AppendLine("Total:\t\t\t\t\tRp." + totalPrice.ToString("0.00"));
-
-        //    txtResult.Text = result.ToString();
-        //}
-
         private void DisplayOrderDetails(string orderId, string customerName)
         {
             DataTable orderDetails = GetBooksAndQuantitiesFromOrder(orderId);

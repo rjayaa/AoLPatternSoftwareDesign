@@ -16,6 +16,7 @@ namespace AoLv2
 {
     public partial class InsertOrders : Form
     {
+        
         SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
 
         DataTable dataTable = new DataTable();

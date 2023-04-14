@@ -12,8 +12,6 @@ namespace WebApplication1.Repository
         // 1. Return semua transaction
         // 2. return transaction object berdasarkan ID
 
-
-
         // static = Kita gausah ngebuat instance baru lagi
         // Example :
         // User u = new User(); -> gaperlu buat gini lagi

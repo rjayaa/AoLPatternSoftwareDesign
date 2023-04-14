@@ -16,7 +16,7 @@ namespace AoLPsD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormHargaBarang());
+            Application.Run(new FormPerusahaan());
         }
     }
 }

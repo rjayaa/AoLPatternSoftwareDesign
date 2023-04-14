@@ -38,4 +38,3 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\stdole.dll
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLv2\AoLv2\obj\Debug\AoLv2.FormPrint.resources
