@@ -14,7 +14,7 @@ namespace AoLWebVersion.Pages
         tokoBukuEntitiess db = new tokoBukuEntitiess();
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtPublicationYear.TextChanged += new EventHandler(txtPublicationYear_TextChanged1);
+            
         }
 
         protected string generateID(string prefix)
@@ -39,39 +39,42 @@ namespace AoLWebVersion.Pages
 
             return newId;
         }
-      
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
+            txtLblError.ForeColor = System.Drawing.Color.Red;
+            if (txtTitleBook.Text == "")
+            {
+                txtLblError.Text = "Please enter the title of the book";
+            }
+            else if (txtAuthorBook.Text == "")
+            {
+                txtLblError.Text = "Please enter the author of the book";
+            }
+            else if (txtPublisherBook.Text == "")
+            {
+                txtLblError.Text = "Please enter the publisher of the book";
+            }
+            else if (txtPublicationYear.Text == "")
+            {
+                txtLblError.Text = "Please enter the publication year of the book";
+            }
+            else if (txtPriceBook.Text == "" || txtPriceBook.Text == "0")
+            {
+                txtLblError.Text = "Please enter the price of the book [cannot be 0]";
+            }
+            else if (txtStockBook.Text == "" || txtStockBook.Text == "0")
+            {
+                txtLblError.Text = "Please enter the stock of the book [cannot be 0]";
+            }else
+            {
                 Book bk = Factory.Factory.createBook(generateID("BOK"), txtTitleBook.Text, txtAuthorBook.Text, txtPublisherBook.Text, Convert.ToInt32(txtPublicationYear.Text), Convert.ToInt32(txtPriceBook.Text), Convert.ToInt32(txtStockBook.Text));
                 db.Books.Add(bk);
                 db.SaveChanges();
-           
+                txtLblError.ForeColor = System.Drawing.Color.Green;
+                txtLblError.Text = "Insert Success!!";
+            }
         }
 
-        protected void txtPublicationYear_TextChanged1(object sender, EventArgs e)
-        {
-            if (txtPublicationYear.Text.Length == 4)
-            {
-                // cek apakah input hanya terdiri dari angka
-                int year;
-                bool isNumeric = int.TryParse(txtPublicationYear.Text, out year);
-                if (isNumeric)
-                {
-                    // input valid, bisa dilakukan pengolahan lebih lanjut
-                }
-                else
-                {
-                    // input tidak valid, tampilkan pesan error
-                    txtPublicationYear.Text = "";
-                    txtLblError.Text = "Input harus berupa angka";
-                }
-            }
-            else
-            {
-                // panjang input belum mencapai 4 digit, kosongkan pesan error
-                txtLblError.Text = "";
-            }
-        }
     }
 }
