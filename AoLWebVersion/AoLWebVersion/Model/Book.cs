@@ -24,7 +24,7 @@ namespace AoLWebVersion.Model
         public string Title { get; set; }
         public string Author { get; set; }
         public string Publisher { get; set; }
-        public System.DateTime PublicationYear { get; set; }
+        public int PublicationYear { get; set; }
         public int Price { get; set; }
         public int Stock { get; set; }
     

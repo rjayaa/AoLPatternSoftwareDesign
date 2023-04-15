@@ -18,18 +18,17 @@ namespace AoLWebVersion.Factory
             return c;
         }
 
-        public static Book CreateBook(string id, string title, string author, string publisher, DateTime publicationYear , int price, int stock )
+       public static Book createBook(string id, string title, string author, string publisher , int publicationyear, int price, int stock)
         {
-            Book b = new Book();
-            b.BookID = id;
-            b.Title = title;
-            b.Author = author;
-            b.Publisher = publisher;
-            b.PublicationYear = publicationYear;
-            b.Price = price;
-            b.Stock = stock;
-            return b;
-
+            Book bk = new Book();
+            bk.BookID = id;
+            bk.Title = title;
+            bk.Author = author;
+            bk.Publisher = publisher;
+            bk.PublicationYear = publicationyear;
+            bk.Price = price;
+            bk.Stock = stock;
+            return bk;
         }
 
         public static Invoice createInvoice(string invoiceid, string transactionid, int amount, DateTime issueddate)

@@ -17,7 +17,7 @@
         </div>
         <div class="CusTrans">
             <asp:Button ID="btnPayment" runat="server" Text="Choose Payment" />
-            <asp:Button ID="Button4" runat="server" Text="View Books" />
+            <asp:Button ID="Button4" runat="server" Text="New Invoice" Width="153px" />
         </div>
         <div class="CusTrans">
             <asp:Button ID="Button5" runat="server" Text="Button" />

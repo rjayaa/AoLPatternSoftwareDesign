@@ -1,6 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="InsertBookPage.aspx.cs" Inherits="AoLWebVersion.Pages.BookPage" %>
 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="contentBody" runat="server">
+    <script>
+        function validNumericandLength() {
+            var charcode = (event.which) ? event.which : event.keyCode;
+            if (charcode >= 48 && charcode <= 57) {
+                if (event.target.value.length >= 4) {
+                    return false;
+                }
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function validNumeric() {
+            var charcode = (event.which) ? event.which : event.keyCode;
+            if (charcode >= 48 && charcode <= 57) {
+                return true
+            } else {
+                return false
+            }
+        }
+    </script>
     <h1>InserBook</h1>
         <div>
             <asp:Label ID="Label1" runat="server" Text="Book Title"></asp:Label>
@@ -16,17 +40,15 @@
         </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Book Publication Year"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Assets/calendar.png" ImageAlign="AbsBottom" Width="20px" Height="20px" OnClick="ImageButton1_Click"  />
-            <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+            <asp:TextBox ID="txtPublicationYear"  runat="server" onkeypress="return validNumericandLength()" ></asp:TextBox>
         </div>
         <div>
             <asp:Label ID="Label5" runat="server" Text="Book Price"></asp:Label>
-            <asp:TextBox ID="txtPriceBook" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtPriceBook" runat="server" onkeypress="return validNumeric()"></asp:TextBox>
         </div>
         <div>
             <asp:Label ID="Label6" runat="server" Text="Book Stock"></asp:Label>
-            <asp:TextBox ID="txtStockBook" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtStockBook" runat="server" onkeypress="return validNumeric()"></asp:TextBox>
         </div>
         <div>
         <asp:Label ID="txtLblError" runat="server" Text=""></asp:Label>

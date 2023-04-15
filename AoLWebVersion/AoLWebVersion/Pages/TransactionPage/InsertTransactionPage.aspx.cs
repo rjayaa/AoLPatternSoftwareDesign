@@ -9,7 +9,7 @@ namespace AoLWebVersion.Pages
 {
     public partial class InsertTransactionPage : System.Web.UI.Page
     {
-        tokoBukuEntities db = new tokoBukuEntities();   
+        tokoBukuEntitiess db = new tokoBukuEntitiess();   
         protected void Page_Load(object sender, EventArgs e)
         {
             if(IsPostBack == false)
