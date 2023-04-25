@@ -1,6 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="InsertCustomerPage.aspx.cs" Inherits="AoLWebVersion.Pages.InsertCustomerPage" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="contentBody" runat="server">
+    <script>
+        function validNumeric() {
+            var charcode = (event.which) ? event.which : event.keyCode;
+            if (charcode >= 48 && charcode <= 57) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+       
+    </script>
     <h1>InserCustomer</h1>
         <div>
             <asp:Label ID="Label1" runat="server" Text="Customer Name"></asp:Label>
@@ -12,7 +24,7 @@
         </div>
         <div>
             <asp:Label ID="Label3" runat="server" Text="Customer Phone"></asp:Label>
-            <asp:TextBox ID="txtCustomerPhone" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerPhone" runat="server" onkeypress="return validNumeric()"></asp:TextBox>
         </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Customer Email"></asp:Label>

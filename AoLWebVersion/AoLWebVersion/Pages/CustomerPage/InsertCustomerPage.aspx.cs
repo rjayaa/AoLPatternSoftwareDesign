@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -38,12 +39,53 @@ namespace AoLWebVersion.Pages
             return newId;
         }
 
+        private bool IsValidEmail(string email)
+        {
+            // regular expression untuk email yang valid
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+
+            // memvalidasi email dengan regular expression
+            Match match = Regex.Match(email, pattern);
+
+            // jika match, email valid
+            if (match.Success)
+            {
+                return true;
+            }
+
+            // jika tidak match, email tidak valid
+            return false;
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Customer cus = Factory.Factory.CreateCustomer(generateID("CUS"), txtCustomerName.Text,
+            txtLblError.ForeColor = System.Drawing.Color.Red;
+
+            if (txtCustomerName.Text == "")
+            {
+                txtLblError.Text = "Please enter the customer name";
+            }else if (txtCustomerAddress.Text == "") 
+            {
+                txtLblError.Text = "Please enter the customer address";
+            }else if (txtCustomerPhone.Text == "")
+            {
+                txtLblError.Text = "Please enter the customer phone number";
+            }else if(txtCustomerEmail.Text == "")
+            {
+                txtLblError.Text = "Please enter the customer email";   
+            }else if (!IsValidEmail(txtCustomerEmail.Text))
+            {
+                txtLblError.Text = "Please enter a valid email address";
+            }
+            else
+            {
+                Customer cus = Factory.Factory.CreateCustomer(generateID("CUS"), txtCustomerName.Text,
                 txtCustomerAddress.Text, txtCustomerPhone.Text, txtCustomerEmail.Text);
-            db.Customers.Add(cus);
-            db.SaveChanges();
+                db.Customers.Add(cus);
+                db.SaveChanges();
+                txtLblError.ForeColor = System.Drawing.Color.Green;
+                txtLblError.Text = "Insert Success!!";
+            }
+            
         }
     }
 }

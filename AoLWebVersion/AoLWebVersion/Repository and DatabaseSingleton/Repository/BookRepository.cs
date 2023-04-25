@@ -12,14 +12,24 @@ namespace AoLWebVersion.Repository_and_DatabaseSingleton.Repository
 
         public List<Book> GetBook()
         {
-            return (from x in db.Books select x).ToList();
+            return db.Books.ToList();
         }
 
+   
         public Book FindById(string id)
         {
-            return (from x in db.Books
-                    where x.BookID == id
-                    select x).FirstOrDefault();
+            Console.WriteLine("Querying database for book with ID: " + id);
+            var book = db.Books.Find(id);
+            if (book != null)
+            {
+                Console.WriteLine("Book found: " + book.Title);
+            }
+            else
+            {
+                Console.WriteLine("Book not found for ID: " + id);
+            }
+            return book;
         }
+
     }
 }

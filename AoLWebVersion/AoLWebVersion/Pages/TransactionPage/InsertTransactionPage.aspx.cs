@@ -41,7 +41,7 @@ namespace AoLWebVersion.Pages
                 GridViewRow row = CustGridView.Rows[Convert.ToInt32(e.CommandArgument)];
                 string id = row.Cells[0].Text;
 
-                Response.Redirect("~/Pages/InsertTransactionDetail.aspx?ID=" + id);
+                Response.Redirect("~/Pages/TransactionPage/InsertTransactionDetail.aspx?ID=" + id);
             }
         }
     }
