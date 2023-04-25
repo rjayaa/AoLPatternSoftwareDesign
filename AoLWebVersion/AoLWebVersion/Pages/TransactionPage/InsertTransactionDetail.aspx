@@ -40,9 +40,13 @@
         </asp:GridView>
 
     </div>
-    <p>
+    <br />
+    <div>
         <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
-    </p>
+        <asp:Button ID="BtnClear" runat="server"  Text="Clear" OnClick="BtnClear_Click" />
+    </div>
+
+    <br />
     <div>
         <asp:GridView ID="BookViewSection"  runat="server" AutoGenerateColumns="False">
             <HeaderStyle CssClass="gridview-header-style" />

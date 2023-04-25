@@ -56,5 +56,20 @@ namespace AoLWebVersion.Pages
            
         }
 
+        protected void BtnClear_Click(object sender, EventArgs e)
+        {
+            BookViewSection.DataSource = null;
+            BookViewSection.DataBind();
+
+            foreach (GridViewRow row in BookGridView.Rows)
+            {
+                CheckBox chkselect = (CheckBox)row.FindControl("chkselect");
+
+                if (chkselect.Checked)
+                {
+                    chkselect.Checked = false;
+                }
+            }
+        }
     }
 }
