@@ -33,6 +33,30 @@ namespace AoLWebVersion.Pages
             }
 
         }
+
+        protected string generateID(string prefix)
+        {
+            string newId = "";
+            string lastId = (from x in db.Transactions select x.TransactionID).ToList().LastOrDefault();
+
+            if (lastId == null)
+            {
+                newId = prefix + "001";
+            }
+            else if (lastId.Length != 6 || !lastId.StartsWith(prefix))
+            {
+                throw new Exception("Invalid customer ID format");
+            }
+            else
+            {
+                int idNumber = Convert.ToInt32(lastId.Substring(3));
+                idNumber++;
+                newId = String.Format("{0}{1:000}", prefix, idNumber);
+            }
+
+            return newId;
+        }
+
         protected void BtnAdd_Click(object sender, EventArgs e)
         {
             List<Book> selectedBooks = new List<Book>();
@@ -51,8 +75,10 @@ namespace AoLWebVersion.Pages
                     selectedBooks.Add(book);
                     BookViewSection.DataSource = selectedBooks;
                     BookViewSection.DataBind();
+                    btnSave.Visible = true;
                 }
             }
+
            
         }
 
@@ -70,6 +96,15 @@ namespace AoLWebVersion.Pages
                     chkselect.Checked = false;
                 }
             }
+            btnSave.Visible = false;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            Transaction td = Factory.Factory.createTransaction(generateID("TRD"),txtCustID.Text,now);
+            db.Transactions.Add(td);
+            db.SaveChanges();
         }
     }
 }

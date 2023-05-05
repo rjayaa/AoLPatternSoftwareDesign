@@ -30,20 +30,17 @@
                 <asp:BoundField DataField="Publisher" HeaderText="Publisher" SortExpression="Publisher" />
                 <asp:BoundField DataField="PublicationYear" HeaderText="Publication Year" SortExpression="PublicationYear" />
                 <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
-                <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
-                 
-                
-                <%--<asp:ButtonField ButtonType="Button" CommandName="AddProduct" HeaderText="Actions" Text="Add" />--%>
-                 
-                
             </Columns>
         </asp:GridView>
 
     </div>
     <br />
     <div>
-        <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
+        <asp:Button ID="Button1" runat="server" Text="Back To Menu" />
+    </div>
+    <div>
         <asp:Button ID="BtnClear" runat="server"  Text="Clear" OnClick="BtnClear_Click" />
+        <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
     </div>
 
     <br />
@@ -51,16 +48,20 @@
         <asp:GridView ID="BookViewSection"  runat="server" AutoGenerateColumns="False">
             <HeaderStyle CssClass="gridview-header-style" />
             <Columns>
-                
                 <asp:BoundField DataField="BookID" HeaderText="Book ID" SortExpression="BookID" />
                 <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
                 <asp:BoundField DataField="Author" HeaderText="Author" SortExpression="Author" />
                 <asp:BoundField DataField="Publisher" HeaderText="Publisher" SortExpression="Publisher" />
                 <asp:BoundField DataField="PublicationYear" HeaderText="Publication Year" SortExpression="Publisher" />
                 <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
-                
             </Columns>
         </asp:GridView>
     </div>
+    
+    <asp:Button ID="btnSave" runat="server" Text="Save" Visible="False" OnClick="btnSave_Click" />
+
+    <div>
     <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+    </div>
+    
 </asp:Content>

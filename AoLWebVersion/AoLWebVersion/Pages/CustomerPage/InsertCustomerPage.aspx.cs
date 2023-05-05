@@ -56,6 +56,13 @@ namespace AoLWebVersion.Pages
             // jika tidak match, email tidak valid
             return false;
         }
+        protected void ClearInput()
+        {
+            txtCustomerName.Text = "";
+            txtCustomerAddress.Text = "";
+            txtCustomerEmail.Text = "";
+            txtCustomerPhone.Text = "";
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             txtLblError.ForeColor = System.Drawing.Color.Red;
@@ -84,6 +91,7 @@ namespace AoLWebVersion.Pages
                 db.SaveChanges();
                 txtLblError.ForeColor = System.Drawing.Color.Green;
                 txtLblError.Text = "Insert Success!!";
+                ClearInput();
             }
             
         }

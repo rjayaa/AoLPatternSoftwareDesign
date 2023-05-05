@@ -15,6 +15,7 @@
          <asp:Label ID="Label1" runat="server" Text="Create Transaction"></asp:Label>
         <asp:GridView ID="CustGridView" runat="server" AutoGenerateColumns="False" AllowSorting="True" AllowFilteringByColumn="True" OnRowCommand="CustGridView_RowCommand">
             <HeaderStyle CssClass="gridview-header-style" />
+
             <Columns>
                 <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" SortExpression="CustomerID" ReadOnly="True" />
                 <asp:BoundField DataField="Name" HeaderText="Customer Name" SortExpression="Name" ReadOnly="True"/>
@@ -25,4 +26,6 @@
             </Columns>
          </asp:GridView>
     </div>
+
+   
 </asp:Content>

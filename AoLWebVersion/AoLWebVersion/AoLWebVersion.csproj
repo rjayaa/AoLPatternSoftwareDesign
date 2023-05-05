@@ -94,7 +94,6 @@
     <Content Include="Pages\TransactionPage\InsertTransactionDetail.aspx" />
     <Content Include="Pages\TransactionPage\InsertTransactionPage.aspx" />
     <Content Include="Pages\MenuPage\MenuPage.aspx" />
-    <Content Include="Pages\TransactionPage\testrun.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -173,13 +172,6 @@
     </Compile>
     <Compile Include="Pages\MenuPage\MenuPage.aspx.designer.cs">
       <DependentUpon>MenuPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TransactionPage\testrun.aspx.cs">
-      <DependentUpon>testrun.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\TransactionPage\testrun.aspx.designer.cs">
-      <DependentUpon>testrun.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository and DatabaseSingleton\DatabaseSingleton.cs" />
