@@ -35,7 +35,8 @@
         <h2><b>tetew</b></h2>
     </div>
     <script type="text/javascript">
-        $(document).on("click", "[id*=btnView]", function () 
+        $(document).on("click", "[id*=btnView]", function () {
+      
             $("#dialog").dialog({
                 modal: true,
                 title: "Create Transaction",
