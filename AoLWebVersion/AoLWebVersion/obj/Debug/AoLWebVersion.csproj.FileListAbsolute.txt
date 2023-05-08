@@ -61,3 +61,4 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLWebVersion\AoLWebV
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLWebVersion\AoLWebVersion\obj\Debug\AoLWebVersion.csproj.CopyComplete
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLWebVersion\AoLWebVersion\obj\Debug\AoLWebVersion.dll
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLWebVersion\AoLWebVersion\obj\Debug\AoLWebVersion.pdb
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\AoLWebVersion\AoLWebVersion\bin\AjaxControlToolkit.dll

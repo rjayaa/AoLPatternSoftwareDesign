@@ -9,10 +9,10 @@ namespace AoLWebVersion.Pages
 {
     public partial class InsertTransactionPage : System.Web.UI.Page
     {
-        tokoBukuEntitiess db = new tokoBukuEntitiess();   
+        tokoBukuEntitiess db = new tokoBukuEntitiess();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(IsPostBack == false)
+            if (IsPostBack == false)
             {
                 List<Customer> cust = db.Customers.ToList();
                 CustGridView.DataSource = cust;
@@ -20,7 +20,7 @@ namespace AoLWebVersion.Pages
             }
         }
 
-        
+
 
         protected void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -36,13 +36,19 @@ namespace AoLWebVersion.Pages
 
         protected void CustGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName == "CreateTransaction")
+            if (e.CommandName == "CreateTransaction")
             {
-                GridViewRow row = CustGridView.Rows[Convert.ToInt32(e.CommandArgument)];
-                string id = row.Cells[0].Text;
+                //{
+                //    GridViewRow row = CustGridView.Rows[Convert.ToInt32(e.CommandArgument)];
+                //    string id = row.Cells[0].Text;
 
-                Response.Redirect("~/Pages/TransactionPage/InsertTransactionDetail.aspx?ID=" + id);
+                //    Response.Redirect("~/Pages/TransactionPage/InsertTransactionDetail.aspx?ID=" + id);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
             }
         }
+
+
+
+
     }
 }

@@ -61,7 +61,7 @@
     <asp:Button ID="btnSave" runat="server" Text="Save" Visible="False" OnClick="btnSave_Click" />
 
     <div>
-    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+    <asp:Label ID="txtVerification" runat="server" Text=""></asp:Label>
     </div>
     
 </asp:Content>

@@ -4,7 +4,9 @@
 
 <html>
 <head runat="server">
-    
+    <!-- di dalam tag head -->
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

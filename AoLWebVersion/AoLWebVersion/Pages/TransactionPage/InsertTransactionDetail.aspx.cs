@@ -82,7 +82,7 @@ namespace AoLWebVersion.Pages
            
         }
 
-        protected void BtnClear_Click(object sender, EventArgs e)
+        protected void clearView()
         {
             BookViewSection.DataSource = null;
             BookViewSection.DataBind();
@@ -98,13 +98,20 @@ namespace AoLWebVersion.Pages
             }
             btnSave.Visible = false;
         }
+        protected void BtnClear_Click(object sender, EventArgs e)
+        {
+            clearView();
+        }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            
             DateTime now = DateTime.Now;
             Transaction td = Factory.Factory.createTransaction(generateID("TRD"),txtCustID.Text,now);
             db.Transactions.Add(td);
             db.SaveChanges();
+            txtVerification.ForeColor = System.Drawing.Color.Green;
+            txtVerification.Text = "Save Data Succed!";
         }
     }
 }

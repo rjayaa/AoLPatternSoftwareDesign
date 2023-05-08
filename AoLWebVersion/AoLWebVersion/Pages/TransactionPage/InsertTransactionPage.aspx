@@ -7,6 +7,9 @@
             color: black;
         }
     </style>
+  
+
+
     <div>
         <asp:Label ID="Label2" runat="server" Text="Search"></asp:Label>
         <asp:TextBox ID="txtSearch" runat="server" OnTextChanged="txtSearch_TextChanged"></asp:TextBox>
@@ -14,8 +17,9 @@
     <div>
          <asp:Label ID="Label1" runat="server" Text="Create Transaction"></asp:Label>
         <asp:GridView ID="CustGridView" runat="server" AutoGenerateColumns="False" AllowSorting="True" AllowFilteringByColumn="True" OnRowCommand="CustGridView_RowCommand">
-            <HeaderStyle CssClass="gridview-header-style" />
 
+      
+            <HeaderStyle CssClass="gridview-header-style" />
             <Columns>
                 <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" SortExpression="CustomerID" ReadOnly="True" />
                 <asp:BoundField DataField="Name" HeaderText="Customer Name" SortExpression="Name" ReadOnly="True"/>
@@ -23,8 +27,9 @@
                 <asp:BoundField DataField="Phone" HeaderText="Customer Phone" SortExpression="Phone" ReadOnly="True"/>
                 <asp:BoundField DataField="Email" HeaderText="Customer Email" SortExpression="Email" ReadOnly="True" />
                 <asp:ButtonField ButtonType="Button" CommandName="CreateTransaction" HeaderText="Actions" Text="Create Transaction" />
-            </Columns>
+            </Columns> 
          </asp:GridView>
+
     </div>
 
    
