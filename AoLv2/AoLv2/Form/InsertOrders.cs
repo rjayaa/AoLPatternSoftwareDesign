@@ -16,9 +16,9 @@ namespace AoLv2
 {
     public partial class InsertOrders : Form
     {
-        
-        SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
 
+        SqlConnection con = new SqlConnection(ConnectionStringHelper.GetConnectionString());
+        private List<string> CustomerNames = new List<string>();
         DataTable dataTable = new DataTable();
         SqlCommand cmd;
         SqlDataReader dr;
@@ -31,7 +31,7 @@ namespace AoLv2
 
             dataTable.Reset();
             dataTable = new DataTable();
-            
+
 
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Orders", con))
             {
@@ -71,9 +71,16 @@ namespace AoLv2
         private void _4InsertTransaksi_Load(object sender, EventArgs e)
         {
             fetchDataCustomer();
+
             txtOrderID.Text = GenerateID();
             fillData();
-            
+            txtCustomer2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtCustomer2.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+
+            collection.AddRange(CustomerNames.ToArray());
+            txtCustomer2.AutoCompleteCustomSource = collection;
+
         }
         public string GenerateID()
         {
@@ -112,10 +119,13 @@ namespace AoLv2
             cmd = new SqlCommand(sql, con);
             con.Open();
             dr = cmd.ExecuteReader();
+            var names = new List<string>();
             while (dr.Read())
             {
+                names.Add(dr["Name"]as string);
                 comboCustomer.Items.Add(dr["Name"]);
             }
+            CustomerNames = names;
             con.Close();
         }
         public void GetCustomerName(string customerName)
@@ -146,7 +156,7 @@ namespace AoLv2
             cmd.Parameters.AddWithValue("@CustomerID", txtCustomerID.Text);
             DateTime orderDate = DateTime.Parse(DatePicker.Text);
             cmd.Parameters.AddWithValue("@OrderDate", orderDate);
-            
+
 
 
             cmd.ExecuteNonQuery();
@@ -214,7 +224,7 @@ namespace AoLv2
             dataTable.Clear();
             fillData();
             ClearInsert();
-            
+
         }
         public void ClearInsert()
         {
@@ -245,15 +255,15 @@ namespace AoLv2
         }
         public void ViewData()
         {
-            
+
             int selectedIndex = DataGridTransaction.CurrentCell.RowIndex;
-            txtOrderID.Text = DataGridTransaction.Rows[selectedIndex].Cells[0+1].Value.ToString();
-            txtCustomerID.Text = DataGridTransaction.Rows[selectedIndex].Cells[1+1].Value.ToString();
+            txtOrderID.Text = DataGridTransaction.Rows[selectedIndex].Cells[0 + 1].Value.ToString();
+            txtCustomerID.Text = DataGridTransaction.Rows[selectedIndex].Cells[1 + 1].Value.ToString();
             comboCustomer.Text = GetCustomerID(txtCustomerID.Text);
 
             // ambil nilai tanggal dari Cells pada baris yang dipilih, lalu set ke dalam DateTimePicker
             DateTime dateValues;
-            if (DateTime.TryParse(DataGridTransaction.Rows[selectedIndex].Cells[2+1].Value.ToString(), out dateValues))
+            if (DateTime.TryParse(DataGridTransaction.Rows[selectedIndex].Cells[2 + 1].Value.ToString(), out dateValues))
             {
                 DatePicker.Value = dateValues;
             }
@@ -261,7 +271,7 @@ namespace AoLv2
         public void DisplayDataSearch()
         {
             con.Open();
-           
+
             if (comboSearch.Text == "")
             {
                 string q = "SELECT OrderID, CustomerID, OrderDate FROM Orders WHERE OrderID LIKE '" + txtSearch.Text + "%' OR CustomerID LIKE'" + txtSearch.Text + "%' OR OrderDate LIKE'" + txtSearch.Text + "%'";
@@ -327,7 +337,7 @@ namespace AoLv2
             ClearInsert();
             txtOrderID.Text = GenerateID();
         }
-       
+
         private void InsertOrders_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
@@ -351,7 +361,7 @@ namespace AoLv2
 
         private void DataGridTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(DataGridTransaction.Columns[e.ColumnIndex].Name == "")
+            if (DataGridTransaction.Columns[e.ColumnIndex].Name == "")
             {
                 ViewData();
             }
@@ -363,6 +373,11 @@ namespace AoLv2
             InsertOrderItems customer = new InsertOrderItems();
             customer.Show();
             customer.FormClosed += InsertOrders_FormClosed;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

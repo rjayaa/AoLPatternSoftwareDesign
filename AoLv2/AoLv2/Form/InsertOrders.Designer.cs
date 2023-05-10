@@ -48,6 +48,7 @@ namespace AoLv2
             this.comboSearch = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtCustomer2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridTransaction)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +65,7 @@ namespace AoLv2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtCustomer2);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnClear);
@@ -88,7 +90,7 @@ namespace AoLv2
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(483, 156);
+            this.btnUpdate.Location = new System.Drawing.Point(483, 151);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 50);
             this.btnUpdate.TabIndex = 20;
@@ -98,7 +100,7 @@ namespace AoLv2
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(377, 270);
+            this.btnExit.Location = new System.Drawing.Point(377, 265);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 50);
             this.btnExit.TabIndex = 19;
@@ -108,7 +110,7 @@ namespace AoLv2
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(377, 212);
+            this.btnClear.Location = new System.Drawing.Point(377, 207);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 50);
             this.btnClear.TabIndex = 18;
@@ -146,7 +148,7 @@ namespace AoLv2
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(483, 212);
+            this.btnDelete.Location = new System.Drawing.Point(483, 207);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 50);
             this.btnDelete.TabIndex = 13;
@@ -156,7 +158,7 @@ namespace AoLv2
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(377, 156);
+            this.btnAdd.Location = new System.Drawing.Point(377, 151);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 50);
             this.btnAdd.TabIndex = 13;
@@ -174,7 +176,7 @@ namespace AoLv2
             // 
             // DatePicker
             // 
-            this.DatePicker.Location = new System.Drawing.Point(137, 119);
+            this.DatePicker.Location = new System.Drawing.Point(142, 151);
             this.DatePicker.Name = "DatePicker";
             this.DatePicker.Size = new System.Drawing.Size(229, 23);
             this.DatePicker.TabIndex = 14;
@@ -183,7 +185,7 @@ namespace AoLv2
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 124);
+            this.label4.Location = new System.Drawing.Point(11, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 16);
             this.label4.TabIndex = 4;
@@ -202,7 +204,7 @@ namespace AoLv2
             // comboCustomer
             // 
             this.comboCustomer.FormattingEnabled = true;
-            this.comboCustomer.Location = new System.Drawing.Point(137, 75);
+            this.comboCustomer.Location = new System.Drawing.Point(137, 107);
             this.comboCustomer.Name = "comboCustomer";
             this.comboCustomer.Size = new System.Drawing.Size(121, 24);
             this.comboCustomer.TabIndex = 1;
@@ -250,6 +252,15 @@ namespace AoLv2
             this.txtSearch.TabIndex = 20;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // txtCustomer2
+            // 
+            this.txtCustomer2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCustomer2.Location = new System.Drawing.Point(137, 78);
+            this.txtCustomer2.Name = "txtCustomer2";
+            this.txtCustomer2.Size = new System.Drawing.Size(160, 23);
+            this.txtCustomer2.TabIndex = 21;
+            this.txtCustomer2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // InsertOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,5 +304,6 @@ namespace AoLv2
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TextBox txtCustomer2;
     }
 }

@@ -25,11 +25,12 @@
                         <asp:LinkButton ID="btnView" runat="server" Text="Create Transaction" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <%--<asp:ButtonField ButtonType="Button" CommandName="CreateTransaction" HeaderText="Actions" Text="Create Transaction" />--%>
+               
             </Columns>
         </asp:GridView>
     </div>
 
+    <%-- Isi konten popup  --%>
     <div id="dialog" style="display: none;">
         <h1>Hello</h1>
         <h2><b>tetew</b></h2>

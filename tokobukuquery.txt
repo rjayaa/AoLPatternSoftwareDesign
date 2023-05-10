@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[Users]
+(
+	[Id] INT NOT NULL, 
+    [username] VARCHAR(50) NOT NULL, 
+    [password] VARCHAR(50) NOT NULL, 
+    [role] VARCHAR(50) NOT NULL 
+)

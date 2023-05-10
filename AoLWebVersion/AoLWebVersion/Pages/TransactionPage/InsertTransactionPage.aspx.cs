@@ -17,6 +17,9 @@ namespace AoLWebVersion.Pages
                 List<Customer> cust = db.Customers.ToList();
                 CustGridView.DataSource = cust;
                 CustGridView.DataBind();
+                List<Book> book = db.Books.ToList();
+                BookGridView.DataSource = book;
+                BookGridView.DataBind();
             }
         }
 
@@ -34,19 +37,61 @@ namespace AoLWebVersion.Pages
             CustGridView.DataBind();
         }
 
-        protected void CustGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void BtnClear_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "CreateTransaction")
-            {
-                //{
-                //    GridViewRow row = CustGridView.Rows[Convert.ToInt32(e.CommandArgument)];
-                //    string id = row.Cells[0].Text;
+            clearView();
+        }
 
-                //    Response.Redirect("~/Pages/TransactionPage/InsertTransactionDetail.aspx?ID=" + id);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        protected void clearView()
+        {
+            BookViewSection.DataSource = null;
+            BookViewSection.DataBind();
+
+            foreach (GridViewRow row in BookGridView.Rows)
+            {
+                CheckBox chkselect = (CheckBox)row.FindControl("chkselect");
+
+                if (chkselect.Checked)
+                {
+                    chkselect.Checked = false;
+                }
+            }
+            btnSave.Visible = false;
+        }
+        protected void BtnAdd_Click(object sender, EventArgs e)
+        {
+            List<Book> selectedBooks = new List<Book>();
+            foreach (GridViewRow row in BookGridView.Rows)
+            {
+                CheckBox chkselect = (CheckBox)row.FindControl("chkselect");
+                if (chkselect.Checked)
+                {
+                    Book book = new Book();
+                    book.BookID = row.Cells[1].Text;
+                    book.Title = row.Cells[2].Text;
+                    book.Author = row.Cells[3].Text;
+                    book.Publisher = row.Cells[4].Text;
+                    book.PublicationYear = Convert.ToInt32(row.Cells[5].Text);
+                    book.Price = Convert.ToInt32(row.Cells[6].Text);
+                    selectedBooks.Add(book);
+                    BookViewSection.DataSource = selectedBooks;
+                    BookViewSection.DataBind();
+                    btnSave.Visible = true;
+                }
             }
         }
 
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+            //DateTime now = DateTime.Now;
+            //Transaction td = Factory.Factory.createTransaction(generateID("TRD"), txtCustID.Text, now);
+            //db.Transactions.Add(td);
+            //db.SaveChanges();
+            txtVerification.ForeColor = System.Drawing.Color.Green;
+            txtVerification.Text = "Save Data Succed!";
+        }
 
 
 
