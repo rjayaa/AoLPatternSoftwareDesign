@@ -90,11 +90,18 @@
       <LastGenOutput>TokoBukuDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="View\Home.aspx" />
+    <Content Include="View\InsertBook.aspx" />
+    <Content Include="View\InsertCustomer.aspx" />
     <Content Include="View\Login.aspx" />
+    <Content Include="View\TransactionPage.aspx" />
+    <Content Include="View\ViewTransaction.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\BookController.cs" />
+    <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Factory\Factory.cs" />
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Model\Book.cs">
       <DependentUpon>TokoBukuDatabase.tt</DependentUpon>
@@ -133,6 +140,7 @@
       <DependentUpon>TokoBukuDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BookRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="View\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -140,6 +148,20 @@
     </Compile>
     <Compile Include="View\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertBook.aspx.cs">
+      <DependentUpon>InsertBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertBook.aspx.designer.cs">
+      <DependentUpon>InsertBook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertCustomer.aspx.cs">
+      <DependentUpon>InsertCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertCustomer.aspx.designer.cs">
+      <DependentUpon>InsertCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -154,6 +176,20 @@
     </Compile>
     <Compile Include="View\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransactionPage.aspx.cs">
+      <DependentUpon>TransactionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\TransactionPage.aspx.designer.cs">
+      <DependentUpon>TransactionPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTransaction.aspx.cs">
+      <DependentUpon>ViewTransaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ViewTransaction.aspx.designer.cs">
+      <DependentUpon>ViewTransaction.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +209,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factory\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

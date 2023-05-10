@@ -13,5 +13,10 @@ namespace TokoBuku.View
         {
 
         }
+
+        protected void btnCustomer_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
