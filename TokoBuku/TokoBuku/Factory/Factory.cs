@@ -19,5 +19,17 @@ namespace TokoBuku.Factory
             bk.Stock = stock;
             return bk;
         }
+
+        public static Customer createCustomer(string id, string name, string address, string phone, string email)
+        {
+            Customer cst = new Customer();
+            cst.CustomerID = id;
+            cst.Name = name;
+            cst.Address = address;
+            cst.Phone = phone;
+            cst.Email = email;
+
+            return cst;
+        }
     }
 }

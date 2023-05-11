@@ -3,45 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TokoBuku.Model;
+using TokoBuku.Handler;
 namespace TokoBuku.Controller
 {
     public class LoginController
     {
-
-        public static void SetCookie(string username, string password)
+        public static String CheckUsername(String username)
         {
-            HttpCookie cookie = new HttpCookie("user_cookie");
-            cookie.Values["username"] = username;
-            cookie.Values["password"] = password;
-            cookie.Expires = DateTime.Now.AddMinutes(2);
-            HttpContext.Current.Response.Cookies.Add(cookie);
+            String message = "";
+            if (username.Equals("")) message = "Username cannot be empty";
+            else if (username.Length < 3) message = "Username length cannot be less than 3";
+
+            return message;
         }
 
-        public static HttpCookie GetCookie()
+        public static String CheckPassword(String password)
         {
-            return HttpContext.Current.Request.Cookies["user_cookie"];
+            String message = "";
+            if (password.Equals("")) message = "password cannot be empty";
+            else if (password.Length < 3) message = "password length cannot be less than 3";
+
+            return message;
         }
 
-        public static bool RememberChecked()
+        public static String Login(String username, String password)
         {
-            return HttpContext.Current.Request.Form["chkBox"] != null;
-        }
+            String message = CheckUsername(username);
+            if (message.Equals("")) message = CheckPassword(password);
 
-        public static void IncreaseUserCount()
-        {
-            if (HttpContext.Current.Application["user_count"] == null)
+            if(username.Equals("admin") && password.Equals("admin221"))
             {
-                HttpContext.Current.Application["user_count"] = 1;
+                HttpContext.Current.Response.Redirect("Home.aspx");
+                return string.Empty;
             }
-            else
-            {
-                HttpContext.Current.Application["user_count"] = (int)HttpContext.Current.Application["user_count"] + 1;
-            }
-        }
+            if (message.Equals("")) message = LoginHandler.checkUserObject(username, password);
 
-        public static void SetSession(User user)
-        {
-            HttpContext.Current.Session["user_session"] = user;
+
+            return message;
+
         }
     }
 }

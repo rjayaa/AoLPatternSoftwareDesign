@@ -14,8 +14,6 @@
             
         </div>
         <div>
-            <asp:CheckBox ID="chkBox" runat="server" />
-            <br />
             <asp:Label ID="lblValidate" runat="server" Text=""></asp:Label>
         </div>
         <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />

@@ -9,7 +9,7 @@ namespace TokoBuku.Handler
     {
         public static String checkUserObject(String username , String password)
         {
-            return UserRepository.getUser(username, password) != null ?
+            return Repository.Repository.getUser(username, password) != null ?
                 "Success Login" : "User Doesnt Exist!";
         }
     }
