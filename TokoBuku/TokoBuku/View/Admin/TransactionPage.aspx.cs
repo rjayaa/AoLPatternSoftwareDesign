@@ -22,7 +22,26 @@ namespace TokoBuku.View
                 gridviewDialog.DataSource = bk;
                 gridviewDialog.DataBind();
 
+                List<Book> bks = Repository.Repository.getBook();
+                gridviewTransaction.DataSource = bks;
+                gridviewTransaction.DataBind();
+
+                gridviewTransaction.Visible = false;
+
             }
         }
+        public static string ServerFunction()
+        {
+            // Logika atau tindakan di sisi server
+            // ...
+
+            // Mengubah properti Visible dari GridView menjadi true
+            TransactionPage page = new TransactionPage();
+            GridView gridView = page.gridviewTransaction;
+            gridView.Visible = true;
+
+            return "success";
+        }
     }
+
 }

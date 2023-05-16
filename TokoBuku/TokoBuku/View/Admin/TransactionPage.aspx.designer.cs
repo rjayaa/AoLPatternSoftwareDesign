@@ -15,6 +15,15 @@ namespace TokoBuku.View
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -33,15 +42,6 @@ namespace TokoBuku.View
         protected global::System.Web.UI.WebControls.GridView gridViewCustomer;
 
         /// <summary>
-        /// gridviewDialog control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridviewDialog;
-
-        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -58,5 +58,41 @@ namespace TokoBuku.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
+
+        /// <summary>
+        /// btnClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClose;
+
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
+
+        /// <summary>
+        /// gridviewTransaction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridviewTransaction;
+
+        /// <summary>
+        /// gridviewDialog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridviewDialog;
     }
 }

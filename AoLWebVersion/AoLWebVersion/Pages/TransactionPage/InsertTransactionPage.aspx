@@ -98,12 +98,6 @@
                 });
                 return false;
             });
-
-            $(document).on("click", "#dialog [type=checkbox]", function (e) {
-                e.stopPropagation();
-            });
-
-
         </script>
     </div>
 
