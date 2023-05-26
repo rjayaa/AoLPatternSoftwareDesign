@@ -17,18 +17,18 @@ namespace TokoBuku.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
-            this.Transaction_Detail = new HashSet<Transaction_Detail>();
+            this.TransactionDetails = new HashSet<TransactionDetail>();
         }
     
         public string BookID { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string Publisher { get; set; }
-        public int PublicationYear { get; set; }
-        public int Price { get; set; }
-        public int Stock { get; set; }
+        public Nullable<int> PublicationYear { get; set; }
+        public Nullable<int> Price { get; set; }
+        public Nullable<int> Stock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction_Detail> Transaction_Detail { get; set; }
+        public virtual ICollection<TransactionDetail> TransactionDetails { get; set; }
     }
 }

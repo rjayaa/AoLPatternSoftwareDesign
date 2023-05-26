@@ -76,3 +76,4 @@ C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\TokoBukuKita\TokoBuku
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\TokoBukuKita\TokoBukuKita\obj\Debug\TokoBukuKita.csproj.CopyComplete
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\TokoBukuKita\TokoBukuKita\obj\Debug\TokoBukuKita.dll
 C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\TokoBukuKita\TokoBukuKita\obj\Debug\TokoBukuKita.pdb
+C:\Users\ragil\OneDrive\Documents\AoLPatternSoftwareDesign\TokoBukuKita\TokoBukuKita\bin\AjaxControlToolkit.dll

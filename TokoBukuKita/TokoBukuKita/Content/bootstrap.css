@@ -3210,10 +3210,25 @@ fieldset[disabled] .btn-default.focus {
   color: #fff;
   background-color: #333;
 }
+
+.btn-add{
+    margin-top:25px;
+    margin-bottom:25px;
+    width:150px;
+    
+}
+
+.dropdownBook{
+    margin-top:25px;
+}
+
+.dropDownList{
+    height:50px;
+}
 .btn-primary {
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+    color: #fff;
+    background-color: #2ea446;
+    border-color: #2ea446;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -3221,11 +3236,11 @@ fieldset[disabled] .btn-default.focus {
   background-color: #286090;
   border-color: #122b40;
 }
-.btn-primary:hover {
-  color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
-}
+    .btn-primary:hover {
+        color: #2ea446;
+        background-color: #fff;
+        border-color: #2ea446;
+    }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {

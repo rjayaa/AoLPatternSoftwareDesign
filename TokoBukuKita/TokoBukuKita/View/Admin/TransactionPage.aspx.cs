@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBukuKita.Repository;
 using TokoBukuKita.Model;
+using System.Web.Services;
+
 namespace TokoBukuKita.View.Admin
 {
     public partial class TransactionPage : System.Web.UI.Page
@@ -15,33 +17,34 @@ namespace TokoBukuKita.View.Admin
             if (!IsPostBack)
             {
                 BindGridView();
+                bindBookList();
             }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            // Mendapatkan tombol "Create Transaction" yang diklik
             Button btnView = (Button)sender;
-
-            // Mendapatkan baris GridView yang mengandung tombol tersebut
             GridViewRow row = (GridViewRow)btnView.NamingContainer;
-
-            // Mendapatkan data dari baris GridView yang dipilih
             string customerID = row.Cells[0].Text;
             string customerName = row.Cells[1].Text;
             string customerAddress = row.Cells[2].Text;
             string customerPhone = row.Cells[3].Text;
             string customerEmail = row.Cells[4].Text;
 
-            // Mengisi nilai TextBox pada modal popup dengan data yang diperoleh
             txtCustomerID.Text = customerID;
             txtName.Text = customerName;
-       
 
-            // Menampilkan modal popup
+            //string script = @"<script type='text/javascript'>
+            //                    $(document).ready(function () {
+            //                        $('#mymodal').modal('show');
+            //                    });
+            //                </script>";
             string script = @"<script type='text/javascript'>
                         $(document).ready(function () {
-                            $('#mymodal').modal('show');
+                            $('#mymodal').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
                         });
                     </script>";
             ClientScript.RegisterStartupScript(this.GetType(), "ModalScript", script);
@@ -49,36 +52,50 @@ namespace TokoBukuKita.View.Admin
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            // Mendapatkan nilai dari TextBox pada modal popup
-            //string name = txtName.Text;
-            //string email = txtmail.Text;
-            //string contact = txtcontact.Text;
-            //string address = txtaddress.Text;
+            try
+            {
+                string transactionID = Controller.GenerateID.generateID("TRD", "Transactions", "TransactionID");
+                string customerID = txtCustomerID.Text;
+                string customerName = txtName.Text;
+                DateTime orderDate = DateTime.Now;
 
-            // Lakukan operasi penyimpanan atau manipulasi data sesuai kebutuhan
-            // ...
+                Transaction transaction = Factory.Factory.createTransaction(transactionID, customerID, orderDate);
+                //Repository.saveTransaction(transaction);
 
-            // Menutup modal popup setelah selesai
-            string script = @"<script type='text/javascript'>
-                            $(document).ready(function () {
-                                $('#mymodal').modal('hide');
-                            });
-                        </script>";
-            ClientScript.RegisterStartupScript(this.GetType(), "CloseModalScript", script);
+                // Clear form fields
+                txtCustomerID.Text = "";
+                txtName.Text = "";
 
-            // Refresh GridView
-            BindGridView();
+                // Refresh grid view
+                BindGridView();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occurred during saving transaction: " + ex.Message);
+            }
         }
 
         private void BindGridView()
         {
-            // Mendapatkan data customer dari Repository
             var customers = Repository.Repository.getCustomer();
-
-            // Mengikat data ke GridView
             gridViewCustomer.DataSource = customers;
             gridViewCustomer.DataBind();
         }
 
+        private void bindBookList()
+        {
+            // Fetch data dari repository
+            List<Book> books = Repository.Repository.GetBook();
+
+            // Bind data ke DropDownList
+            dropDownList.DataSource = books;
+            dropDownList.DataTextField = "Title";
+            dropDownList.DataBind();
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            string id = Controller.GenerateID.generateID("TRD", "Tr", "CustomerID");
+        }
     }
 }

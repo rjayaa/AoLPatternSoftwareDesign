@@ -19,12 +19,12 @@ namespace TokoBuku.Model
         {
             this.Invoices = new HashSet<Invoice>();
             this.Payments = new HashSet<Payment>();
-            this.Transaction_Detail = new HashSet<Transaction_Detail>();
+            this.TransactionDetails = new HashSet<TransactionDetail>();
         }
     
         public string TransactionID { get; set; }
         public string CustomerID { get; set; }
-        public System.DateTime OrderDate { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -32,6 +32,6 @@ namespace TokoBuku.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction_Detail> Transaction_Detail { get; set; }
+        public virtual ICollection<TransactionDetail> TransactionDetails { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace TokoBukuKita.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TokoBukuEntities : DbContext
+    public partial class TokoEntities : DbContext
     {
-        public TokoBukuEntities()
-            : base("name=TokoBukuEntities")
+        public TokoEntities()
+            : base("name=TokoEntities")
         {
         }
     
@@ -29,8 +29,8 @@ namespace TokoBukuKita.Model
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Transaction_Detail> Transaction_Detail { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -19,9 +19,15 @@ namespace TokoBukuKita.Repository
             return db.Customers.ToList();
         }
 
-        public static List<Book> getBook()
+        public static List<Book> GetBook()
         {
             return db.Books.ToList();
+        }
+
+
+        public static List<Transaction> getTransaction()
+        {
+            return db.Transactions.ToList();
         }
     }
 }

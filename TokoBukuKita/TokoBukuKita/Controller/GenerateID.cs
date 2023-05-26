@@ -6,7 +6,7 @@ using TokoBukuKita.Model;
 namespace TokoBukuKita.Controller
 {
     public class GenerateID
-    {
+    { 
         static TokoBukuEntities db = new TokoBukuEntities();
         public static String generateID(string prefix, string table, string attribute)
         {

@@ -16,8 +16,8 @@ namespace TokoBuku.Model
     {
         public string PaymentID { get; set; }
         public string TransactionID { get; set; }
-        public int Amount { get; set; }
-        public System.DateTime PaymentDate { get; set; }
+        public Nullable<int> Amount { get; set; }
+        public Nullable<System.DateTime> PaymentDate { get; set; }
         public string PaymentMethod { get; set; }
     
         public virtual Transaction Transaction { get; set; }

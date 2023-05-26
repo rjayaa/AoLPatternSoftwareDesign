@@ -31,5 +31,25 @@ namespace TokoBukuKita.Factory
 
             return cst;
         }
+
+        public static Transaction_Detail createTransactionDetail(string id , string bookID, int quantity)
+        {
+            Transaction_Detail td = new Transaction_Detail();
+            td.TransactionID = id;
+            td.BookID = bookID;
+            td.Quantity = quantity;
+
+            return td;
+        }
+
+        public static Transaction createTransaction(string id, string customerID, DateTime orderdate)
+        {
+            Transaction td = new Transaction();
+            td.TransactionID = id;
+            td.CustomerID = customerID;
+            td.OrderDate = orderdate;
+            return td;
+        }
+
     }
 }

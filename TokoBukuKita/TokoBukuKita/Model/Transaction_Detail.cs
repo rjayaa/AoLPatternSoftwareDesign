@@ -14,6 +14,7 @@ namespace TokoBukuKita.Model
     
     public partial class Transaction_Detail
     {
+        public string TransactionDetailID { get; set; }
         public string TransactionID { get; set; }
         public string BookID { get; set; }
         public int Quantity { get; set; }
