@@ -20,5 +20,7 @@ namespace TokoBuku.Repository
         {
             return db.Customers.ToList();
         }
+
+       
     }
 }
