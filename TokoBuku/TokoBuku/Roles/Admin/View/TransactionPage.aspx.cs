@@ -33,12 +33,7 @@ namespace TokoBuku.Roles.Admin.View
             GridViewRow row = (GridViewRow)btnView.NamingContainer;
             string customerID = row.Cells[0].Text;
 
-            // Redirect ke halaman selanjutnya dengan membawa ID
             Response.Redirect("TransactionDetailPage.aspx?ID=" + customerID);
         }
-
-
-
-       
     }
 }
