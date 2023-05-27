@@ -7,29 +7,25 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBuku.Model;
 using TokoBuku.Repository;
-
+using TokoBuku.Controller;
 namespace TokoBuku.Roles.Admin.View
 {
     public partial class TransactionDetailPage : System.Web.UI.Page
     {
-        private List<SelectedBook> selectedBooks = new List<SelectedBook>();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                string customerID = Request.QueryString["customerid"];
+                txtTransactionID.Text = Request.QueryString["transactionid"];
                 txtCustomerIDs.Text = Request["ID"];
                 BindGridViewBook();
                 RegisterCustomScript();
+                // Initialize the selectedBooks list if it's null
+                
             }
-            else
-            {
-                // Retrieve the selected books from the session variable
-                if (Session["SelectedBooks"] != null)
-                {
-                    selectedBooks = (List<SelectedBook>)Session["SelectedBooks"];
-                }
-            }
+            
         }
 
         protected void RegisterCustomScript()
@@ -57,7 +53,36 @@ namespace TokoBuku.Roles.Admin.View
         }
 
 
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            //selectedBooks.Clear();
+            //Session["SelectedBooks"] = null;
+            //gridViewSelectedBooks.DataSource = null;
+            //gridViewSelectedBooks.DataBind();
+            btnClear.Visible = false;
+            btnSave.Visible = false;
 
+        }
+
+
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gridViewBook_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                gridViewBook.SelectedIndex = rowIndex;
+                txtQuantity.Text = "";
+                string script = "$('#mymodal').modal('show')";
+                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
+
+            }
+        }
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             if (gridViewBook.SelectedRow != null)
@@ -80,41 +105,37 @@ namespace TokoBuku.Roles.Admin.View
                         string price = selectedRow.Cells[5].Text;
                         string selectedStock = selectedRow.Cells[6].Text;
 
-                        // Create a new SelectedBook object
-                        SelectedBook selectedBook = new SelectedBook
+                        // Create a new TransactionDetail object
+                        string transactionDetailID = Controller.GenerateID.generateID("TDD", "TransactionDetail", "TransactionDetailID");
+                        var res = Controller.TransactionDetailController.insertTransactionDetail(transactionDetailID, txtTransactionID.Text, bookID, inputStock);
+
+                        if (res == true)
                         {
-                            BookID = bookID,
-                            Title = title,
-                            Author = author,
-                            Publisher = publisher,
-                            PublicationYear = publicationYear,
-                            Price = price,
-                            Stock = inputStock.ToString(),
-                        };
+                            // Show success message
+                            string script = "$('#ValidationModal').modal('show')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
+                            txtPopup.Text = "Success!";
+                            txtValidation.Text = "Book Added!!";
+                            btnClear.Visible = true;
+                            btnSave.Visible = true;
+                        }
+                        else
+                        {
+                            // Show error message
+                            string script = "$('#ValidationModal').modal('show')";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
+                            txtPopup.Text = "Failed!!!";
+                            txtValidation.Text = "Failed to add book.";
+                            btnClear.Visible = false;
+                            btnSave.Visible = false;
+                        }
 
-                        // Add the selected book to the list
-                        selectedBooks.Add(selectedBook);
-
-                        // Store the updated list in the session variable
-                        Session["SelectedBooks"] = selectedBooks;
-
-                        // Bind the selected books to the GridView
-                        gridViewSelectedBooks.DataSource = selectedBooks;
-                        gridViewSelectedBooks.DataBind();
-
-                        //gridViewBook.SelectedIndex = -1; // Deselect the row
-
-                        btnClear.Visible = true;
-                        btnSave.Visible = true;
-                        txtlblerror.Text = ""; // Clear error message
-                        txtQuantity.Text = ""; // Clear input textbox
-                        string script = "$('#ValidationModal').modal('show')";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
-                        txtPopup.Text = "Success!";
-                        txtValidation.Text = "Book Added!!";
+                        // Clear input textbox
+                        txtQuantity.Text = "";
                     }
                     else if (inputStock > stockGridView)
                     {
+                        // Show error message
                         string script = "$('#ValidationModal').modal('show')";
                         ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
                         txtPopup.Text = "Failed!!!";
@@ -123,6 +144,7 @@ namespace TokoBuku.Roles.Admin.View
                 }
                 else
                 {
+                    // Show error message
                     string script = "$('#ValidationModal').modal('show')";
                     ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
                     txtPopup.Text = "Failed!!!";
@@ -135,50 +157,6 @@ namespace TokoBuku.Roles.Admin.View
             }
         }
 
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            selectedBooks.Clear();
-            Session["SelectedBooks"] = null;
-            gridViewSelectedBooks.DataSource = null;
-            gridViewSelectedBooks.DataBind();
-            btnClear.Visible = false;
-            btnSave.Visible = false;
 
-        }
-
-
-        protected void gridViewBook_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Select")
-            {
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                gridViewBook.SelectedIndex = rowIndex;
-                txtQuantity.Text = "";
-                string script = "$('#mymodal').modal('show')";
-                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
-                
-            }
-        }
-
-        internal class SelectedBook
-        {
-            public string BookID { get; set; }
-            public string Title { get; set; }
-            public string Author { get; set; }
-            public string Publisher { get; set; }
-            public string PublicationYear { get; set; }
-            public string Price { get; set; }
-            public string Stock { get; set; }
-
-            public SelectedBook Clone()
-            {
-                return (SelectedBook)MemberwiseClone();
-            }
-        }
-
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

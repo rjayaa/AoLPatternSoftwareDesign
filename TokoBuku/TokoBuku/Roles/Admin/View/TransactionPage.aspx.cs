@@ -32,8 +32,10 @@ namespace TokoBuku.Roles.Admin.View
             Button btnView = (Button)sender;
             GridViewRow row = (GridViewRow)btnView.NamingContainer;
             string customerID = row.Cells[0].Text;
-
-            Response.Redirect("TransactionDetailPage.aspx?ID=" + customerID);
+            string transactionid = Controller.GenerateID.generateID("TRD", "Transactions", "TransactionID");
+            DateTime currentTime = DateTime.Now;
+            var result = Controller.TransactionController.insertTransaction(transactionid, customerID, currentTime);
+            Response.Redirect("TransactionDetailPage.aspx?customerid=" + customerID + "&transactionid=" + transactionid);
         }
     }
 }

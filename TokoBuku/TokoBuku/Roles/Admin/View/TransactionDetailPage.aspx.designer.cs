@@ -24,6 +24,15 @@ namespace TokoBuku.Roles.Admin.View
         protected global::System.Web.UI.WebControls.Label txtCustomerIDs;
 
         /// <summary>
+        /// txtTransactionID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtTransactionID;
+
+        /// <summary>
         /// gridViewBook control.
         /// </summary>
         /// <remarks>
@@ -31,15 +40,6 @@ namespace TokoBuku.Roles.Admin.View
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridViewBook;
-
-        /// <summary>
-        /// gridViewSelectedBooks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridViewSelectedBooks;
 
         /// <summary>
         /// btnClear control.

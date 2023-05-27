@@ -1,18 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TransactionDetailPage.aspx.cs" Inherits="TokoBuku.Roles.Admin.View.TransactionDetailPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-       <script>
-        function validNumeric() {
-            var charcode = (event.which) ? event.which : event.keyCode;
-            if (charcode >= 48 && charcode <= 57) {
-                return true
-            } else {
-                return false
-            }
-        }
-       </script>
+       
 
     <asp:Label ID="txtCustomerIDs" runat="server" Text=""></asp:Label>
+    <asp:Label ID="txtTransactionID" runat="server" Text="" Visible ="false"></asp:Label>
     <asp:GridView ID="gridViewBook" runat="server" AutoGenerateColumns="false" OnRowCommand="gridViewBook_RowCommand"  >
         <Columns>
             <asp:BoundField DataField="BookID" HeaderText="Book ID">
@@ -49,7 +41,7 @@
     <br />
     <br />
 
-    <asp:GridView ID="gridViewSelectedBooks" runat="server" AutoGenerateColumns="false">
+    <%--<asp:GridView ID="gridViewSelectedBooks" runat="server" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField DataField="BookID" HeaderText="Book ID">
                 <ItemStyle HorizontalAlign="Center" />
@@ -73,11 +65,11 @@
                 <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
         </Columns>
-    </asp:GridView>
+    </asp:GridView>--%>
     <br />
     <br />
-    <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" Visible="false" />
-    <asp:Button ID="btnSave" runat="server" Text="Clear" OnClick="btnSave_Click"  Visible="false" CssClass="btn btn-primary" />
+    <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" Visible="false" CssClass="btn btn-danger"/>
+    <asp:Button ID="btnSave" runat="server" Text="Save" Onclick="btnSave_Click" Visible="false" CssClass="btn btn-primary" />
 
 
     <div class="container">
