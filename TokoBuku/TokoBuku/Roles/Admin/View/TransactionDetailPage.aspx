@@ -40,38 +40,9 @@
     <br />
     <br />
     <br />
-
-    <%--<asp:GridView ID="gridViewSelectedBooks" runat="server" AutoGenerateColumns="false">
-        <Columns>
-            <asp:BoundField DataField="BookID" HeaderText="Book ID">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Title" HeaderText="Book Title">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Author" HeaderText="Book Author">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Publisher" HeaderText="Book Publisher">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="PublicationYear" HeaderText="Publication Year">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Price" HeaderText="Price">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Stock" HeaderText="Stock">
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-        </Columns>
-    </asp:GridView>--%>
     <br />
     <br />
-    <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" Visible="false" CssClass="btn btn-danger"/>
-    <asp:Button ID="btnSave" runat="server" Text="Save" Onclick="btnSave_Click" Visible="false" CssClass="btn btn-primary" />
-
-
+    
     <div class="container">
         <div class="modal fade" id="mymodal" role="dialog" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" style="width: 400px; height: 400px;">
@@ -81,7 +52,7 @@
                     </div>
                     <div class="modal-body">
                         <asp:Label ID="Label1" runat="server" Text="Quantity"></asp:Label>
-                       <asp:TextBox ID="txtQuantity" runat="server" onkeypress="return validNumeric()"></asp:TextBox>
+                       <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
                         <br />
                         <div style="text-align: right;">
                             <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger" />

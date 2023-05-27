@@ -154,6 +154,7 @@
       <DependentUpon>TokoBukuModel.edmx</DependentUpon>
       <LastGenOutput>TokoBukuModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Roles\Admin\View\PaymentPage.aspx" />
     <Content Include="Roles\Admin\View\TransactionDetailPage.aspx" />
     <Content Include="Roles\Admin\View\TransactionPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -208,6 +209,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\GenerateID.cs" />
+    <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="Controller\TransactionDetailController.cs" />
     <Compile Include="Default.aspx.cs">
@@ -259,6 +261,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Roles\Admin\View\PaymentPage.aspx.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\Admin\View\PaymentPage.aspx.designer.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Roles\Admin\View\TransactionDetailPage.aspx.cs">
       <DependentUpon>TransactionDetailPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

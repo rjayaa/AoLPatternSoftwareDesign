@@ -21,54 +21,20 @@ namespace TokoBuku.Roles.Admin.View
                 txtTransactionID.Text = Request.QueryString["transactionid"];
                 txtCustomerIDs.Text = Request["ID"];
                 BindGridViewBook();
-                RegisterCustomScript();
-                // Initialize the selectedBooks list if it's null
+               
+            
                 
             }
             
         }
 
-        protected void RegisterCustomScript()
-        {
-            // Tambahkan kode JavaScript secara dinamis
-            string script = @"
-        function validNumeric() {
-            var charcode = (event.which) ? event.which : event.keyCode;
-            if (charcode >= 48 && charcode <= 57) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    ";
-
-            ScriptManager.RegisterStartupScript(this, GetType(), "CustomScript", script, true);
-        }
+      
 
         private void BindGridViewBook()
         {
             var bk = Repository.Repository.getBook();
             gridViewBook.DataSource = bk;
             gridViewBook.DataBind();
-        }
-
-
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            //selectedBooks.Clear();
-            //Session["SelectedBooks"] = null;
-            //gridViewSelectedBooks.DataSource = null;
-            //gridViewSelectedBooks.DataBind();
-            btnClear.Visible = false;
-            btnSave.Visible = false;
-
-        }
-
-
-
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-
         }
 
         protected void gridViewBook_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -116,8 +82,6 @@ namespace TokoBuku.Roles.Admin.View
                             ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
                             txtPopup.Text = "Success!";
                             txtValidation.Text = "Book Added!!";
-                            btnClear.Visible = true;
-                            btnSave.Visible = true;
                         }
                         else
                         {
@@ -126,8 +90,7 @@ namespace TokoBuku.Roles.Admin.View
                             ScriptManager.RegisterStartupScript(this, GetType(), "Popup", script, true);
                             txtPopup.Text = "Failed!!!";
                             txtValidation.Text = "Failed to add book.";
-                            btnClear.Visible = false;
-                            btnSave.Visible = false;
+                       
                         }
 
                         // Clear input textbox

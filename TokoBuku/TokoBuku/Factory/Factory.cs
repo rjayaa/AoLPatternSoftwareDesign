@@ -27,5 +27,20 @@ namespace TokoBuku.Factory
             return td;
 
         }
+
+        public static Payment createPayment(string paymentid, string transactionid, int amount, DateTime date, string paymentmethod)
+        {
+            Payment pp = new Payment();
+
+            pp.PaymentID = paymentid;
+            pp.TransactionID = transactionid;
+            pp.Amount = amount;
+            pp.PaymentDate = date;
+            pp.PaymentMethod = paymentmethod;
+
+            return pp;
+        }
+
+        
     }
 }

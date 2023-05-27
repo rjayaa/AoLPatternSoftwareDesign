@@ -20,9 +20,10 @@ namespace TokoBuku.Controller
             }
             catch (Exception ex)
             {
-                
+
                 // Log the exception using your preferred logging mechanism
                 // logger.Error(ex.ToString());
+                return false;
             }
 
             return true;

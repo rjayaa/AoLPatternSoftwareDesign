@@ -6,7 +6,7 @@ using TokoBuku.Model;
 namespace TokoBuku.Repository
 {
 
-    
+
     public class Repository
     {
         static TokoBukuEntities db = new TokoBukuEntities();
@@ -21,6 +21,19 @@ namespace TokoBuku.Repository
             return db.Customers.ToList();
         }
 
+        public static List<TransactionDetail> getTransactionDetails()
+        {
+            return db.TransactionDetails.ToList();
+        }
+
+        public static List<Transaction> getTransactions() {
+            return db.Transactions.ToList();
+
+        }
+        public static List<Payment> getPayments()
+        {
+            return db.Payments.ToList();
+        }
        
     }
 }
