@@ -98,8 +98,6 @@ namespace AoLv2.Insertion
             cmd.Parameters.AddWithValue("@BookID", comboBook.Text);
             cmd.Parameters.AddWithValue("@Quantity", txtQuantity.Value);
             
-
-
             cmd.ExecuteNonQuery();
             con.Close();
             DataGridDetail.Columns.Clear();
