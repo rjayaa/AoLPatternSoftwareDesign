@@ -154,7 +154,11 @@
       <DependentUpon>TokoBukuModel.edmx</DependentUpon>
       <LastGenOutput>TokoBukuModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Roles\Admin\View\InsertBookPage.aspx" />
+    <Content Include="Roles\Admin\View\InsertCustomerPage.aspx" />
+    <Content Include="Roles\Admin\View\InvoicesPage.aspx" />
     <Content Include="Roles\Admin\View\PaymentPage.aspx" />
+    <Content Include="Roles\Admin\View\script.js" />
     <Content Include="Roles\Admin\View\TransactionDetailPage.aspx" />
     <Content Include="Roles\Admin\View\TransactionPage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -208,7 +212,10 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controller\BookController.cs" />
+    <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\GenerateID.cs" />
+    <Compile Include="Controller\InvoicesController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="Controller\TransactionDetailController.cs" />
@@ -261,6 +268,27 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Roles\Admin\View\InsertBookPage.aspx.cs">
+      <DependentUpon>InsertBookPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\Admin\View\InsertBookPage.aspx.designer.cs">
+      <DependentUpon>InsertBookPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\Admin\View\InsertCustomerPage.aspx.cs">
+      <DependentUpon>InsertCustomerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\Admin\View\InsertCustomerPage.aspx.designer.cs">
+      <DependentUpon>InsertCustomerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\Admin\View\InvoicesPage.aspx.cs">
+      <DependentUpon>InvoicesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\Admin\View\InvoicesPage.aspx.designer.cs">
+      <DependentUpon>InvoicesPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Roles\Admin\View\PaymentPage.aspx.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

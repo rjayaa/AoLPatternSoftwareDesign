@@ -34,15 +34,9 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-    </asp:GridView>
+    </asp:GridView> 
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    
+    <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn btn-danger" onClick="btnBack_Click"/>
     <div class="container">
         <div class="modal fade" id="mymodal" role="dialog" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" style="width: 400px; height: 400px;">

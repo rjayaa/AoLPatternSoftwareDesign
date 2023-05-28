@@ -41,6 +41,41 @@ namespace TokoBuku.Factory
             return pp;
         }
 
+        public static Invoice createInvoices(string invoiceid, string transactionid, int amount, DateTime date)
+        {
+            Invoice iv = new Invoice();
+            iv.InvoiceID = invoiceid;
+            iv.TransactionID = transactionid;
+            iv.Amount = amount;
+            iv.IssuedDate = date;
+
+            return iv;
+        }
+        public static Book createBook(string bookid, string title, string author, string publisher, int publicationyear, int price, int stock)
+        {
+            Book bk = new Book();
+            bk.BookID = bookid;
+            bk.Title = title;
+            bk.Author = author;
+            bk.Publisher = publisher;
+            bk.PublicationYear = publicationyear;
+            bk.Price = price;
+            bk.Stock = stock;
+
+            return bk;
+
+        }
         
+        public static Customer createCustomers(string customerid, string name, string address, string phone, string email)
+        {
+            Customer cs = new Customer();
+            cs.CustomerID = customerid;
+            cs.Name = name;
+            cs.Address = address;
+            cs.Phone = phone;
+            cs.Email = email;
+
+            return cs;
+        }
     }
 }
