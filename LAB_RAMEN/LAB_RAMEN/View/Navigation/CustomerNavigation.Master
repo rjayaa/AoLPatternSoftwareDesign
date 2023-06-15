@@ -15,11 +15,15 @@
             justify-content: space-between;
         }
 
-        .navbar a {
+        .navbar .btn {
             text-decoration: none;
             color: #333;
             margin-right: 10px;
             font-weight: bold;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -28,19 +32,16 @@
         <div>
             <div class="navbar">
                 <div>
-                    <a href="OrderRamen.aspx">Order Ramen</a>
-                    <a href="TransactionHistory.aspx">Transaction History</a>
-                    <a href="Profile.aspx">Profile</a>
-                </div>
-                <div>
-                    <a href="Logout.aspx">Logout</a>
+                    <asp:Button ID="btnOrderRamen" runat="server" Text="Order Ramen" OnClick="btnOrderRamen_Click" CssClass="btn" />
+                    <asp:Button ID="btnTransactionHistory" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" CssClass="btn" />
+                    <asp:Button ID="btnProfile" runat="server" Text="Profile" OnClick="btnProfile_Click" CssClass="btn" />
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="btn" />
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
-
             </asp:ContentPlaceHolder>
         </div>
     </form>
 </body>
 </html>
+

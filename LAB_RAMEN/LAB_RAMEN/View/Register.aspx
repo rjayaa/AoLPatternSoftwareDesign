@@ -95,10 +95,10 @@
                 <label for="txtConfirmPassword">Confirm Password</label>
                 <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
             </div>
+           
             <div>
                 <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             </div>
-
             <br />
             <div class="form-group">
                 <div class="btn-container">

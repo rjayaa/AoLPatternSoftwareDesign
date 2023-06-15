@@ -79,10 +79,18 @@
                 <label for="txtPassword">Password</label>
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
             </div>
+            <div>
+                <asp:CheckBox ID="chkRemember" runat="server" Text="Remember Me"/>
+            </div>
+            <br />
+            <div>
+                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+            </div>
+            <br />
             <div class="form-group">
                 <div class="btn-container">
                     <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-primary" OnClick="btnRegister_Click1" />
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-success" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-success" OnClick="btnLogin_Click" />
                 </div>
             </div>
         </div>

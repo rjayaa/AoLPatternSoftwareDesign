@@ -7,10 +7,37 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar .btn {
+            text-decoration: none;
+            color: #333;
+            margin-right: 10px;
+            font-weight: bold;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <div class="navbar">
+                <div>
+                    <asp:Button ID="btnOrderRamen" runat="server" Text="Order Ramen" OnClick="btnOrderRamen_Click" CssClass="btn" />
+                    <asp:Button ID="btnTransactionHistory" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" CssClass="btn" />
+                    <asp:Button ID="btnProfile" runat="server" Text="Profile" OnClick="btnProfile_Click" CssClass="btn" />
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="btn" />
+                </div>
+            </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
