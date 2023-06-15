@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CustomerNavigation.master.cs" Inherits="LAB_RAMEN.View.Navigation.CustomerNavigation" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="navbar">
+                <div>
+                    <a href="OrderRamen.aspx">Order Ramen</a>
+                    <a href="TransactionHistory.aspx">Transaction History</a>
+                    <a href="Profile.aspx">Profile</a>
+                </div>
+                <div>
+                    <a href="Logout.aspx">Logout</a>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
