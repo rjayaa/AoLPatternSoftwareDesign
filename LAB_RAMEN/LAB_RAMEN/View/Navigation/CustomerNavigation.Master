@@ -12,7 +12,7 @@
             background-color: #f8f9fa;
             padding: 10px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Posisi navigasi di tengah */
         }
 
         .navbar .btn {
@@ -32,7 +32,8 @@
         <div>
             <div class="navbar">
                 <div>
-                    <asp:Button ID="btnOrderRamen" runat="server" Text="Order Ramen" OnClick="btnOrderRamen_Click" CssClass="btn" />
+                    <asp:Button ID="btnHome" runat="server" Text="Home" OnClick="btnOrderRamen_Click" CssClass="btn" />
+                    <asp:Button ID="btnOrderRamen" runat="server" Text="OrderRamen" OnClick="btnOrderRamen_Click" CssClass="btn" />
                     <asp:Button ID="btnTransactionHistory" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" CssClass="btn" />
                     <asp:Button ID="btnProfile" runat="server" Text="Profile" OnClick="btnProfile_Click" CssClass="btn" />
                     <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="btn" />
@@ -44,4 +45,3 @@
     </form>
 </body>
 </html>
-
