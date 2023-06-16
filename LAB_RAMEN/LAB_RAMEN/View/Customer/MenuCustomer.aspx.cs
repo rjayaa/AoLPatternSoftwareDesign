@@ -29,5 +29,10 @@ namespace LAB_RAMEN.View.Customer
         {
             Response.Redirect("../Customer/Profile.aspx");
         }
+
+        protected void btnOrderRamen_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Customer/OrderRamen.aspx");
+        }
     }
 }

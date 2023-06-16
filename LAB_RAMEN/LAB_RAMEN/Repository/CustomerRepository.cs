@@ -13,5 +13,23 @@ namespace LAB_RAMEN.Repository
         {
             return db.Ramen.ToList();
         }
+
+        public static Detail FindRamen(int headerId, int ramenId)
+        {
+            Detail d = db.Details.Where(x => x.RamenID == ramenId && x.HeaderID == headerId).FirstOrDefault();
+            return d;
+        }
+        public static string GetRamenNameById(int ramenID)
+        {
+                Raman ramen = db.Ramen.FirstOrDefault(r => r.id == ramenID);
+                if (ramen != null)
+                {
+                    return ramen.Name;
+                }
+            
+            return string.Empty;
+        }
+
+    
     }
 }

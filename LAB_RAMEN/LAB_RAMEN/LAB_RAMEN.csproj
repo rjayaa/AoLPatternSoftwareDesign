@@ -90,7 +90,9 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="View\Admin\Home.aspx" />
+    <Content Include="View\Customer\CartCustomer.aspx" />
     <Content Include="View\Customer\MenuCustomer.aspx" />
+    <Content Include="View\Customer\OrderRamen.aspx" />
     <Content Include="View\Customer\Profile.aspx" />
     <Content Include="View\Customer\TransactionHistory.aspx" />
     <Content Include="View\Login.aspx" />
@@ -146,12 +148,26 @@
     <Compile Include="View\Admin\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Customer\CartCustomer.aspx.cs">
+      <DependentUpon>CartCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Customer\CartCustomer.aspx.designer.cs">
+      <DependentUpon>CartCustomer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\MenuCustomer.aspx.cs">
       <DependentUpon>MenuCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Customer\MenuCustomer.aspx.designer.cs">
       <DependentUpon>MenuCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\OrderRamen.aspx.cs">
+      <DependentUpon>OrderRamen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Customer\OrderRamen.aspx.designer.cs">
+      <DependentUpon>OrderRamen.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Customer\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
