@@ -62,8 +62,9 @@
 <body>
     <form id="form1" runat="server">
           <div class="container">
-            <h2>Welcome to RAAMEN</h2>
-            <asp:GridView ID="gridViewCustomer" runat="server" AutoGenerateColumns="False" CssClass="gridview">
+            <h2>Customer Data</h2>
+            <asp:GridView ID="gridViewCustomer" runat="server" AutoGenerateColumns="False" 
+                Class="gridview">
                 <Columns>
                     <asp:BoundField DataField="Username" HeaderText="Customer Name" SortExpression="Customer Name" />
                     <asp:BoundField DataField="Email" HeaderText="Customer Email" SortExpression="Customer Email" />

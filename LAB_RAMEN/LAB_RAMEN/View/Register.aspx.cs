@@ -45,7 +45,7 @@ namespace LAB_RAMEN.View
                 lblError.ForeColor = System.Drawing.Color.Red;
                 lblError.Text = "Must be the same with confirm password.";
             }
-            else if (!RegisterController.ValidatePassword(txtConfirmPassword.Text, txtPassword.Text))
+            else if (!RegisterController.ValidateConfirmPassword(txtConfirmPassword.Text, txtPassword.Text))
             {
                 lblError.ForeColor = System.Drawing.Color.Red;
                 lblError.Text = "Must be the same with password.";

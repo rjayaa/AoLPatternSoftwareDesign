@@ -63,7 +63,7 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="contentBody" runat="server">
      <div class="container">
         <h1>Profile</h1>
         <div class="form-group">

@@ -40,8 +40,11 @@
                     <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="btn" />
                 </div>
             </div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <div class="content">
+
+            <asp:ContentPlaceHolder ID="contentBody" runat="server">
             </asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
 </body>

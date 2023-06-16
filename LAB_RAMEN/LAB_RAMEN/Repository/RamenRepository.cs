@@ -11,7 +11,8 @@ namespace LAB_RAMEN.Repository
 
         public static List<Raman> GetRamen()
         {
-            return db.Ramen.ToList();
+            List<Raman> r = db.Ramen.ToList();
+            return r;
         }
 
         public static Detail FindRamen(int headerId, int ramenId)
@@ -36,13 +37,24 @@ namespace LAB_RAMEN.Repository
             return m;
 
         }
+        public static List<string> GetBrothData()
+        {
+            List<string> m = db.Meats.Select(x => x.name).ToList();
+            return m;
+
+        }
 
         public static int GeatIdByMeatName(string meatname)
         {
-
             Meat meat = db.Meats.FirstOrDefault(m => m.name == meatname);
              return meat.id;
                     
+        }
+        public static string GeatMeatNameById(int meatid)
+        {
+            Meat meat = db.Meats.FirstOrDefault(m => m.id == meatid);
+            return meat.name;
+
         }
     }
 }

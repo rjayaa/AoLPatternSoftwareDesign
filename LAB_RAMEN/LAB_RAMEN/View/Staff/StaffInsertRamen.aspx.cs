@@ -25,6 +25,12 @@ namespace LAB_RAMEN.View.Staff
             Response.Redirect("../Staff/StaffManageRamen.aspx");
         }
 
+        protected void clearTxt()
+        {
+            txtName.Text = "";
+            txtBroth.Text = "";
+            txtPrice.Text = "";
+        }
         protected void btnInsert_Click(object sender, EventArgs e)
         {
             int id = GenerateIDRepository.GenerateID("Ramen");
@@ -49,7 +55,8 @@ namespace LAB_RAMEN.View.Staff
             {
                 RamenHandler.insertRamen(id, ddlMeat.SelectedValue, txtName.Text, txtBroth.Text, txtPrice.Text);
                 lblError.ForeColor = System.Drawing.Color.Green;
-                lblError.Text = "Registration succeeded";
+                clearTxt();
+                lblError.Text = "Insert New Ramen Succeeded";
             }
         }
     }

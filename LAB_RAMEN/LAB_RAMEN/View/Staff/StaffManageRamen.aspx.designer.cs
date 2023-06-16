@@ -15,13 +15,13 @@ namespace LAB_RAMEN.View.Staff
     {
 
         /// <summary>
-        /// gridViewRamen control.
+        /// gridviewRamen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridViewRamen;
+        protected global::System.Web.UI.WebControls.GridView gridviewRamen;
 
         /// <summary>
         /// lblError control.
@@ -33,12 +33,12 @@ namespace LAB_RAMEN.View.Staff
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// btnInsertRamen control.
+        /// btnInsert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInsertRamen;
+        protected global::System.Web.UI.WebControls.Button btnInsert;
     }
 }
