@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -27,13 +29,7 @@ namespace LAB_RAMEN.View.Customer
                     btnCheckout.Visible = true;
                     lblStatus.Visible = false;
 
-                    var orderList = orderDetails
-                        .GroupBy(d => d.RamenID)
-                        .Select(g => new KeyValuePair<int, int>(g.Key, g.Sum(d => d.Quantity)))
-                        .ToList();
-
-                    gridViewCart.DataSource = orderList;
-                    gridViewCart.DataBind();
+                    BindGridViewData();
                 }
                 else
                 {
@@ -52,25 +48,21 @@ namespace LAB_RAMEN.View.Customer
             db.Headers.Add(header);
             db.SaveChanges();
 
-            int currentId = 1;
             foreach (Detail detail in orderDetails)
             {
-                // Set HeaderID dari detail pesanan
                 detail.HeaderID = header.id;
-
-                // Atur nilai ID secara manual
-                detail.id = currentId++;
+                detail.id = GenerateIDRepository.GenerateID("Detail");
 
                 db.Details.Add(detail);
+                db.SaveChanges();
             }
-            db.SaveChanges();
-
-
-
 
             Session.Remove("cart");
             Session.Remove("order");
 
+            string script = "alert('Order in queue');";
+            ClientScriptManager cs = Page.ClientScript;
+            cs.RegisterStartupScript(GetType(), "PopupScript", script, true);
             Response.Redirect("../Customer/OrderRamen.aspx");
         }
 
@@ -79,6 +71,36 @@ namespace LAB_RAMEN.View.Customer
             int id = Convert.ToInt32(ramenID);
             string ramenName = CustomerRepository.GetRamenNameById(id);
             return ramenName;
+        }
+
+
+        private void BindGridViewData()
+        {
+            List<Detail> orderDetails = (List<Detail>)Session["order"];
+
+            var orderList = orderDetails
+                .GroupBy(d => d.RamenID)
+                .Select(g => new KeyValuePair<int, int>(g.Key, g.Sum(d => d.Quantity)))
+                .ToList();
+
+            gridViewCart.DataSource = orderList;
+            gridViewCart.DataBind();
+        }
+
+        protected void btnClearCart_Click(object sender, EventArgs e)
+        {
+            List<Detail> orderDetails = (List<Detail>)Session["order"];
+            orderDetails.Clear();
+            lblStatus.Visible = true;
+            gridViewCart.Visible = false;
+            btnCheckout.Visible = false;
+            btnClearCart.Visible = false;
+            BindGridViewData();
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Customer/OrderRamen.aspx");
         }
     }
 }

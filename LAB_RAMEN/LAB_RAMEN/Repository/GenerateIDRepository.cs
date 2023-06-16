@@ -8,7 +8,6 @@ namespace LAB_RAMEN.Repository
     public class GenerateIDRepository
     {
         static DatabaseRamenEntities db = new DatabaseRamenEntities();
-
         public static int GenerateID(string table)
         {
             int newID = 1;
@@ -33,10 +32,7 @@ namespace LAB_RAMEN.Repository
                 default:
                     throw new ArgumentException("Invalid table name.");
             }
-
             return newID;
         }
-
-
     }
 }

@@ -2,6 +2,23 @@
 <%@ Import Namespace="System.Linq" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
         .gridview-container {
             display: flex;
             flex-direction: column;
@@ -72,7 +89,7 @@
 
         <div class="shopping-cart-container">
             <h2 class="shopping-cart-title">CheckOut</h2>
-            <asp:Button ID="btnViewCart" runat="server" Text="View Cart" CssClass="view-cart-button" OnClick="btnViewCart_Click" />
+            <asp:Button ID="btnViewCart" runat="server" Text="View Cart" CssClass="button" OnClick="btnViewCart_Click" />
         </div>
     </div>
 </asp:Content>
