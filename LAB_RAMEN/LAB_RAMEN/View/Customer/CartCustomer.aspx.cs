@@ -69,7 +69,7 @@ namespace LAB_RAMEN.View.Customer
         protected string GetRamenName(object ramenID)
         {
             int id = Convert.ToInt32(ramenID);
-            string ramenName = CustomerRepository.GetRamenNameById(id);
+            string ramenName = RamenRepository.GetRamenNameById(id);
             return ramenName;
         }
 

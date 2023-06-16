@@ -50,7 +50,7 @@ namespace LAB_RAMEN.View
 
                 Session["user"] = user;
                 if (user.RoleID == 1) Response.Redirect("../View/Admin/Home.aspx");
-                else if (user.RoleID == 2) Response.Redirect("../View/Staff/Home.aspx");
+                else if (user.RoleID == 2) Response.Redirect("../View/Staff/StaffHome.aspx");
                 else if (user.RoleID == 3) Response.Redirect("../View/Customer/MenuCustomer.aspx");
             }
         }

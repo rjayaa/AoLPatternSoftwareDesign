@@ -18,7 +18,7 @@ namespace LAB_RAMEN.View.Customer
             if (!IsPostBack)
             {
                 User user = (User)Session["user"];
-                gridViewRamen.DataSource = CustomerRepository.GetRamen();
+                gridViewRamen.DataSource = RamenRepository.GetRamen();
                 gridViewRamen.DataBind();
             }
         }

@@ -13,5 +13,34 @@ namespace LAB_RAMEN.View.Navigation
         {
 
         }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Staff/StaffProfile.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("../Login.aspx");
+        }
+
+        protected void btnManage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Staff/StaffManageRamen.aspx");
+        }
+
+       
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Staff/StaffHome.aspx");
+        }
+
+
+        protected void btnOrder_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Staff/StaffViewOrder.aspx");
+        }
     }
 }

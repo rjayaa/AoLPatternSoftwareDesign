@@ -14,7 +14,7 @@ namespace LAB_RAMEN.View.Customer
         {
             if (!IsPostBack)
             {
-                gridViewRamen.DataSource = CustomerRepository.GetRamen();
+                gridViewRamen.DataSource = RamenRepository.GetRamen();
                 gridViewRamen.DataBind();
             }
         }

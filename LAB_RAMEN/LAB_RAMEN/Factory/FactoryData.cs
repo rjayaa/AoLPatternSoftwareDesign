@@ -24,6 +24,19 @@ namespace LAB_RAMEN.Factory
             return u;
         }
 
+        public static Raman createRamen(int id, int meatid, string name, string broth, string price)
+        {
+
+            Raman r = new Raman(); 
+            r.id = id; ;
+            r.MeatID = meatid;
+            r.Name = name;
+            r.Broth = broth;
+            r.Price = price;
+
+            return r;
+        }
+
 
         public static Header AddHeaderFromUser(int customerId)
         {

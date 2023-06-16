@@ -13,7 +13,7 @@
             background-color: #f8f9fa;
             padding: 10px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
         }
 
         .navbar .btn {
@@ -33,8 +33,9 @@
         <div>
             <div class="navbar">
                 <div>
-                    <asp:Button ID="btnOrderRamen" runat="server" Text="Order Ramen" OnClick="btnOrderRamen_Click" CssClass="btn" />
-                    <asp:Button ID="btnTransactionHistory" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" CssClass="btn" />
+                    <asp:Button ID="btnHome" runat="server" Text="Home" CssClass="btn" OnClick="btnHome_Click" />
+                    <asp:Button ID="btnManage" runat="server" Text="Manage Ramen"  CssClass="btn" OnClick="btnManage_Click" />
+                    <asp:Button ID="btnOrder" runat="server" Text="Order Queue" CssClass="btn" OnClick="btnOrder_Click" />
                     <asp:Button ID="btnProfile" runat="server" Text="Profile" OnClick="btnProfile_Click" CssClass="btn" />
                     <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="btn" />
                 </div>
