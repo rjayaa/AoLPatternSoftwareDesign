@@ -32,10 +32,11 @@
         <div>
             <div class="navbar">
                 <div>
-                    <asp:Button ID="btnOrderRamen" runat="server" Text="Order Ramen" OnClick="btnOrderRamen_Click" CssClass="btn" />
-                    <asp:Button ID="btnTransactionHistory" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" CssClass="btn" />
-                    <asp:Button ID="btnProfile" runat="server" Text="Profile" OnClick="btnProfile_Click" CssClass="btn" />
-                    <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" CssClass="btn" />
+                    <asp:Button ID="btnHome" runat="server" Text="Home"  CssClass="btn" OnClick="btnHome_Click" />
+                    <asp:Button ID="btnCustomer" runat="server" Text="Customer Feature"  CssClass="btn" OnClick="btnCustomer_Click"  />
+                    <asp:Button ID="btnStaff" runat="server" Text="Staff Feature"  CssClass="btn" OnClick="btnStaff_Click"  />
+                    <asp:Button ID="btnProfile" runat="server" Text="Profile"  CssClass="btn" OnClick="btnProfile_Click" />
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout"  CssClass="btn" OnClick="btnLogout_Click" />
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
