@@ -20,6 +20,12 @@ namespace LAB_RAMEN.View.Staff
             }
         }
 
+
+        protected void btnViewHandled_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Staff/StaffViewHandled.aspx");
+        }
+
         protected void gridViewQueueOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             User user = (User)Session["user"];
@@ -32,13 +38,16 @@ namespace LAB_RAMEN.View.Staff
             int headerID = Convert.ToInt32(sRow.Cells[0].Text);
             OrderRepository.HandleOrderByStaff(headerID, staffid);
 
-                
+
             gridViewQueueOrder.DataBind();
+
+            Response.Redirect("../Staff/StaffViewHandled.aspx");
+
         }
 
-        protected void btnViewHandled_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("../Staff/StaffViewHandled.aspx");
-        }
+
+
+
+
     }
 }

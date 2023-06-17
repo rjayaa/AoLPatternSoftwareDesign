@@ -69,13 +69,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contentBody" runat="server">
     <h1>Order Queue</h1>
     <div class="gridViewContainer">
-        <asp:GridView ID="gridViewQueueOrder" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="gridViewQueueOrder_SelectedIndexChanged" CssClass="table">
+        <asp:GridView ID="gridViewQueueOrder" runat="server" AutoGenerateColumns="False"  CssClass="table" OnSelectedIndexChanged="gridViewQueueOrder_SelectedIndexChanged"  >
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="Transaction ID" SortExpression="id" />
                 <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" SortExpression="CustomerID" />
                 <asp:BoundField DataField="StaffID" HeaderText="Staff ID " SortExpression="StaffID" />
                 <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
                 <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Actions" ShowHeader="True" Text="Service" />
+                
             </Columns>
         </asp:GridView>
     </div>
