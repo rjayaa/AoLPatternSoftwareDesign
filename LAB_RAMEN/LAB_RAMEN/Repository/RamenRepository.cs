@@ -7,7 +7,7 @@ namespace LAB_RAMEN.Repository
 {
     public class RamenRepository
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
 
         public static List<Raman> GetRamen()
         {
@@ -33,27 +33,27 @@ namespace LAB_RAMEN.Repository
 
         public static List<string> GetMeatData()
         {
-            List<string> m = db.Meats.Select(x => x.name).ToList();
+            List<string> m = db.Meats.Select(x => x.Name).ToList();
             return m;
 
         }
         public static List<string> GetBrothData()
         {
-            List<string> m = db.Meats.Select(x => x.name).ToList();
+            List<string> m = db.Meats.Select(x => x.Name).ToList();
             return m;
 
         }
 
         public static int GeatIdByMeatName(string meatname)
         {
-            Meat meat = db.Meats.FirstOrDefault(m => m.name == meatname);
+            Meat meat = db.Meats.FirstOrDefault(m => m.Name == meatname);
              return meat.id;
                     
         }
         public static string GeatMeatNameById(int meatid)
         {
             Meat meat = db.Meats.FirstOrDefault(m => m.id == meatid);
-            return meat.name;
+            return meat.Name;
 
         }
     }

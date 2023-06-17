@@ -77,7 +77,7 @@
 
             <div>
                 <asp:Button ID="btnOrderRamen" runat="server" Text="Order Ramen" CssClass="button" OnClick="btnOrderRamen_Click" />
-                <asp:Button ID="Button1" runat="server" Text="Transaction History" CssClass="button" />
+                <asp:Button ID="Button1" runat="server" Text="Transaction History" CssClass="button" OnClick="Button1_Click" />
             </div>
         </div>
     </form>

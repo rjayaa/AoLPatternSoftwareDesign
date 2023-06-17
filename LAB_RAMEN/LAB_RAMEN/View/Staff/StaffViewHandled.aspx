@@ -78,6 +78,6 @@
         </asp:GridView>
     </div>
     <div class="buttonContainer">
-        <asp:Button ID="btnBack" runat="server" Text="Back" cssClass="button"/>
+        <asp:Button ID="btnBack" runat="server" Text="Back" cssClass="button" OnClick="btnBack_Click"/>
     </div>
 </asp:Content>

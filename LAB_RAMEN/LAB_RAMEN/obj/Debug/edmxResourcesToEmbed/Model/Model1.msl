@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DatabaseRamenModelStoreContainer" CdmEntityContainer="DatabaseRamenEntities">
+  <EntityContainerMapping StorageEntityContainer="DatabaseRamenModelStoreContainer" CdmEntityContainer="DatabaseRamenEntities1">
     <EntitySetMapping Name="Details">
       <EntityTypeMapping TypeName="DatabaseRamenModel.Detail">
         <MappingFragment StoreEntitySet="Detail">
-          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="HeaderID" ColumnName="HeaderID" />
           <ScalarProperty Name="RamenID" ColumnName="RamenID" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
@@ -25,7 +24,7 @@
       <EntityTypeMapping TypeName="DatabaseRamenModel.Meat">
         <MappingFragment StoreEntitySet="Meat">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

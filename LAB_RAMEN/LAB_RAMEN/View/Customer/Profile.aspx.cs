@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LAB_RAMEN.Model;
-using LAB_RAMEN.Controller;
+using LAB_RAMEN.Repository;
 namespace LAB_RAMEN.View.Customer
 {
     public partial class Profile : System.Web.UI.Page
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

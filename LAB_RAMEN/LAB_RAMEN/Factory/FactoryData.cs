@@ -9,7 +9,7 @@ namespace LAB_RAMEN.Factory
     
     public class FactoryData
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
 
         public static User createUser(int id, int roleid, string username, string email, string gender , string password)
         {
@@ -38,17 +38,17 @@ namespace LAB_RAMEN.Factory
         }
 
 
-        public static Header AddHeaderFromUser(int customerId)
+        public static Header createHeader(int id, int customerId)
         {
             Header h = new Header();
-            h.id = GenerateIDRepository.GenerateID("Header");
+            h.id = id;
             h.CustomerID = customerId;
             h.StaffID = 0;
             h.Date = DateTime.Now;
             return h;
         }
 
-        public static Detail AddDetail(int headerId, int ramenId, int quantity)
+        public static Detail createDetail(int headerId, int ramenId, int quantity)
         {
             Detail d = new Detail();
             d.HeaderID = headerId;

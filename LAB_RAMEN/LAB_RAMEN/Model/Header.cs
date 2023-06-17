@@ -22,7 +22,7 @@ namespace LAB_RAMEN.Model
     
         public int id { get; set; }
         public int CustomerID { get; set; }
-        public Nullable<int> StaffID { get; set; }
+        public int StaffID { get; set; }
         public System.DateTime Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

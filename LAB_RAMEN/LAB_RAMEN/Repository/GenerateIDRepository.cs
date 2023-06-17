@@ -7,7 +7,7 @@ namespace LAB_RAMEN.Repository
 {
     public class GenerateIDRepository
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
         public static int GenerateID(string table)
         {
             int newID = 1;
@@ -24,10 +24,6 @@ namespace LAB_RAMEN.Repository
                 case "Header":
                     if (db.Headers.Any())
                         newID = db.Headers.Max(item => item.id) + 1;
-                    break;
-                case "Detail":
-                    if (db.Details.Any())
-                        newID = db.Details.Max(item => item.id) + 1;
                     break;
                 default:
                     throw new ArgumentException("Invalid table name.");

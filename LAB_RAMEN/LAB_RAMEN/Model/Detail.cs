@@ -14,7 +14,6 @@ namespace LAB_RAMEN.Model
     
     public partial class Detail
     {
-        public int id { get; set; }
         public int HeaderID { get; set; }
         public int RamenID { get; set; }
         public int Quantity { get; set; }

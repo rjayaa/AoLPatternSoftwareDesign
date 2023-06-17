@@ -1,5 +1,6 @@
 ﻿using LAB_RAMEN.Model;
 using LAB_RAMEN.Handler;
+using LAB_RAMEN.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace LAB_RAMEN.View
 {
     public partial class Login : System.Web.UI.Page
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -44,7 +45,7 @@ namespace LAB_RAMEN.View
                     HttpCookie cookie = new HttpCookie("user_cookie");
                     cookie.Values["username"] = txtUsername.Text;
                     cookie.Values["password"] = txtPassword.Text;
-                    cookie.Expires.AddMinutes(3);
+                    cookie.Expires.AddMinutes(0);
                     Response.Cookies.Add(cookie);
                 }
 

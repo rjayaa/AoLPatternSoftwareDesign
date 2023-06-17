@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LAB_RAMEN.Model;
+using LAB_RAMEN.Repository;
 namespace LAB_RAMEN.View.Staff
 {
     public partial class StaffProfile : System.Web.UI.Page
     {
 
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

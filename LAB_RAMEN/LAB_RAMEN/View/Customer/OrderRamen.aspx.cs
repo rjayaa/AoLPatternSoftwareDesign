@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using LAB_RAMEN.Repository;
-using LAB_RAMEN.Model;
-using System.Data;
 using LAB_RAMEN.Factory;
-
+using LAB_RAMEN.Handler;
+using LAB_RAMEN.Model;
+using LAB_RAMEN.Repository;
 namespace LAB_RAMEN.View.Customer
 {
     public partial class OrderRamen : System.Web.UI.Page
@@ -17,47 +16,58 @@ namespace LAB_RAMEN.View.Customer
         {
             if (!IsPostBack)
             {
-                User user = (User)Session["user"];
                 gridViewRamen.DataSource = RamenRepository.GetRamen();
                 gridViewRamen.DataBind();
+                    
             }
         }
 
         protected void gridViewRamen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            User u = (User)Session["user"];
             GridViewRow selectedRow = gridViewRamen.SelectedRow;
-            int ramenID = Convert.ToInt32(selectedRow.Cells[0].Text);
 
-            Header h = (Header)Session["cart"];
+            int headerID = GenerateIDRepository.GenerateID("Header");
+            //FactoryData.createHeader(headerID, us.id);
+            int ramenid = int.Parse(selectedRow.Cells[0].Text);
 
-            if (h == null)
+            List<int> quantities = Session["quantities"] as List<int>;
+            List<int> ramenIDs = Session["ramenids"] as List<int>;
+
+            if (quantities == null || ramenIDs == null)
             {
-                Session["cart"] = FactoryData.AddHeaderFromUser(u.id);
-                List<Detail> details = new List<Detail>();
-                Session["order"] = details;
-                h = (Header)Session["cart"];
+                quantities = new List<int>();
+                ramenIDs = new List<int>();
             }
 
-            List<Detail> orderDetails = (List<Detail>)Session["order"];
-
-            Detail existingDetail = orderDetails.FirstOrDefault(d => d.RamenID == ramenID);
-            if (existingDetail != null)
+            int index = ramenIDs.IndexOf(ramenid);
+            if (index != -1)
             {
-                existingDetail.Quantity++;
+                quantities[index]++;
             }
             else
             {
-                orderDetails.Add(FactoryData.AddDetail(h.id, ramenID, 1));
+                ramenIDs.Add(ramenid);
+                quantities.Add(1);
             }
 
-            Session["order"] = orderDetails;
+            
+            Session["ramenid"] = ramenid;
+            Session["headerID"] = headerID;
+            Session["quantities"] = quantities;
+            Session["ramenids"] = ramenIDs;
         }
-
+        
 
         protected void btnViewCart_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Customer/CartCustomer.aspx");
+            User us = (User)Session["user"];
+            int headerID = GenerateIDRepository.GenerateID("Header");
+            OrderHandler.insertHeader(headerID, us.id);
+            
+
+            Response.Redirect("CartPage.aspx");
         }
+
+      
     }
 }

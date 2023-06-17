@@ -2,9 +2,9 @@
 <Schema Namespace="DatabaseRamenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Detail">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="HeaderID" />
+      <PropertyRef Name="RamenID" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="HeaderID" Type="int" Nullable="false" />
     <Property Name="RamenID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
@@ -15,7 +15,7 @@
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="CustomerID" Type="int" Nullable="false" />
-    <Property Name="StaffID" Type="int" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Meat">
@@ -23,13 +23,13 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Ramen">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MeatID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Broth" Type="varchar" MaxLength="50" Nullable="false" />
@@ -53,7 +53,7 @@
     <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Detail_Header">
+  <Association Name="FK_detail_ToheaderID">
     <End Role="Header" Type="Self.Header" Multiplicity="1" />
     <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -65,7 +65,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Detail_Ramen">
+  <Association Name="FK_detail_ToramenID">
     <End Role="Ramen" Type="Self.Ramen" Multiplicity="1" />
     <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -77,7 +77,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Ramen_ToTable">
+  <Association Name="FK_header_TocustomerID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Header" Type="Self.Header" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Header">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ramen_TomeatID">
     <End Role="Meat" Type="Self.Meat" Multiplicity="1" />
     <End Role="Ramen" Type="Self.Ramen" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,18 +113,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_ToTable">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Header" Type="Self.Header" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Header">
-        <PropertyRef Name="CustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DatabaseRamenModelStoreContainer">
     <EntitySet Name="Detail" EntityType="Self.Detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Header" EntityType="Self.Header" Schema="dbo" store:Type="Tables" />
@@ -120,25 +120,25 @@
     <EntitySet Name="Ramen" EntityType="Self.Ramen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Detail_Header" Association="Self.FK_Detail_Header">
+    <AssociationSet Name="FK_detail_ToheaderID" Association="Self.FK_detail_ToheaderID">
       <End Role="Header" EntitySet="Header" />
       <End Role="Detail" EntitySet="Detail" />
     </AssociationSet>
-    <AssociationSet Name="FK_Detail_Ramen" Association="Self.FK_Detail_Ramen">
+    <AssociationSet Name="FK_detail_ToramenID" Association="Self.FK_detail_ToramenID">
       <End Role="Ramen" EntitySet="Ramen" />
       <End Role="Detail" EntitySet="Detail" />
     </AssociationSet>
-    <AssociationSet Name="FK_Ramen_ToTable" Association="Self.FK_Ramen_ToTable">
+    <AssociationSet Name="FK_header_TocustomerID" Association="Self.FK_header_TocustomerID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Header" EntitySet="Header" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ramen_TomeatID" Association="Self.FK_ramen_TomeatID">
       <End Role="Meat" EntitySet="Meat" />
       <End Role="Ramen" EntitySet="Ramen" />
     </AssociationSet>
     <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_ToTable" Association="Self.FK_User_ToTable">
-      <End Role="User" EntitySet="User" />
-      <End Role="Header" EntitySet="Header" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

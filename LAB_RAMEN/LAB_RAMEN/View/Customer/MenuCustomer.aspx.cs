@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using LAB_RAMEN.Model;
 using LAB_RAMEN.Repository;
 namespace LAB_RAMEN.View.Customer
 {
@@ -14,6 +14,7 @@ namespace LAB_RAMEN.View.Customer
         {
             if (!IsPostBack)
             {
+                User user = (User)Session["user"];
                 gridViewRamen.DataSource = RamenRepository.GetRamen();
                 gridViewRamen.DataBind();
             }
@@ -33,6 +34,11 @@ namespace LAB_RAMEN.View.Customer
         protected void btnOrderRamen_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Customer/OrderRamen.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Customer/TransactionHistory.aspx");
         }
     }
 }

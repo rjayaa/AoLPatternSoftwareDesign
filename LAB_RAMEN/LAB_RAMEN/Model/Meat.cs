@@ -21,7 +21,7 @@ namespace LAB_RAMEN.Model
         }
     
         public int id { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Raman> Ramen { get; set; }

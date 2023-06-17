@@ -13,10 +13,10 @@ namespace LAB_RAMEN.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseRamenEntities : DbContext
+    public partial class DatabaseRamenEntities1 : DbContext
     {
-        public DatabaseRamenEntities()
-            : base("name=DatabaseRamenEntities")
+        public DatabaseRamenEntities1()
+            : base("name=DatabaseRamenEntities1")
         {
         }
     

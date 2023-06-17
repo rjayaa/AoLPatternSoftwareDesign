@@ -7,14 +7,14 @@ namespace LAB_RAMEN.Repository
 {
     public class DBSingleton
     {
-        static DatabaseRamenEntities db = null;
+        static DatabaseRamenEntities1 db = null;
 
-        public static DatabaseRamenEntities GetInstance()
+        public static DatabaseRamenEntities1 GetInstance()
         {
             if(db == null)
             {
 
-                db = new DatabaseRamenEntities();
+                db = new DatabaseRamenEntities1();
             }
             return db;
         }

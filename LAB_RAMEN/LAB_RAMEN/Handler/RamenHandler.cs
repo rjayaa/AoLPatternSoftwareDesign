@@ -9,7 +9,7 @@ namespace LAB_RAMEN.Handler
 {
     public class RamenHandler
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
         public static bool insertRamen(int id, string meatname, string name, string broth,string price)
         {
 

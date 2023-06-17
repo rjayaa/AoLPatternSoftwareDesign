@@ -7,8 +7,7 @@ namespace LAB_RAMEN.Repository
 {
     public class StaffRepository
     {
-        static DatabaseRamenEntities db = new DatabaseRamenEntities();
-
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
         public static List<User> GetAllCustomers()
         {
             return db.Users.Where(u => u.RoleID == 3).ToList();

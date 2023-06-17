@@ -11,8 +11,8 @@ namespace LAB_RAMEN.View.Staff
 {
     public partial class StaffUpdateRamen : System.Web.UI.Page
     {
-        static DatabaseRamenEntities db = DBSingleton.GetInstance();
-            
+        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
