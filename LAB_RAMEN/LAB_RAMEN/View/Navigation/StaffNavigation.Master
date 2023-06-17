@@ -8,25 +8,7 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style>
-        .navbar {
-            background-color: #f8f9fa;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .navbar .btn {
-            text-decoration: none;
-            color: #333;
-            margin-right: 10px;
-            font-weight: bold;
-            background-color: #eee;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-    </style>
+  
 </head>
 <body>
     <form id="form1" runat="server">

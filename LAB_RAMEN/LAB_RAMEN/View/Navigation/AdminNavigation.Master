@@ -7,25 +7,7 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style>
-        .navbar {
-            background-color: #f8f9fa;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .navbar .btn {
-            text-decoration: none;
-            color: #333;
-            margin-right: 10px;
-            font-weight: bold;
-            background-color: #eee;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -35,6 +17,7 @@
                     <asp:Button ID="btnHome" runat="server" Text="Home"  CssClass="btn" OnClick="btnHome_Click" />
                     <asp:Button ID="btnCustomer" runat="server" Text="Customer Feature"  CssClass="btn" OnClick="btnCustomer_Click"  />
                     <asp:Button ID="btnStaff" runat="server" Text="Staff Feature"  CssClass="btn" OnClick="btnStaff_Click"  />
+                    <asp:Button ID="btnViewTransaction" runat="server" Text="View All Transaction"  CssClass="btn" OnClick="btnViewTransaction_Click"  />
                     <asp:Button ID="btnProfile" runat="server" Text="Profile"  CssClass="btn" OnClick="btnProfile_Click" />
                     <asp:Button ID="btnLogout" runat="server" Text="Logout"  CssClass="btn" OnClick="btnLogout_Click" />
                 </div>

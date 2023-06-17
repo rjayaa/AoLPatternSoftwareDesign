@@ -1,56 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Navigation/StaffNavigation.Master" AutoEventWireup="true" CodeBehind="StaffManageRamen.aspx.cs" Inherits="LAB_RAMEN.View.Staff.StaffManageRamen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .button {
-            border-style: none;
-            border-color: inherit;
-            border-width: medium;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            transition-duration: 0.4s;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        .gridview {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        .gridview th,
-        .gridview td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .gridview tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .gridview tr:hover {
-            background-color: #ddd;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-    </style>
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentBody" runat="server">
     <div class="container">

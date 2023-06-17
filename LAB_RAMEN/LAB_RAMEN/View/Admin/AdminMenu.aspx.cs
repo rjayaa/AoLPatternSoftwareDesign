@@ -20,5 +20,15 @@ namespace LAB_RAMEN.View.Admin
                 gridViewStaff.DataBind();
             }
         }
+
+        protected void btnCust_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminMenuCustomer.aspx");
+        }
+
+        protected void btnStaff_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminStaffMenu.aspx");
+        }
     }
 }

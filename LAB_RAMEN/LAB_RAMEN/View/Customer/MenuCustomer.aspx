@@ -5,55 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style>
-        /* CSS untuk tombol */
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 5px;
-            cursor: pointer;
-            transition-duration: 0.4s;
-        }
-
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        /* CSS untuk GridView */
-        .gridview {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        .gridview th, .gridview td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .gridview tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .gridview tr:hover {
-            background-color: #ddd;
-        }
-
-        /* CSS untuk kontainer utama */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">

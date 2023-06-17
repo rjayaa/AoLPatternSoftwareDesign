@@ -21,12 +21,12 @@ namespace LAB_RAMEN.View.Navigation
 
         protected void btnCustomer_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Admin/StaffCustomerFeature.aspx");
+            Response.Redirect("../Admin/AdminMenuCustomer.aspx");
         }
 
         protected void btnStaff_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Admin/AdminStaffFeature.aspx");
+            Response.Redirect("../Admin/AdminStaffMenu.aspx");
         }
 
         protected void btnProfile_Click(object sender, EventArgs e)
@@ -38,6 +38,11 @@ namespace LAB_RAMEN.View.Navigation
         {
             Session.Clear();
             Response.Redirect("../Login.aspx");
+        }
+
+        protected void btnViewTransaction_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminViewAllTransaction.aspx");
         }
     }
 }

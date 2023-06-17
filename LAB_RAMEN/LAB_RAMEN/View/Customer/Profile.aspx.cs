@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LAB_RAMEN.Model;
 using LAB_RAMEN.Repository;
+using LAB_RAMEN.Handler;
 namespace LAB_RAMEN.View.Customer
 {
     public partial class Profile : System.Web.UI.Page
@@ -22,23 +23,9 @@ namespace LAB_RAMEN.View.Customer
            
         }
 
-        private void fetchDataToTxt(User user)
-        {
-            txtUsername.Text = user.Username;
-            txtEmail.Text = user.Email;
-            ddlGender.SelectedValue = user.Gender;
-            txtPassword.Text = "";
-            txtConfirmPassword.Text = "";
-        }
+      
 
-        private void disableTxt()
-        {
-            txtUsername.Enabled = false;
-            txtPassword.Enabled = false;
-            ddlGender.Enabled = false; 
-            txtEmail.Enabled = false;
-            txtConfirmPassword.Enabled = false;
-        }
+      
 
         private void enableTxt()
         {
@@ -68,6 +55,22 @@ namespace LAB_RAMEN.View.Customer
             disableTxt();
             btnSave.Enabled = false;
 
+        }
+        private void fetchDataToTxt(User user)
+        {
+            txtUsername.Text = user.Username;
+            txtEmail.Text = user.Email;
+            ddlGender.SelectedValue = user.Gender;
+            txtPassword.Text = "";
+            txtConfirmPassword.Text = "";
+        }
+        private void disableTxt()
+        {
+            txtUsername.Enabled = false;
+            txtPassword.Enabled = false;
+            ddlGender.Enabled = false;
+            txtEmail.Enabled = false;
+            txtConfirmPassword.Enabled = false;
         }
 
     }

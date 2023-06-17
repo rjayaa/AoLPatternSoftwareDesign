@@ -17,5 +17,9 @@ namespace LAB_RAMEN.Repository
         {
             return db.Users.Where(u => u.RoleID == 2).ToList();
         }
+        public static List<Header> GetAllTransaction()
+        {
+            return db.Headers.ToList();
+        }
     }
 }

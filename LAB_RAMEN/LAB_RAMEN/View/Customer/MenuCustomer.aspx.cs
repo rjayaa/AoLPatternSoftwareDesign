@@ -26,10 +26,6 @@ namespace LAB_RAMEN.View.Customer
             Response.Redirect("../Login.aspx");
         }
 
-        protected void btnProfile_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("../Customer/Profile.aspx");
-        }
 
         protected void btnOrderRamen_Click(object sender, EventArgs e)
         {
@@ -39,6 +35,11 @@ namespace LAB_RAMEN.View.Customer
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Customer/TransactionHistory.aspx");
+        }
+
+        protected void btnProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Customer/Profile.aspx");
         }
     }
 }

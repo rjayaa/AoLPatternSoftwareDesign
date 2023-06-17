@@ -9,11 +9,9 @@ namespace LAB_RAMEN.Handler
 {
     public class LoginHandler
     {
-        static DatabaseRamenEntities1 db = DBSingleton.GetInstance();
-
         public static User loginHandler(string username, string password)
         {
-            return db.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
+            return LoginAndRegisterRepository.LoginRepository(username, password);
         }
     }
 }

@@ -89,8 +89,19 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="View\Admin\AdminHome2.aspx" />
+    <Content Include="View\Admin\AdminCartPage.aspx" />
+    <Content Include="View\Admin\AdminCustomerTransactionHistory.aspx" />
     <Content Include="View\Admin\AdminMenu.aspx" />
+    <Content Include="View\Admin\AdminOrderRamen.aspx" />
+    <Content Include="View\Admin\AdminProfile.aspx" />
+    <Content Include="View\Admin\AdminMenuCustomer.aspx" />
+    <Content Include="View\Admin\AdminStaffInsertRamen.aspx" />
+    <Content Include="View\Admin\AdminStaffManageRamen.aspx" />
+    <Content Include="View\Admin\AdminStaffMenu.aspx" />
+    <Content Include="View\Admin\AdminStaffUpdateRamen.aspx" />
+    <Content Include="View\Admin\AdminStaffViewHandled.aspx" />
+    <Content Include="View\Admin\AdminStaffViewOrder.aspx" />
+    <Content Include="View\Admin\AdminViewAllTransaction.aspx" />
     <Content Include="View\Customer\CartPage.aspx" />
     <Content Include="View\Customer\MenuCustomer.aspx" />
     <Content Include="View\Customer\OrderRamen.aspx" />
@@ -111,6 +122,8 @@
     <Compile Include="Controller\RamenController.cs" />
     <Compile Include="Controller\RegisterController.cs" />
     <Compile Include="Factory\FactoryData.cs" />
+    <Compile Include="Handler\AdminHandler.cs" />
+    <Compile Include="Handler\CustomerHandler.cs" />
     <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Handler\OrderHandler.cs" />
     <Compile Include="Handler\RamenHandler.cs" />
@@ -152,15 +165,23 @@
     <Compile Include="Repository\AdminRepository.cs" />
     <Compile Include="Repository\DBSingleton.cs" />
     <Compile Include="Repository\GenerateIDRepository.cs" />
+    <Compile Include="Repository\LoginAndRegisterRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\RamenRepository.cs" />
     <Compile Include="Repository\StaffRepository.cs" />
-    <Compile Include="View\Admin\AdminHome2.aspx.cs">
-      <DependentUpon>AdminHome2.aspx</DependentUpon>
+    <Compile Include="View\Admin\AdminCartPage.aspx.cs">
+      <DependentUpon>AdminCartPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Admin\AdminHome2.aspx.designer.cs">
-      <DependentUpon>AdminHome2.aspx</DependentUpon>
+    <Compile Include="View\Admin\AdminCartPage.aspx.designer.cs">
+      <DependentUpon>AdminCartPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminCustomerTransactionHistory.aspx.cs">
+      <DependentUpon>AdminCustomerTransactionHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminCustomerTransactionHistory.aspx.designer.cs">
+      <DependentUpon>AdminCustomerTransactionHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\AdminMenu.aspx.cs">
       <DependentUpon>AdminMenu.aspx</DependentUpon>
@@ -168,6 +189,76 @@
     </Compile>
     <Compile Include="View\Admin\AdminMenu.aspx.designer.cs">
       <DependentUpon>AdminMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminOrderRamen.aspx.cs">
+      <DependentUpon>AdminOrderRamen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminOrderRamen.aspx.designer.cs">
+      <DependentUpon>AdminOrderRamen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminProfile.aspx.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminProfile.aspx.designer.cs">
+      <DependentUpon>AdminProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminMenuCustomer.aspx.cs">
+      <DependentUpon>AdminMenuCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminMenuCustomer.aspx.designer.cs">
+      <DependentUpon>AdminMenuCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffInsertRamen.aspx.cs">
+      <DependentUpon>AdminStaffInsertRamen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffInsertRamen.aspx.designer.cs">
+      <DependentUpon>AdminStaffInsertRamen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffManageRamen.aspx.cs">
+      <DependentUpon>AdminStaffManageRamen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffManageRamen.aspx.designer.cs">
+      <DependentUpon>AdminStaffManageRamen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffMenu.aspx.cs">
+      <DependentUpon>AdminStaffMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffMenu.aspx.designer.cs">
+      <DependentUpon>AdminStaffMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffUpdateRamen.aspx.cs">
+      <DependentUpon>AdminStaffUpdateRamen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffUpdateRamen.aspx.designer.cs">
+      <DependentUpon>AdminStaffUpdateRamen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffViewHandled.aspx.cs">
+      <DependentUpon>AdminStaffViewHandled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffViewHandled.aspx.designer.cs">
+      <DependentUpon>AdminStaffViewHandled.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffViewOrder.aspx.cs">
+      <DependentUpon>AdminStaffViewOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminStaffViewOrder.aspx.designer.cs">
+      <DependentUpon>AdminStaffViewOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminViewAllTransaction.aspx.cs">
+      <DependentUpon>AdminViewAllTransaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AdminViewAllTransaction.aspx.designer.cs">
+      <DependentUpon>AdminViewAllTransaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Customer\CartPage.aspx.cs">
       <DependentUpon>CartPage.aspx</DependentUpon>
