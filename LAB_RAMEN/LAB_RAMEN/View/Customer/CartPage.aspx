@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="gridViewCart" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="gridViewCart" runat="server" AutoGenerateColumns="False" OnRowDeleting="gridViewCart_RowDeleting" >
         <Columns>
             <asp:BoundField DataField="id" HeaderText="TransactionID" SortExpression="id" />
             <asp:BoundField DataField="RamenID" HeaderText="Ramen ID" SortExpression="RamenID" />
@@ -11,5 +11,5 @@
         </Columns>
     </asp:GridView>
     <asp:Button ID="btnInsert" runat="server" Text="Order!!!" OnClick="btnInsert_Click" />
-
+    <asp:Button ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
 </asp:Content>

@@ -17,8 +17,8 @@ namespace LAB_RAMEN.Repository
 
         public static List<Header> GetUserHistoryTransaction(int userid)
         {
-            List<Header> h = db.Headers.Where(p => p.CustomerID == userid).ToList();
-            return h;
+            List<Header> headers = db.Headers.Where(h => h.CustomerID == userid && h.StaffID > 0).ToList();
+            return headers;
         }
         public static void HandleOrderByStaff(int headerid, int staffid)
         {
@@ -43,35 +43,9 @@ namespace LAB_RAMEN.Repository
             return dt;
         }
 
-        public static void createTransaction(int headerid, List<Detail> orderdetails)
+        public static Header GetLastHeader()
         {
-
-            using (var transaction = db.Database.BeginTransaction())
-            {
-                try
-                {
-                    Header header = db.Headers.Find(headerid);
-                    db.Headers.Attach(header);
-                    db.Entry(header).State = EntityState.Modified;
-                    db.SaveChanges();
-
-                    
-                    foreach (Detail detail in orderdetails)
-                    {
-                        detail.HeaderID = headerid;
-                        db.Details.Add(detail);
-                    }
-                    db.SaveChanges();
-
-                    transaction.Commit();
-                }
-                catch (Exception)
-                {
-                    transaction.Rollback();
-                    throw;
-                }
-            }
-           
+            return db.Headers.OrderByDescending(h => h.id).FirstOrDefault();
         }
     }
 }

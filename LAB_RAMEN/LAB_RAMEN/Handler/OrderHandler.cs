@@ -33,12 +33,8 @@ namespace LAB_RAMEN.Handler
         {
             try
             {
-                Detail d = new Detail();
-                d.HeaderID = hid;
-                d.RamenID = rid;
-                d.Quantity = q;
+                Detail d = FactoryData.createDetail(hid,rid,q);
                 db.Details.Add(d);
-
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -46,6 +42,25 @@ namespace LAB_RAMEN.Handler
                 return false;
             }
             return true;
+        }
+
+        public static bool RemoveLastHeaderData()
+        {
+            try
+            {
+                var lastHeader = OrderRepository.GetLastHeader();
+                if (lastHeader != null)
+                {
+                    db.Headers.Remove(lastHeader);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return false;
         }
     }
 }
