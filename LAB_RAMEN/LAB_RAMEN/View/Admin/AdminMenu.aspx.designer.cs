@@ -42,6 +42,15 @@ namespace LAB_RAMEN.View.Admin
         protected global::System.Web.UI.WebControls.GridView gridViewStaff;
 
         /// <summary>
+        /// btnViewReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnViewReport;
+
+        /// <summary>
         /// btnCust control.
         /// </summary>
         /// <remarks>

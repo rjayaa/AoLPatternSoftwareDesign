@@ -5,68 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="password"],
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .form-group .btn-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .form-group .btn-container input[type="submit"] {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .form-group .btn-container input[type="submit"]:first-child {
-            background-color: #007bff;
-        }
-
-        .form-group .btn-container input[type="submit"]:last-child {
-            background-color: #dc3545;
-        }
-    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">

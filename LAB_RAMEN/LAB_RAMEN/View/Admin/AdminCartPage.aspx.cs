@@ -29,7 +29,6 @@ namespace LAB_RAMEN.View.Admin
         {
             List<int> ramenids = Session["ramenids"] as List<int>;
             List<int> quantities = Session["quantities"] as List<int>;
-
             if (ramenids != null && quantities != null && ramenids.Count == quantities.Count)
             {
                 foreach (GridViewRow row in gridViewCart.Rows)

@@ -30,6 +30,7 @@
         </Columns>
     </asp:GridView>
        <div class="button-container">
+           <asp:Button ID="btnViewReport" runat="server" Text="View Report SAP"  CssClass="btn" OnClick="btnViewReport_Click"   />
     <asp:Button ID="btnCust" runat="server" Text="Customer Feature" CssClass="button" OnClick="btnCust_Click" />
     <asp:Button ID="btnStaff" runat="server" Text="Staff Feature" CssClass="button" OnClick="btnStaff_Click" />
 </div>

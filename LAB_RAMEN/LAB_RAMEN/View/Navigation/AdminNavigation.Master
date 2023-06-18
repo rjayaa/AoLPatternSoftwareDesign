@@ -18,6 +18,7 @@
                     <asp:Button ID="btnCustomer" runat="server" Text="Customer Feature"  CssClass="btn" OnClick="btnCustomer_Click"  />
                     <asp:Button ID="btnStaff" runat="server" Text="Staff Feature"  CssClass="btn" OnClick="btnStaff_Click"  />
                     <asp:Button ID="btnViewTransaction" runat="server" Text="View All Transaction"  CssClass="btn" OnClick="btnViewTransaction_Click"  />
+                    <asp:Button ID="btnViewReport" runat="server" Text="View Report SAP"  CssClass="btn" OnClick="btnViewReport_Click"   />
                     <asp:Button ID="btnProfile" runat="server" Text="Profile"  CssClass="btn" OnClick="btnProfile_Click" />
                     <asp:Button ID="btnLogout" runat="server" Text="Logout"  CssClass="btn" OnClick="btnLogout_Click" />
                 </div>

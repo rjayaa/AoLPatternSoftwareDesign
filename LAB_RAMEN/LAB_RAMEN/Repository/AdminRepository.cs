@@ -21,5 +21,16 @@ namespace LAB_RAMEN.Repository
         {
             return db.Headers.ToList();
         }
+
+        public static decimal GetRamenPrice(int ramenID)
+        {
+            int price = 0;
+            var ramen = db.Ramen.FirstOrDefault(p => p.id == ramenID);
+
+            if (ramen != null) int.TryParse(ramen.Price, out price);
+
+            return price;
+        }
+
     }
 }

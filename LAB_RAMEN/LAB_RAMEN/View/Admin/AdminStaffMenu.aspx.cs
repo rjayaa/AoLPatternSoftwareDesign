@@ -25,7 +25,7 @@ namespace LAB_RAMEN.View.Admin
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminOrderRamen.aspx");
+            Response.Redirect("AdminStaffViewOrder.aspx");
         }
     }
 }

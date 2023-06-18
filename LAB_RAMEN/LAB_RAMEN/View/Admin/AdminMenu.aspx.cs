@@ -30,5 +30,10 @@ namespace LAB_RAMEN.View.Admin
         {
             Response.Redirect("AdminStaffMenu.aspx");
         }
+
+        protected void btnViewReport_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminTransactionReport.aspx");
+        }
     }
 }
